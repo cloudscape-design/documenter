@@ -5,6 +5,7 @@
     "type": "git",
     "url": "https://github.com/cloudscape-design/documenter.git"
   },
+  "homepage": "https://cloudscape.design",
   "main": "./dist/index.js",
   "files": [
     "dist"
