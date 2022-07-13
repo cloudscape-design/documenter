@@ -1,6 +1,11 @@
 {
   "name": "@cloudscape-design/documenter",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloudscape-design/documenter.git"
+  },
+  "homepage": "https://cloudscape.design",
   "main": "./dist/index.js",
   "files": [
     "dist"
