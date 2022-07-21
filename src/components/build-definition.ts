@@ -40,9 +40,9 @@ function buildMethodsDefinition(refType?: DeclarationReflection): ComponentFunct
         }" has a "${schema.code.buildType(child.type)}" type`
       );
     }
-    if (child.signatures.length > 1) {
+    if (child.signatures.length >= 2) {
       throw new Error(
-        `Method overloads are not supported, SOME EDIT HERE, found multiple signatures at ${schema.utils.getDeclarationSourceFilename(
+        `Method overloads are not supported, found multiple signatures at ${schema.utils.getDeclarationSourceFilename(
           child
         )}`
       );
