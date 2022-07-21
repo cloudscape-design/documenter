@@ -17,3 +17,4 @@ permissions:
 jobs:
   release:
     uses: cloudscape-design/.github/.github/workflows/release.yml@gasda/release-test
+    secrets: inherit
