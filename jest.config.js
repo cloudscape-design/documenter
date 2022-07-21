@@ -3,6 +3,7 @@
 module.exports = {
   testEnvironment: 'node',
   preset: 'ts-jest',
+  collectCoverage: true,
   globals: {
     'ts-jest': {
       tsconfig: 'test/tsconfig.json',
