@@ -1,6 +1,6 @@
 # This workflow releases the current package to a dedicated private CodeArtifact repository.
 # One repository may publish more than one package. For more details refer to the release-package Action.
-name: release
+name: Release
 
 on:
   push:
@@ -14,4 +14,4 @@ permissions:
 
 jobs:
   release:
-    uses: cloudscape-design/.github/.github/workflows/release.yml@chore/shared-actions
+    uses: cloudscape-design/.github/.github/workflows/release.yml@main

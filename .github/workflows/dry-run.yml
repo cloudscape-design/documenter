@@ -1,6 +1,6 @@
 # This workflow executes a full dry-run test, which means that all we build and test all @cloudscape-design packages in GitHub.
 # This ensures that the changes in the current package do not cause any regressions for its consumers.
-name: dry-run
+name: Dry-run
 on:
   workflow_dispatch:
   pull_request:
@@ -9,4 +9,4 @@ on:
 
 jobs:
   dry-run:
-    uses: cloudscape-design/.github/.github/workflows/dry-run.yml@chore/shared-actions
+    uses: cloudscape-design/.github/.github/workflows/dry-run.yml@main
