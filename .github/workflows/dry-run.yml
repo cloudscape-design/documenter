@@ -9,5 +9,4 @@ on:
 
 jobs:
   dry-run:
-    runs-on: ubuntu-latest
     uses: cloudscape-design/.github/.github/workflows/dry-run.yml@chore/shared-actions

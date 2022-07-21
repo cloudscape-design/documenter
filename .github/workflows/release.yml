@@ -14,6 +14,4 @@ permissions:
 
 jobs:
   release:
-    concurrency: release-${{ github.ref }}
-    runs-on: ubuntu-latest
-      uses: cloudscape-design/.github/.github/workflows/release.yml@chore/shared-actions
+    uses: cloudscape-design/.github/.github/workflows/release.yml@chore/shared-actions
