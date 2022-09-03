@@ -1,4 +1,7 @@
 build
+lib
 dist
+docs
 node_modules
 coverage
+.DS_Store

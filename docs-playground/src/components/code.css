@@ -1,0 +1,17 @@
+.code {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+  font-size: 1em;
+}
+
+.code-token-link {
+  font-family: monospace;
+  font-size: 1em;
+}
+
+.code-token-symbol {
+  /* $color-text-body-secondary */
+  color: #545b64;
+}

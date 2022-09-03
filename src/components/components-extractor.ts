@@ -96,13 +96,6 @@ export default function extractComponents(publicFilesGlob: string, project: Proj
     if (!module.children) {
       throw new Error(`Module ${module.originalName} does not contain a definition.`);
     }
-
-    // Hack: Don't include sub version folders as they include duplicate interfaces
-    // TODO: Remove once Top Navigation has launched: (AWSUI-15424)
-    if (module.originalName.indexOf('-beta') > -1) {
-      return [];
-    }
-
     return module.children;
   });
   const publicModules = project.children.filter(module => isMatch(module.originalName));
