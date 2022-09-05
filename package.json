@@ -15,9 +15,8 @@
     "build": "tsc",
     "test": "jest",
     "docs-playground": "cd docs-playground && vite",
-    "gen-components-docs": "npm run build-plugins && typedoc --options typedoc-components.js",
-    "gen-docs": "npm run build-plugins && typedoc --options typedoc-components.js && typedoc --options typedoc-dev-toolkit.js && typedoc --options typedoc-test-utils.js",
-    "build-plugins": "npx tsc --project typedoc-plugin/tsconfig.json && npx tsc --project typedoc-plugin-components/tsconfig.json && npx tsc --project typedoc-plugin-dev-toolkit/tsconfig.json && npx tsc --project typedoc-plugin-test-utils/tsconfig.json",
+    "gen-docs": "npm run build-plugins && typedoc --options typedoc-components.js && typedoc --options typedoc-component-toolkit.js && typedoc --options typedoc-test-utils.js && typedoc --options typedoc-collection-hooks.js",
+    "build-plugins": "tsc --project typedoc-plugin/tsconfig.json && tsc --project typedoc-plugin-components/tsconfig.json && tsc --project typedoc-plugin-component-toolkit/tsconfig.json && tsc --project typedoc-plugin-test-utils/tsconfig.json && tsc --project typedoc-plugin-collection-hooks/tsconfig.json",
     "prepublishOnly": "npm run build",
     "prepare": "husky install"
   },

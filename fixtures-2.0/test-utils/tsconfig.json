@@ -7,7 +7,7 @@
     "lib": ["es5", "es6", "dom"],
     "declaration": true,
     "allowSyntheticDefaultImports": true,
-    "outDir": "../../lib/components/test-utils",
+    "outDir": "lib",
     "experimentalDecorators": true
   },
   "include": ["./", "../../types"]
