@@ -2,27 +2,55 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React from 'react';
-import { Box, Header, SpaceBetween } from '@cloudscape-design/components';
+import {
+  Header,
+  TopNavigation,
+  AppLayout,
+  ContentLayout,
+  BreadcrumbGroup,
+  BreadcrumbGroupProps,
+  SideNavigation,
+  SideNavigationProps,
+} from '@cloudscape-design/components';
+import * as i18nStrings from './i18n-strings';
+import { useNavigate } from 'react-router';
 
 export default function PageLayout({
-  navigation,
+  header,
+  navigationHeader,
+  navigationHeaderHref,
+  navigationLinks,
+  breadcrumbs,
   children,
 }: {
-  navigation: React.ReactNode;
+  header: string;
+  navigationHeader: string;
+  navigationHeaderHref: string;
+  navigationLinks: SideNavigationProps.Link[];
+  breadcrumbs: BreadcrumbGroupProps.Item[];
   children: React.ReactNode;
 }): JSX.Element {
-  return (
-    <Box margin="xl">
-      <SpaceBetween size="s">
-        <Header description="Generates docs presentation by recoursively parsing compiled documentation from ./docs">
-          Docs Previewer
-        </Header>
+  const navigate = useNavigate();
 
-        <div style={{ display: 'flex' }}>
-          <div style={{ width: '30%' }}>{navigation}</div>
-          <div style={{ width: '70%', padding: '0 1rem 0 1rem' }}>{children}</div>
-        </div>
-      </SpaceBetween>
-    </Box>
+  return (
+    <>
+      <TopNavigation identity={{ href: '/', title: 'Docs Previewer' }} i18nStrings={i18nStrings.topNavigation} />
+      <AppLayout
+        toolsHide={true}
+        navigation={
+          <SideNavigation
+            header={{ text: navigationHeader, href: navigationHeaderHref }}
+            items={navigationLinks}
+            onFollow={e => {
+              e.preventDefault();
+              navigate(e.detail.href);
+            }}
+          />
+        }
+        breadcrumbs={<BreadcrumbGroup items={breadcrumbs} expandAriaLabel="Show path" ariaLabel="Breadcrumbs" />}
+        content={<ContentLayout header={<Header variant="h1">{header}</Header>}>{children}</ContentLayout>}
+        ariaLabels={{ navigationClose: 'close' }}
+      />
+    </>
   );
 }

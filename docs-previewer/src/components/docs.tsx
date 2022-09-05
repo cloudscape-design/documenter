@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React, { useEffect, useRef, useState } from 'react';
-import { SideNavigation, Box, SpaceBetween, Header, Link, Badge, Table } from '@cloudscape-design/components';
+import { Box, SpaceBetween, Header, Badge, Table, Container } from '@cloudscape-design/components';
 import { Code, CodeToken } from './code';
 import Markdown from './markdown';
 import PageLayout from '../page-layout';
@@ -29,34 +29,53 @@ export default function Docs({
   const uniqueNames = Array.from(new Set(definitions.map(it => it.name)));
 
   return (
-    <PageLayout
-      navigation={
-        <SideNavigation
-          header={{ href: '/', text: 'Index' }}
-          onFollow={e => {
-            e.preventDefault();
-            navigate(e.detail.href);
-          }}
-          items={uniqueNames.map(name => ({
-            type: 'link',
-            text: name,
-            href: name,
-          }))}
+    <Routes>
+      {uniqueNames.map(name => (
+        <Route
+          path={`/${name}`}
+          key={name}
+          element={
+            <PageLayout
+              header={name}
+              breadcrumbs={[
+                { text: 'Categories', href: '/' },
+                { text: namespace, href: `/${namespace}` },
+                { text: name, href: `/${namespace}/${name}` },
+              ]}
+              navigationHeader={name}
+              navigationHeaderHref={'/' + namespace + '/' + name}
+              navigationLinks={[]}
+            >
+              <Container>
+                <SelectedDoc definitions={definitions} selected={name} onNavigate={onNavigate} />
+              </Container>
+            </PageLayout>
+          }
         />
-      }
-    >
-      <Box margin={{ top: 'm' }}>
-        <Routes>
-          {uniqueNames.map(name => (
-            <Route
-              path={`/${name}`}
-              key={name}
-              element={<SelectedDoc definitions={definitions} selected={name} onNavigate={onNavigate} />}
-            />
-          ))}
-        </Routes>
-      </Box>
-    </PageLayout>
+      ))}
+
+      <Route
+        path="/"
+        element={
+          <PageLayout
+            header={namespace}
+            breadcrumbs={[
+              { text: 'Categories', href: '/' },
+              { text: namespace, href: `/${namespace}` },
+            ]}
+            navigationHeader={namespace}
+            navigationHeaderHref={'/' + namespace}
+            navigationLinks={uniqueNames.map(name => ({
+              type: 'link',
+              text: name,
+              href: name,
+            }))}
+          >
+            <Container>Select element</Container>
+          </PageLayout>
+        }
+      />
+    </Routes>
   );
 }
 
@@ -164,6 +183,7 @@ function TableNode({ definition, onNavigate, level = 1 }: NodeProps) {
 
   return (
     <Table
+      variant="embedded"
       header={<Header>{definition.title}</Header>}
       items={definition.items}
       columnDefinitions={columnDefinitions}
