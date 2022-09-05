@@ -58,7 +58,7 @@
     "vite": "^2.9.5"
   },
   "dependencies": {
-    "typedoc": "~0.22.15"
+    "typedoc": "^0.23.14"
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [
