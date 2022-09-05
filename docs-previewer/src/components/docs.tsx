@@ -2,9 +2,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Box, SpaceBetween, Header, Link, Badge, Table } from '@cloudscape-design/components';
+import { SideNavigation, Box, SpaceBetween, Header, Link, Badge, Table } from '@cloudscape-design/components';
 import { Code, CodeToken } from './code';
 import Markdown from './markdown';
+import PageLayout from '../page-layout';
 import { useNavigate, Routes, Route, useLocation } from 'react-router-dom';
 
 type Definition = any;
@@ -28,15 +29,22 @@ export default function Docs({
   const uniqueNames = Array.from(new Set(definitions.map(it => it.name)));
 
   return (
-    <Box margin="xxl">
-      <SpaceBetween size="s" direction="horizontal">
-        {uniqueNames.map(name => (
-          <Link key={name} onFollow={() => navigate(name)}>
-            {name}
-          </Link>
-        ))}
-      </SpaceBetween>
-
+    <PageLayout
+      navigation={
+        <SideNavigation
+          header={{ href: '/', text: 'Index' }}
+          onFollow={e => {
+            e.preventDefault();
+            navigate(e.detail.href);
+          }}
+          items={uniqueNames.map(name => ({
+            type: 'link',
+            text: name,
+            href: name,
+          }))}
+        />
+      }
+    >
       <Box margin={{ top: 'm' }}>
         <Routes>
           {uniqueNames.map(name => (
@@ -48,7 +56,7 @@ export default function Docs({
           ))}
         </Routes>
       </Box>
-    </Box>
+    </PageLayout>
   );
 }
 
