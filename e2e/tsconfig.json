@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "es2019",
+    "module": "commonjs",
+    "types": ["node", "jest"],
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true
+  },
+  "include": ["**/*.ts"]
+}

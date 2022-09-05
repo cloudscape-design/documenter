@@ -1,0 +1,3448 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`table definition Function.Table to match snapshot 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "formatted": "<T>(props: Table<T> & { ref?: Ref<Ref> }) => Element",
+      "nodeType": "Code",
+      "tokens": Array [
+        Array [
+          "<",
+          "symbol",
+          null,
+        ],
+        Array [
+          "T",
+          "name",
+          null,
+        ],
+        Array [
+          ">",
+          "symbol",
+          null,
+        ],
+        Array [
+          "(",
+          "symbol",
+          null,
+        ],
+        Array [
+          "props",
+          "name",
+          null,
+        ],
+        Array [
+          ":",
+          "symbol",
+          null,
+        ],
+        Array [
+          " ",
+          "whitespace",
+        ],
+        Array [
+          "Table",
+          "name",
+          Object {
+            "path": Array [
+              "@cloudscape-design/documenter",
+              "Table",
+            ],
+          },
+        ],
+        Array [
+          "<",
+          "symbol",
+          null,
+        ],
+        Array [
+          "T",
+          "name",
+          Object {},
+        ],
+        Array [
+          ">",
+          "symbol",
+          null,
+        ],
+        Array [
+          " ",
+          "whitespace",
+        ],
+        Array [
+          "&",
+          "symbol",
+          null,
+        ],
+        Array [
+          " ",
+          "whitespace",
+        ],
+        Array [
+          "{",
+          "symbol",
+          null,
+        ],
+        Array [
+          " ",
+          "whitespace",
+        ],
+        Array [
+          "ref",
+          "name",
+          null,
+        ],
+        Array [
+          "?:",
+          "symbol",
+          null,
+        ],
+        Array [
+          " ",
+          "whitespace",
+        ],
+        Array [
+          "Ref",
+          "name",
+          null,
+        ],
+        Array [
+          "<",
+          "symbol",
+          null,
+        ],
+        Array [
+          "Ref",
+          "name",
+          Object {
+            "path": Array [
+              "@cloudscape-design/documenter",
+              "Table",
+              "Ref",
+            ],
+          },
+        ],
+        Array [
+          ">",
+          "symbol",
+          null,
+        ],
+        Array [
+          " ",
+          "whitespace",
+        ],
+        Array [
+          "}",
+          "symbol",
+          null,
+        ],
+        Array [
+          ")",
+          "symbol",
+          null,
+        ],
+        Array [
+          " ",
+          "whitespace",
+        ],
+        Array [
+          "=>",
+          "symbol",
+          null,
+        ],
+        Array [
+          " ",
+          "whitespace",
+        ],
+        Array [
+          "Element",
+          "name",
+          null,
+        ],
+      ],
+    },
+    Object {
+      "header": Array [
+        "Name",
+        "Type",
+        "Description",
+        "Default",
+        "Required",
+      ],
+      "items": Array [
+        Array [
+          Object {
+            "nodeType": "Literal",
+            "value": "props",
+          },
+          Object {
+            "formatted": "Table<T> & { ref?: Ref<Ref> }",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "Table",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "Table",
+                  ],
+                },
+              ],
+              Array [
+                "<",
+                "symbol",
+                null,
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                ">",
+                "symbol",
+                null,
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "&",
+                "symbol",
+                null,
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "{",
+                "symbol",
+                null,
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "ref",
+                "name",
+                null,
+              ],
+              Array [
+                "?:",
+                "symbol",
+                null,
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "Ref",
+                "name",
+                null,
+              ],
+              Array [
+                "<",
+                "symbol",
+                null,
+              ],
+              Array [
+                "Ref",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "Table",
+                    "Ref",
+                  ],
+                },
+              ],
+              Array [
+                ">",
+                "symbol",
+                null,
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "}",
+                "symbol",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+          Object {
+            "formatted": "false",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "false",
+                "type",
+                null,
+              ],
+            ],
+          },
+        ],
+      ],
+      "nodeType": "Table",
+      "title": "Parameters",
+    },
+    Object {
+      "items": Array [
+        Object {
+          "formatted": "Element",
+          "nodeType": "Code",
+          "tokens": Array [
+            Array [
+              "Element",
+              "name",
+              null,
+            ],
+          ],
+        },
+      ],
+      "nodeType": "Section",
+      "title": Object {
+        "nodeType": "Literal",
+        "value": "Returns",
+      },
+    },
+  ],
+  "nodeType": "Section",
+  "title": Object {
+    "flags": Array [],
+    "kind": "Function",
+    "name": "Table",
+    "nodeType": "Title",
+  },
+}
+`;
+
+exports[`table definition Interface.Table to match snapshot 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "formatted": "Table<T>",
+      "nodeType": "Code",
+      "tokens": Array [
+        Array [
+          "Table",
+          "name",
+          null,
+        ],
+        Array [
+          "<",
+          "symbol",
+          null,
+        ],
+        Array [
+          "T",
+          "name",
+          null,
+        ],
+        Array [
+          ">",
+          "symbol",
+          null,
+        ],
+      ],
+    },
+    Object {
+      "header": Array [
+        "Name",
+        "Type",
+        "Description",
+      ],
+      "items": Array [
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "ariaLabels",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "AriaLabels<T>",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "AriaLabels",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "Table",
+                    "AriaLabels",
+                  ],
+                },
+              ],
+              Array [
+                "<",
+                "symbol",
+                null,
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                ">",
+                "symbol",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Specifies label text for the selection components (checkboxes and radio buttons) as follows:
+* Individual items: \`itemSelectionLabel\` [\`(SelectionState, Item) => string\`]
+* Column header: \`allItemsSelectionLabel\` [\`(SelectionState) => string\`]
+* Group label: \`selectionGroupLabel\` [\`string\`]
+You can use the first argument of type \`SelectionState\` to access the current selection
+state of the component (for example, the \`selectedItems\` list). The label function for individual
+items also receives the corresponding  \`Item\` object. You can use the group label to
+add a meaningful description to the whole selection.
+
+In addition, you can use \`tableLabel\` to provide a label for the table. If you use a
+header for this table, you may reuse the string to provide a caption-like description.
+For example, tableLabel=Instances will be announced as 'Instances table'.
+
+Example:
+\`\`\`
+{
+  selectionGroupLabel: 'Items selection',
+  allItemsSelectionLabel: ({ selectedItems }) =>
+    \`\${selectedItems.length} \${selectedItems.length === 1 ? 'item' : 'items'} selected\`,
+  itemSelectionLabel: ({ selectedItems }, item) => {
+    isItemSelected = selectedItems.filter(i => i.id === item.id).length;
+    return \`\${item.name} is \${isItemSelected ? '' : 'not'} selected\`,
+  tableLabel: \\"Items\\"
+ }
+}
+\`\`\`
+",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "className",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "string",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "string",
+                "name",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Adds the specified classes to the root element of the component.",
+            "nodeType": "Comment",
+            "tags": Array [
+              Object {
+                "markdown": "Custom CSS is not supported. For other use cases, use [data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes).
+",
+                "name": "deprecated",
+              },
+            ],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [],
+            "kind": "Property",
+            "name": "columnDefinitions",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "readonly ColumnDefinition<T>[]",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "readonly",
+                "symbol",
+                null,
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "ColumnDefinition",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "Table",
+                    "ColumnDefinition",
+                  ],
+                },
+              ],
+              Array [
+                "<",
+                "symbol",
+                null,
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                ">",
+                "symbol",
+                null,
+              ],
+              Array [
+                "[]",
+                "symbol",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Describes table columns configuration.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "id",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "string",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "string",
+                "name",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Adds the specified ID to the root element of the component.",
+            "nodeType": "Comment",
+            "tags": Array [
+              Object {
+                "markdown": "Custom CSS is not supported. For other use cases, use [data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes).
+",
+                "name": "deprecated",
+              },
+            ],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "isItemDisabled",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "IsItemDisabled<T>",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "IsItemDisabled",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "Table",
+                    "IsItemDisabled",
+                  ],
+                },
+              ],
+              Array [
+                "<",
+                "symbol",
+                null,
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                ">",
+                "symbol",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Determines whether a given item is disabled. If an item is disabled, the user can't select it.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [],
+            "kind": "Property",
+            "name": "items",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "readonly T[]",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "readonly",
+                "symbol",
+                null,
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                "[]",
+                "symbol",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Specifies the data that's displayed in the table rows. Each item contains the data for one row. The display of a row is handled
+by the \`cell\` property of each column definition in the \`columnDefinitions\` property.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "loading",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "boolean",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "boolean",
+                "name",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Renders the table in a loading state. We recommend that you also set a \`loadingText\`.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "loadingText",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "string",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "string",
+                "name",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Specifies the text that's displayed when the table is in a loading state.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "resizableColumns",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "boolean",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "boolean",
+                "name",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Specifies if columns can be resized. If set to \`true\`, users can resize the columns in the table.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "selectedItems",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "readonly T[]",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "readonly",
+                "symbol",
+                null,
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                "[]",
+                "symbol",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "List of selected items.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "selectionType",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "SelectionType",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "SelectionType",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "Table",
+                    "SelectionType",
+                  ],
+                },
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Specifies the selection type (\`'single' | 'multi'\`).",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "sortingColumn",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "SortingColumn<T>",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "SortingColumn",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "Table",
+                    "SortingColumn",
+                  ],
+                },
+              ],
+              Array [
+                "<",
+                "symbol",
+                null,
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                ">",
+                "symbol",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Specifies the definition object of the currently sorted column. Make sure you pass an object that's
+present in the \`columnDefinitions\` array.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "sortingDescending",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "boolean",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "boolean",
+                "name",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Specifies whether to use a descending sort order.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "sortingDisabled",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "boolean",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "boolean",
+                "name",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Specifies if sorting buttons are disabled. For example, use this property
+to prevent the user from sorting before items are fully loaded.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "stickyHeader",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "boolean",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "boolean",
+                "name",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "If set to \`true\`, the table header remains visible when the user scrolls down.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "stickyHeaderVerticalOffset",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "number",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "number",
+                "name",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Specifies a vertical offset (in pixels) for the sticky header. For example, use this if you
+need to position the sticky header below other fixed position elements on the page.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "trackBy",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "TrackBy<T>",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "TrackBy",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "Table",
+                    "TrackBy",
+                  ],
+                },
+              ],
+              Array [
+                "<",
+                "symbol",
+                null,
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                ">",
+                "symbol",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Specifies a property that uniquely identifies an individual item.
+When it's set, it's used to provide [keys for React](https://reactjs.org/docs/lists-and-keys.html#keys)
+for performance optimizations.
+It's also used to connect \`items\` and \`selectedItems\` values when they reference different objects.
+",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "variant",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "Variant",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "Variant",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "Table",
+                    "Variant",
+                  ],
+                },
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Specify a table variant with one of the following:
+* \`container\` - Use this variant to have the table displayed within a container.
+* \`embedded\` - Use this variant within a parent container (such as a modal, expandable
+               section, container or split panel).
+* \`stacked\` - Use this variant adjacent to other stacked containers (such as a container,
+              table).
+* \`full-page\` – Use this variant when table is the primary element on the page.",
+            "nodeType": "Comment",
+            "tags": Array [
+              Object {
+                "markdown": "\`embedded\`, \`stacked\`, and \`full-page\` variants
+",
+                "name": "visualrefresh",
+              },
+            ],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "visibleColumns",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "readonly string[]",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "readonly",
+                "symbol",
+                null,
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "string",
+                "name",
+                null,
+              ],
+              Array [
+                "[]",
+                "symbol",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Specifies an array containing the \`id\`s of visible columns. If not set, all columns are displayed.
+Use it in conjunction with the visible content preference of the [collection preferences](/components/collection-preferences/) component.
+
+The order of ids doesn't influence the order in which columns are displayed - this is dictated by the \`columnDefinitions\` property
+",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "wrapLines",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "boolean",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "boolean",
+                "name",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Specifies if text wraps within table cells. If set to \`true\`, long text within cells may wrap onto
+multiple lines instead of being truncated with an ellipsis.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+      ],
+      "nodeType": "Table",
+      "title": "Properties",
+    },
+    Object {
+      "header": Array [
+        "Name",
+        "Description",
+      ],
+      "items": Array [
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "empty",
+            "nodeType": "Title",
+          },
+          Object {
+            "markdown": "Displayed when the \`items\` property is an empty array. Use it to render an empty or no-match state.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "filter",
+            "nodeType": "Title",
+          },
+          Object {
+            "markdown": "Use this slot to add filtering controls to the table.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "footer",
+            "nodeType": "Title",
+          },
+          Object {
+            "markdown": "Footer of the table container.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "header",
+            "nodeType": "Title",
+          },
+          Object {
+            "markdown": "Heading element of the table container. Use the [header component](/components/header/).",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "pagination",
+            "nodeType": "Title",
+          },
+          Object {
+            "markdown": "Use this slot to add the [pagination component](/components/pagination/) to the table.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "preferences",
+            "nodeType": "Title",
+          },
+          Object {
+            "markdown": "Use this slot to add [collection preferences](/components/collection-preferences/) to the table.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+      ],
+      "nodeType": "Table",
+      "title": "Slots",
+    },
+    Object {
+      "header": Array [
+        "Name",
+        "Type",
+        "Description",
+      ],
+      "items": Array [
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "onColumnWidthsChange",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "NonCancelableEventHandler<ColumnWidthsChangeDetail>",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "NonCancelableEventHandler",
+                "name",
+                null,
+              ],
+              Array [
+                "<",
+                "symbol",
+                null,
+              ],
+              Array [
+                "ColumnWidthsChangeDetail",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "Table",
+                    "ColumnWidthsChangeDetail",
+                  ],
+                },
+              ],
+              Array [
+                ">",
+                "symbol",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Fired when the user resizes a table column. The event detail contains an array of column widths in pixels,
+including the hidden via preferences columns. Use this event to persist the column widths.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "onRowClick",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "NonCancelableEventHandler<OnRowClickDetail<T>>",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "NonCancelableEventHandler",
+                "name",
+                null,
+              ],
+              Array [
+                "<",
+                "symbol",
+                null,
+              ],
+              Array [
+                "OnRowClickDetail",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "Table",
+                    "OnRowClickDetail",
+                  ],
+                },
+              ],
+              Array [
+                "<",
+                "symbol",
+                null,
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                ">",
+                "symbol",
+                null,
+              ],
+              Array [
+                ">",
+                "symbol",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Note: This feature is provided for backwards compatibility. Its use is not recommended,
+and it may be deprecated in the future.
+Called when the user clicked at a table row. The event detail contains the index of the
+clicked row and the row object itself. Use this event to define a row click behavior.
+",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "onRowContextMenu",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "CancelableEventHandler<OnRowContextMenuDetail<T>>",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "CancelableEventHandler",
+                "name",
+                null,
+              ],
+              Array [
+                "<",
+                "symbol",
+                null,
+              ],
+              Array [
+                "OnRowContextMenuDetail",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "Table",
+                    "OnRowContextMenuDetail",
+                  ],
+                },
+              ],
+              Array [
+                "<",
+                "symbol",
+                null,
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                ">",
+                "symbol",
+                null,
+              ],
+              Array [
+                ">",
+                "symbol",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Note: This feature is provided for backwards compatibility. Its use is not recommended,
+and it may be deprecated in the future.
+Called when the user clicked at a table row with the right mouse click. The event detail
+contains the index of the clicked row and the row object itself. Use this event to override
+the default browser context menu behavior.
+",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "onSelectionChange",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "NonCancelableEventHandler<SelectionChangeDetail<T>>",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "NonCancelableEventHandler",
+                "name",
+                null,
+              ],
+              Array [
+                "<",
+                "symbol",
+                null,
+              ],
+              Array [
+                "SelectionChangeDetail",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "Table",
+                    "SelectionChangeDetail",
+                  ],
+                },
+              ],
+              Array [
+                "<",
+                "symbol",
+                null,
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                ">",
+                "symbol",
+                null,
+              ],
+              Array [
+                ">",
+                "symbol",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Fired when a user interaction triggers a change in the list of selected items.
+The event \`detail\` contains the current list of \`selectedItems\`.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "onSortingChange",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "NonCancelableEventHandler<SortingState<T>>",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "NonCancelableEventHandler",
+                "name",
+                null,
+              ],
+              Array [
+                "<",
+                "symbol",
+                null,
+              ],
+              Array [
+                "SortingState",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "Table",
+                    "SortingState",
+                  ],
+                },
+              ],
+              Array [
+                "<",
+                "symbol",
+                null,
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                ">",
+                "symbol",
+                null,
+              ],
+              Array [
+                ">",
+                "symbol",
+                null,
+              ],
+            ],
+          },
+          Object {
+            "markdown": "Called when either the column to sort by or the direction of sorting changes upon user interaction.
+The event detail contains the current sortingColumn and isDescending.",
+            "nodeType": "Comment",
+            "tags": Array [],
+          },
+        ],
+      ],
+      "nodeType": "Table",
+      "title": "Callbacks",
+    },
+  ],
+  "nodeType": "Section",
+  "title": Object {
+    "flags": Array [],
+    "kind": "Interface",
+    "name": "Table",
+    "nodeType": "Title",
+  },
+}
+`;
+
+exports[`table definition Namespace.Table to match snapshot 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "formatted": "Table",
+      "nodeType": "Code",
+      "tokens": Array [
+        Array [
+          "Table",
+          "name",
+          null,
+        ],
+      ],
+    },
+    Object {
+      "items": Array [
+        Object {
+          "formatted": "AriaLabels<T>",
+          "nodeType": "Code",
+          "tokens": Array [
+            Array [
+              "AriaLabels",
+              "name",
+              null,
+            ],
+            Array [
+              "<",
+              "symbol",
+              null,
+            ],
+            Array [
+              "T",
+              "name",
+              null,
+            ],
+            Array [
+              ">",
+              "symbol",
+              null,
+            ],
+          ],
+        },
+        Object {
+          "header": Array [
+            "Name",
+            "Type",
+            "Description",
+          ],
+          "items": Array [
+            Array [
+              Object {
+                "flags": Array [
+                  "Optional",
+                ],
+                "kind": "Property",
+                "name": "selectionGroupLabel",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "string",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "string",
+                    "name",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+            Array [
+              Object {
+                "flags": Array [
+                  "Optional",
+                ],
+                "kind": "Property",
+                "name": "tableLabel",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "string",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "string",
+                    "name",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+            Array [
+              Object {
+                "flags": Array [
+                  "Optional",
+                ],
+                "kind": "Method",
+                "name": "allItemsSelectionLabel",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "(data: SelectionState<T>) => string",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "(",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    "data",
+                    "name",
+                    null,
+                  ],
+                  Array [
+                    ":",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    " ",
+                    "whitespace",
+                  ],
+                  Array [
+                    "SelectionState",
+                    "name",
+                    Object {
+                      "path": Array [
+                        "@cloudscape-design/documenter",
+                        "Table",
+                        "SelectionState",
+                      ],
+                    },
+                  ],
+                  Array [
+                    "<",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    "T",
+                    "name",
+                    Object {},
+                  ],
+                  Array [
+                    ">",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    ")",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    " ",
+                    "whitespace",
+                  ],
+                  Array [
+                    "=>",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    " ",
+                    "whitespace",
+                  ],
+                  Array [
+                    "string",
+                    "name",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+            Array [
+              Object {
+                "flags": Array [
+                  "Optional",
+                ],
+                "kind": "Method",
+                "name": "itemSelectionLabel",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "(data: SelectionState<T>, row: T) => string",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "(",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    "data",
+                    "name",
+                    null,
+                  ],
+                  Array [
+                    ":",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    " ",
+                    "whitespace",
+                  ],
+                  Array [
+                    "SelectionState",
+                    "name",
+                    Object {
+                      "path": Array [
+                        "@cloudscape-design/documenter",
+                        "Table",
+                        "SelectionState",
+                      ],
+                    },
+                  ],
+                  Array [
+                    "<",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    "T",
+                    "name",
+                    Object {},
+                  ],
+                  Array [
+                    ">",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    ",",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    " ",
+                    "whitespace",
+                  ],
+                  Array [
+                    "row",
+                    "name",
+                    null,
+                  ],
+                  Array [
+                    ":",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    " ",
+                    "whitespace",
+                  ],
+                  Array [
+                    "T",
+                    "name",
+                    Object {},
+                  ],
+                  Array [
+                    ")",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    " ",
+                    "whitespace",
+                  ],
+                  Array [
+                    "=>",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    " ",
+                    "whitespace",
+                  ],
+                  Array [
+                    "string",
+                    "name",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+          ],
+          "nodeType": "Table",
+          "title": "Properties",
+        },
+      ],
+      "nodeType": "Section",
+      "title": Object {
+        "flags": Array [],
+        "kind": "Interface",
+        "name": "AriaLabels",
+        "nodeType": "Title",
+      },
+    },
+    Object {
+      "items": Array [
+        Object {
+          "formatted": "ColumnWidthsChangeDetail",
+          "nodeType": "Code",
+          "tokens": Array [
+            Array [
+              "ColumnWidthsChangeDetail",
+              "name",
+              null,
+            ],
+          ],
+        },
+        Object {
+          "header": Array [
+            "Name",
+            "Type",
+            "Description",
+          ],
+          "items": Array [
+            Array [
+              Object {
+                "flags": Array [],
+                "kind": "Property",
+                "name": "widths",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "readonly number[]",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "readonly",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    " ",
+                    "whitespace",
+                  ],
+                  Array [
+                    "number",
+                    "name",
+                    null,
+                  ],
+                  Array [
+                    "[]",
+                    "symbol",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+          ],
+          "nodeType": "Table",
+          "title": "Properties",
+        },
+      ],
+      "nodeType": "Section",
+      "title": Object {
+        "flags": Array [],
+        "kind": "Interface",
+        "name": "ColumnWidthsChangeDetail",
+        "nodeType": "Title",
+      },
+    },
+    Object {
+      "items": Array [
+        Object {
+          "formatted": "LabelData",
+          "nodeType": "Code",
+          "tokens": Array [
+            Array [
+              "LabelData",
+              "name",
+              null,
+            ],
+          ],
+        },
+        Object {
+          "header": Array [
+            "Name",
+            "Type",
+            "Description",
+          ],
+          "items": Array [
+            Array [
+              Object {
+                "flags": Array [],
+                "kind": "Property",
+                "name": "descending",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "boolean",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "boolean",
+                    "name",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+            Array [
+              Object {
+                "flags": Array [],
+                "kind": "Property",
+                "name": "disabled",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "boolean",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "boolean",
+                    "name",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+            Array [
+              Object {
+                "flags": Array [],
+                "kind": "Property",
+                "name": "sorted",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "boolean",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "boolean",
+                    "name",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+          ],
+          "nodeType": "Table",
+          "title": "Properties",
+        },
+      ],
+      "nodeType": "Section",
+      "title": Object {
+        "flags": Array [],
+        "kind": "Interface",
+        "name": "LabelData",
+        "nodeType": "Title",
+      },
+    },
+    Object {
+      "items": Array [
+        Object {
+          "formatted": "OnRowClickDetail<T>",
+          "nodeType": "Code",
+          "tokens": Array [
+            Array [
+              "OnRowClickDetail",
+              "name",
+              null,
+            ],
+            Array [
+              "<",
+              "symbol",
+              null,
+            ],
+            Array [
+              "T",
+              "name",
+              null,
+            ],
+            Array [
+              ">",
+              "symbol",
+              null,
+            ],
+          ],
+        },
+        Object {
+          "header": Array [
+            "Name",
+            "Type",
+            "Description",
+          ],
+          "items": Array [
+            Array [
+              Object {
+                "flags": Array [],
+                "kind": "Property",
+                "name": "item",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "T",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "T",
+                    "name",
+                    Object {},
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+            Array [
+              Object {
+                "flags": Array [],
+                "kind": "Property",
+                "name": "rowIndex",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "number",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "number",
+                    "name",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+          ],
+          "nodeType": "Table",
+          "title": "Properties",
+        },
+      ],
+      "nodeType": "Section",
+      "title": Object {
+        "flags": Array [],
+        "kind": "Interface",
+        "name": "OnRowClickDetail",
+        "nodeType": "Title",
+      },
+    },
+    Object {
+      "items": Array [
+        Object {
+          "formatted": "OnRowContextMenuDetail<T>",
+          "nodeType": "Code",
+          "tokens": Array [
+            Array [
+              "OnRowContextMenuDetail",
+              "name",
+              null,
+            ],
+            Array [
+              "<",
+              "symbol",
+              null,
+            ],
+            Array [
+              "T",
+              "name",
+              null,
+            ],
+            Array [
+              ">",
+              "symbol",
+              null,
+            ],
+          ],
+        },
+        Object {
+          "header": Array [
+            "Name",
+            "Type",
+            "Description",
+          ],
+          "items": Array [
+            Array [
+              Object {
+                "flags": Array [],
+                "kind": "Property",
+                "name": "clientX",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "number",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "number",
+                    "name",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+            Array [
+              Object {
+                "flags": Array [],
+                "kind": "Property",
+                "name": "clientY",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "number",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "number",
+                    "name",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+            Array [
+              Object {
+                "flags": Array [],
+                "kind": "Property",
+                "name": "item",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "T",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "T",
+                    "name",
+                    Object {},
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+            Array [
+              Object {
+                "flags": Array [],
+                "kind": "Property",
+                "name": "rowIndex",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "number",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "number",
+                    "name",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+          ],
+          "nodeType": "Table",
+          "title": "Properties",
+        },
+      ],
+      "nodeType": "Section",
+      "title": Object {
+        "flags": Array [],
+        "kind": "Interface",
+        "name": "OnRowContextMenuDetail",
+        "nodeType": "Title",
+      },
+    },
+    Object {
+      "items": Array [
+        Object {
+          "formatted": "Ref",
+          "nodeType": "Code",
+          "tokens": Array [
+            Array [
+              "Ref",
+              "name",
+              null,
+            ],
+          ],
+        },
+        Object {
+          "header": Array [
+            "Name",
+            "Type",
+            "Description",
+          ],
+          "items": Array [
+            Array [
+              Object {
+                "flags": Array [],
+                "kind": "Method",
+                "name": "scrollToTop",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "() => void",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "(",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    ")",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    " ",
+                    "whitespace",
+                  ],
+                  Array [
+                    "=>",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    " ",
+                    "whitespace",
+                  ],
+                  Array [
+                    "void",
+                    "name",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "markdown": "When the sticky header is enabled and you call this function, the table
+scroll parent scrolls to reveal the first row of the table.",
+                "nodeType": "Comment",
+                "tags": Array [],
+              },
+            ],
+          ],
+          "nodeType": "Table",
+          "title": "Properties",
+        },
+      ],
+      "nodeType": "Section",
+      "title": Object {
+        "flags": Array [],
+        "kind": "Interface",
+        "name": "Ref",
+        "nodeType": "Title",
+      },
+    },
+    Object {
+      "items": Array [
+        Object {
+          "formatted": "SelectionChangeDetail<T>",
+          "nodeType": "Code",
+          "tokens": Array [
+            Array [
+              "SelectionChangeDetail",
+              "name",
+              null,
+            ],
+            Array [
+              "<",
+              "symbol",
+              null,
+            ],
+            Array [
+              "T",
+              "name",
+              null,
+            ],
+            Array [
+              ">",
+              "symbol",
+              null,
+            ],
+          ],
+        },
+        Object {
+          "header": Array [
+            "Name",
+            "Type",
+            "Description",
+          ],
+          "items": Array [
+            Array [
+              Object {
+                "flags": Array [],
+                "kind": "Property",
+                "name": "selectedItems",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "T[]",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "T",
+                    "name",
+                    Object {},
+                  ],
+                  Array [
+                    "[]",
+                    "symbol",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+          ],
+          "nodeType": "Table",
+          "title": "Properties",
+        },
+      ],
+      "nodeType": "Section",
+      "title": Object {
+        "flags": Array [],
+        "kind": "Interface",
+        "name": "SelectionChangeDetail",
+        "nodeType": "Title",
+      },
+    },
+    Object {
+      "items": Array [
+        Object {
+          "formatted": "SelectionState<T>",
+          "nodeType": "Code",
+          "tokens": Array [
+            Array [
+              "SelectionState",
+              "name",
+              null,
+            ],
+            Array [
+              "<",
+              "symbol",
+              null,
+            ],
+            Array [
+              "T",
+              "name",
+              null,
+            ],
+            Array [
+              ">",
+              "symbol",
+              null,
+            ],
+          ],
+        },
+        Object {
+          "header": Array [
+            "Name",
+            "Type",
+            "Description",
+          ],
+          "items": Array [
+            Array [
+              Object {
+                "flags": Array [],
+                "kind": "Property",
+                "name": "selectedItems",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "readonly T[]",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "readonly",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    " ",
+                    "whitespace",
+                  ],
+                  Array [
+                    "T",
+                    "name",
+                    Object {},
+                  ],
+                  Array [
+                    "[]",
+                    "symbol",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+          ],
+          "nodeType": "Table",
+          "title": "Properties",
+        },
+      ],
+      "nodeType": "Section",
+      "title": Object {
+        "flags": Array [],
+        "kind": "Interface",
+        "name": "SelectionState",
+        "nodeType": "Title",
+      },
+    },
+    Object {
+      "items": Array [
+        Object {
+          "formatted": "SortingColumn<T>",
+          "nodeType": "Code",
+          "tokens": Array [
+            Array [
+              "SortingColumn",
+              "name",
+              null,
+            ],
+            Array [
+              "<",
+              "symbol",
+              null,
+            ],
+            Array [
+              "T",
+              "name",
+              null,
+            ],
+            Array [
+              ">",
+              "symbol",
+              null,
+            ],
+          ],
+        },
+        Object {
+          "header": Array [
+            "Name",
+            "Type",
+            "Description",
+          ],
+          "items": Array [
+            Array [
+              Object {
+                "flags": Array [
+                  "Optional",
+                ],
+                "kind": "Property",
+                "name": "sortingField",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "string",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "string",
+                    "name",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+            Array [
+              Object {
+                "flags": Array [
+                  "Optional",
+                ],
+                "kind": "Method",
+                "name": "sortingComparator",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "(a: T, b: T) => number",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "(",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    "a",
+                    "name",
+                    null,
+                  ],
+                  Array [
+                    ":",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    " ",
+                    "whitespace",
+                  ],
+                  Array [
+                    "T",
+                    "name",
+                    Object {},
+                  ],
+                  Array [
+                    ",",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    " ",
+                    "whitespace",
+                  ],
+                  Array [
+                    "b",
+                    "name",
+                    null,
+                  ],
+                  Array [
+                    ":",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    " ",
+                    "whitespace",
+                  ],
+                  Array [
+                    "T",
+                    "name",
+                    Object {},
+                  ],
+                  Array [
+                    ")",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    " ",
+                    "whitespace",
+                  ],
+                  Array [
+                    "=>",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    " ",
+                    "whitespace",
+                  ],
+                  Array [
+                    "number",
+                    "name",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+          ],
+          "nodeType": "Table",
+          "title": "Properties",
+        },
+      ],
+      "nodeType": "Section",
+      "title": Object {
+        "flags": Array [],
+        "kind": "Interface",
+        "name": "SortingColumn",
+        "nodeType": "Title",
+      },
+    },
+    Object {
+      "items": Array [
+        Object {
+          "formatted": "SortingState<T>",
+          "nodeType": "Code",
+          "tokens": Array [
+            Array [
+              "SortingState",
+              "name",
+              null,
+            ],
+            Array [
+              "<",
+              "symbol",
+              null,
+            ],
+            Array [
+              "T",
+              "name",
+              null,
+            ],
+            Array [
+              ">",
+              "symbol",
+              null,
+            ],
+          ],
+        },
+        Object {
+          "header": Array [
+            "Name",
+            "Type",
+            "Description",
+          ],
+          "items": Array [
+            Array [
+              Object {
+                "flags": Array [
+                  "Optional",
+                ],
+                "kind": "Property",
+                "name": "isDescending",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "boolean",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "boolean",
+                    "name",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+            Array [
+              Object {
+                "flags": Array [],
+                "kind": "Property",
+                "name": "sortingColumn",
+                "nodeType": "Title",
+              },
+              Object {
+                "formatted": "SortingColumn<T>",
+                "nodeType": "Code",
+                "tokens": Array [
+                  Array [
+                    "SortingColumn",
+                    "name",
+                    Object {
+                      "path": Array [
+                        "@cloudscape-design/documenter",
+                        "Table",
+                        "SortingColumn",
+                      ],
+                    },
+                  ],
+                  Array [
+                    "<",
+                    "symbol",
+                    null,
+                  ],
+                  Array [
+                    "T",
+                    "name",
+                    Object {},
+                  ],
+                  Array [
+                    ">",
+                    "symbol",
+                    null,
+                  ],
+                ],
+              },
+              Object {
+                "nodeType": "Empty",
+              },
+            ],
+          ],
+          "nodeType": "Table",
+          "title": "Properties",
+        },
+      ],
+      "nodeType": "Section",
+      "title": Object {
+        "flags": Array [],
+        "kind": "Interface",
+        "name": "SortingState",
+        "nodeType": "Title",
+      },
+    },
+    Object {
+      "items": Array [
+        Object {
+          "formatted": "<T>{header: React.ReactNode; id?: string; maxWidth?: number | string; minWidth?: number | string; width?: number | string; ariaLabel?: any; cell: any} & SortingColumn<T>",
+          "nodeType": "Code",
+          "tokens": Array [
+            Array [
+              "<",
+              "symbol",
+              null,
+            ],
+            Array [
+              "T",
+              "name",
+              null,
+            ],
+            Array [
+              ">",
+              "symbol",
+              null,
+            ],
+            Array [
+              "{",
+              "symbol",
+              null,
+            ],
+            Array [
+              "header",
+              "name",
+              null,
+            ],
+            Array [
+              ":",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "React.ReactNode",
+              "name",
+              null,
+            ],
+            Array [
+              ";",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "id",
+              "name",
+              null,
+            ],
+            Array [
+              "?:",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "string",
+              "name",
+              null,
+            ],
+            Array [
+              ";",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "maxWidth",
+              "name",
+              null,
+            ],
+            Array [
+              "?:",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "number",
+              "name",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "|",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "string",
+              "name",
+              null,
+            ],
+            Array [
+              ";",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "minWidth",
+              "name",
+              null,
+            ],
+            Array [
+              "?:",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "number",
+              "name",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "|",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "string",
+              "name",
+              null,
+            ],
+            Array [
+              ";",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "width",
+              "name",
+              null,
+            ],
+            Array [
+              "?:",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "number",
+              "name",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "|",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "string",
+              "name",
+              null,
+            ],
+            Array [
+              ";",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "ariaLabel",
+              "name",
+              null,
+            ],
+            Array [
+              "?:",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "any",
+              "type",
+              null,
+            ],
+            Array [
+              ";",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "cell",
+              "name",
+              null,
+            ],
+            Array [
+              ":",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "any",
+              "type",
+              null,
+            ],
+            Array [
+              "}",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "&",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "SortingColumn",
+              "name",
+              Object {
+                "path": Array [
+                  "@cloudscape-design/documenter",
+                  "Table",
+                  "SortingColumn",
+                ],
+              },
+            ],
+            Array [
+              "<",
+              "symbol",
+              null,
+            ],
+            Array [
+              "T",
+              "name",
+              Object {},
+            ],
+            Array [
+              ">",
+              "symbol",
+              null,
+            ],
+          ],
+        },
+        Object {
+          "markdown": "The column configuration object
+* \`id\` (string) - Specifies a unique column identifier. The property is used 1) as a [keys](https://reactjs.org/docs/lists-and-keys.html#keys) source for React rendering,
+  and 2) to match entries in the \`visibleColumns\` property, if defined.
+* \`header\` (ReactNode) - Determines the display of the column header.
+* \`cell\` ((item) => ReactNode) - Determines the display of a cell's content. You receive the current table row
+  item as an argument.
+* \`width\` (string | number) - Specifies the column width. Corresponds to the \`width\` css-property. If the width is not set,
+  the browser automatically adjusts the column width based on the content. When \`resizableColumns\` property is
+  set to \`true\`, additional constraints apply: 1) string values are not allowed, and 2) the last visible column always
+  fills the remaining space of the table so the specified width is ignored.
+* \`minWidth\` (string | number) - Specifies the minimum column width. Corresponds to the \`min-width\` css-property. When
+  \`resizableColumns\` property is set to \`true\`, additional constraints apply: 1) string values are not allowed,
+  and 2) the column can't resize below than the specified width (defaults to \\"120px\\").
+* \`maxWidth\` (string | number) - Specifies the maximum column width. Corresponds to the \`max-width\` css-property.
+  Note that when the \`resizableColumns\` property is set to \`true\` this property is ignored.
+* \`ariaLabel\` (LabelData => string) - An optional function that's called to provide an \`aria-label\` for the cell header.
+  It receives the current sorting state of this column, the direction it's sorted in, and an indication of
+  whether the sorting is disabled, as three Boolean values: \`sorted\`, \`descending\` and \`disabled\`.
+  We recommend that you use this for sortable columns to provide more meaningful labels based on the
+  current sorting direction.
+* \`sortingField\` (string) - Enables default column sorting. The value is used in [collection hooks](/get_started/dev_guides/collection_hooks/)
+  to reorder the items. Provide the name of the property within each item that should be used for sorting by this column.
+  For more complex sorting use \`sortingComparator\` instead.
+* \`sortingComparator\` ((T, T) => number) - Enables custom column sorting. The value is used in [collection hooks](/get_started/dev_guides/collection_hooks/)
+  to reorder the items. This property accepts a custom comparator that is used to compare two items.
+  The comparator must implement ascending ordering, and the output is inverted automatically in case of descending order.
+  If present, the \`sortingField\` property is ignored.",
+          "nodeType": "Comment",
+          "tags": Array [],
+        },
+      ],
+      "nodeType": "Section",
+      "title": Object {
+        "flags": Array [],
+        "kind": "Type alias",
+        "name": "ColumnDefinition",
+        "nodeType": "Title",
+      },
+    },
+    Object {
+      "items": Array [
+        Object {
+          "formatted": "<T>(item: T) => boolean",
+          "nodeType": "Code",
+          "tokens": Array [
+            Array [
+              "<",
+              "symbol",
+              null,
+            ],
+            Array [
+              "T",
+              "name",
+              null,
+            ],
+            Array [
+              ">",
+              "symbol",
+              null,
+            ],
+            Array [
+              "(",
+              "symbol",
+              null,
+            ],
+            Array [
+              "item",
+              "name",
+              null,
+            ],
+            Array [
+              ":",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "T",
+              "name",
+              Object {},
+            ],
+            Array [
+              ")",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "=>",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "boolean",
+              "name",
+              null,
+            ],
+          ],
+        },
+      ],
+      "nodeType": "Section",
+      "title": Object {
+        "flags": Array [],
+        "kind": "Type alias",
+        "name": "IsItemDisabled",
+        "nodeType": "Title",
+      },
+    },
+    Object {
+      "items": Array [
+        Object {
+          "formatted": "\\"single\\" | \\"multi\\"",
+          "nodeType": "Code",
+          "tokens": Array [
+            Array [
+              "\\"single\\"",
+              "type",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "|",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "\\"multi\\"",
+              "type",
+              null,
+            ],
+          ],
+        },
+      ],
+      "nodeType": "Section",
+      "title": Object {
+        "flags": Array [],
+        "kind": "Type alias",
+        "name": "SelectionType",
+        "nodeType": "Title",
+      },
+    },
+    Object {
+      "items": Array [
+        Object {
+          "formatted": "<T>string | ((item: T) => string)",
+          "nodeType": "Code",
+          "tokens": Array [
+            Array [
+              "<",
+              "symbol",
+              null,
+            ],
+            Array [
+              "T",
+              "name",
+              null,
+            ],
+            Array [
+              ">",
+              "symbol",
+              null,
+            ],
+            Array [
+              "string",
+              "name",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "|",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "(",
+              "symbol",
+              null,
+            ],
+            Array [
+              "(",
+              "symbol",
+              null,
+            ],
+            Array [
+              "item",
+              "name",
+              null,
+            ],
+            Array [
+              ":",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "T",
+              "name",
+              Object {},
+            ],
+            Array [
+              ")",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "=>",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "string",
+              "name",
+              null,
+            ],
+            Array [
+              ")",
+              "symbol",
+              null,
+            ],
+          ],
+        },
+      ],
+      "nodeType": "Section",
+      "title": Object {
+        "flags": Array [],
+        "kind": "Type alias",
+        "name": "TrackBy",
+        "nodeType": "Title",
+      },
+    },
+    Object {
+      "items": Array [
+        Object {
+          "formatted": "\\"container\\" | \\"embedded\\" | \\"stacked\\" | \\"full-page\\"",
+          "nodeType": "Code",
+          "tokens": Array [
+            Array [
+              "\\"container\\"",
+              "type",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "|",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "\\"embedded\\"",
+              "type",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "|",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "\\"stacked\\"",
+              "type",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "|",
+              "symbol",
+              null,
+            ],
+            Array [
+              " ",
+              "whitespace",
+            ],
+            Array [
+              "\\"full-page\\"",
+              "type",
+              null,
+            ],
+          ],
+        },
+      ],
+      "nodeType": "Section",
+      "title": Object {
+        "flags": Array [],
+        "kind": "Type alias",
+        "name": "Variant",
+        "nodeType": "Title",
+      },
+    },
+  ],
+  "nodeType": "Section",
+  "title": Object {
+    "flags": Array [],
+    "kind": "Namespace",
+    "name": "Table",
+    "nodeType": "Title",
+  },
+}
+`;

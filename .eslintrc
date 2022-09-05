@@ -2,7 +2,7 @@
   "parser": "@typescript-eslint/parser",
   "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2019,
     "sourceType": "module"
   },
   "plugins": ["unicorn", "header"],
@@ -26,8 +26,17 @@
         "@typescript-eslint/no-unused-vars": "off"
       },
       "env": {
-        "node": true,
-        "es6": true
+        "node": true
+      }
+    },
+    {
+      "files": ["e2e/**/*.ts"],
+      "env": {
+        "jest": true,
+        "node": true
+      },
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
       }
     }
   ]
