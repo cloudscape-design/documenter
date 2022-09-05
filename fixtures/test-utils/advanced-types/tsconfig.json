@@ -1,4 +1,0 @@
-{
-  "extends": "../tsconfig.json",
-  "include": ["advanced-types.ts"]
-}

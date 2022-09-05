@@ -21,7 +21,7 @@
   },
   "overrides": [
     {
-      "files": ["fixtures-2.0/**/*.tsx"],
+      "files": ["fixtures/**/*.tsx"],
       "rules": {
         "@typescript-eslint/no-unused-vars": "off"
       },

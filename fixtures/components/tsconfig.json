@@ -1,9 +1,18 @@
 {
   "compilerOptions": {
-    "jsx": "react",
-    "noEmit": true,
-    "strict": true,
+    "lib": ["es5", "es2015.collection", "dom"],
     "types": [],
-    "lib": ["es2015"]
-  }
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "strict": true,
+    "declaration": true,
+    "jsx": "react",
+    "rootDir": "src",
+    "outDir": "lib",
+    "incremental": true
+  },
+  "include": ["src", "types"],
+  "exclude": ["**/__tests__/**", "src/test-utils/**", "**/__integ__/**", "**/__a11y__/**"]
 }

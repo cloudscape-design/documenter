@@ -6,8 +6,8 @@
 module.exports = {
   $schema: 'https://typedoc.org/schema.json',
   githubPages: false,
-  plugin: './typedoc-plugin-component-toolkit/lib',
-  tsconfig: 'fixtures-2.0/component-toolkit/tsconfig.json',
-  entryPoints: ['fixtures-2.0/component-toolkit/src/index.ts', 'fixtures-2.0/component-toolkit/src/dom/index.ts'],
+  plugin: './plugins/typedoc-plugin-component-toolkit/lib',
+  tsconfig: 'fixtures/component-toolkit/tsconfig.json',
+  entryPoints: ['fixtures/component-toolkit/src/index.ts', 'fixtures/component-toolkit/src/dom/index.ts'],
   out: 'docs/component-toolkit',
 };
