@@ -1,0 +1,1794 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useCollection definition Function.useCollection to match snapshot 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "formatted": "<T>(allItems: readonly T[], options: UseCollectionOptions<T>) => UseCollectionResult<T>",
+      "nodeType": "Code",
+      "tokens": Array [
+        Array [
+          "<",
+          "symbol",
+        ],
+        Array [
+          "T",
+          "name",
+        ],
+        Array [
+          ">",
+          "symbol",
+        ],
+        Array [
+          "(",
+          "symbol",
+        ],
+        Array [
+          "allItems",
+          "name",
+        ],
+        Array [
+          ":",
+          "symbol",
+        ],
+        Array [
+          " ",
+          "whitespace",
+        ],
+        Array [
+          "readonly",
+          "symbol",
+        ],
+        Array [
+          " ",
+          "whitespace",
+        ],
+        Array [
+          "T",
+          "name",
+          Object {},
+        ],
+        Array [
+          "[]",
+          "symbol",
+        ],
+        Array [
+          ",",
+          "symbol",
+        ],
+        Array [
+          " ",
+          "whitespace",
+        ],
+        Array [
+          "options",
+          "name",
+        ],
+        Array [
+          ":",
+          "symbol",
+        ],
+        Array [
+          " ",
+          "whitespace",
+        ],
+        Array [
+          "UseCollectionOptions",
+          "name",
+          Object {
+            "path": Array [
+              "@cloudscape-design/documenter",
+              "UseCollectionOptions",
+            ],
+          },
+        ],
+        Array [
+          "<",
+          "symbol",
+        ],
+        Array [
+          "T",
+          "name",
+          Object {},
+        ],
+        Array [
+          ">",
+          "symbol",
+        ],
+        Array [
+          ")",
+          "symbol",
+        ],
+        Array [
+          " ",
+          "whitespace",
+        ],
+        Array [
+          "=>",
+          "symbol",
+        ],
+        Array [
+          " ",
+          "whitespace",
+        ],
+        Array [
+          "UseCollectionResult",
+          "name",
+          Object {
+            "path": Array [
+              "@cloudscape-design/documenter",
+              "UseCollectionResult",
+            ],
+          },
+        ],
+        Array [
+          "<",
+          "symbol",
+        ],
+        Array [
+          "T",
+          "name",
+          Object {},
+        ],
+        Array [
+          ">",
+          "symbol",
+        ],
+      ],
+    },
+    Object {
+      "header": Array [
+        "Name",
+        "Type",
+        "Description",
+        "Default",
+        "Required",
+      ],
+      "items": Array [
+        Array [
+          Object {
+            "nodeType": "Literal",
+            "value": "allItems",
+          },
+          Object {
+            "formatted": "readonly T[]",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "readonly",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                "[]",
+                "symbol",
+              ],
+            ],
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+          Object {
+            "formatted": "false",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "false",
+                "type",
+              ],
+            ],
+          },
+        ],
+        Array [
+          Object {
+            "nodeType": "Literal",
+            "value": "options",
+          },
+          Object {
+            "formatted": "UseCollectionOptions<T>",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "UseCollectionOptions",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "UseCollectionOptions",
+                  ],
+                },
+              ],
+              Array [
+                "<",
+                "symbol",
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                ">",
+                "symbol",
+              ],
+            ],
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+          Object {
+            "formatted": "false",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "false",
+                "type",
+              ],
+            ],
+          },
+        ],
+      ],
+      "nodeType": "Table",
+      "title": "Parameters",
+    },
+    Object {
+      "items": Array [
+        Object {
+          "formatted": "UseCollectionResult<T>",
+          "nodeType": "Code",
+          "tokens": Array [
+            Array [
+              "UseCollectionResult",
+              "name",
+              Object {
+                "path": Array [
+                  "@cloudscape-design/documenter",
+                  "UseCollectionResult",
+                ],
+              },
+            ],
+            Array [
+              "<",
+              "symbol",
+            ],
+            Array [
+              "T",
+              "name",
+              Object {},
+            ],
+            Array [
+              ">",
+              "symbol",
+            ],
+          ],
+        },
+      ],
+      "nodeType": "Section",
+      "title": Object {
+        "nodeType": "Literal",
+        "value": "Returns",
+      },
+    },
+  ],
+  "nodeType": "Section",
+  "title": Object {
+    "flags": Array [],
+    "kind": "Function",
+    "name": "useCollection",
+    "nodeType": "Title",
+  },
+}
+`;
+
+exports[`useCollection definition Interface.UseCollectionOptions to match snapshot 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "formatted": "UseCollectionOptions<T>",
+      "nodeType": "Code",
+      "tokens": Array [
+        Array [
+          "UseCollectionOptions",
+          "name",
+        ],
+        Array [
+          "<",
+          "symbol",
+        ],
+        Array [
+          "T",
+          "name",
+        ],
+        Array [
+          ">",
+          "symbol",
+        ],
+      ],
+    },
+    Object {
+      "header": Array [
+        "Name",
+        "Type",
+        "Description",
+      ],
+      "items": Array [
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "filtering",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "FilteringOptions<T> & {
+  defaultFilteringText?: string
+  empty?: ReactNode
+  noMatch?: ReactNode
+}",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "FilteringOptions",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "FilteringOptions",
+                  ],
+                },
+              ],
+              Array [
+                "<",
+                "symbol",
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                ">",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "&",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "{",
+                "symbol",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "defaultFilteringText",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "string",
+                "name",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "empty",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "ReactNode",
+                "name",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "noMatch",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "ReactNode",
+                "name",
+              ],
+              Array [
+                "
+",
+                "whitespace",
+              ],
+              Array [
+                "}",
+                "symbol",
+              ],
+            ],
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "pagination",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "{ defaultPage?: number; pageSize?: number }",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "{",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "defaultPage",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "number",
+                "name",
+              ],
+              Array [
+                ";",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "pageSize",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "number",
+                "name",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "}",
+                "symbol",
+              ],
+            ],
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "propertyFiltering",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "{
+  defaultQuery?: PropertyFilterQuery
+  empty?: ReactNode
+  filteringProperties: readonly PropertyFilterProperty<any>[]
+  noMatch?: ReactNode
+  filteringFunction?: any
+}",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "{",
+                "symbol",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "defaultQuery",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "PropertyFilterQuery",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "PropertyFilterQuery",
+                  ],
+                },
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "empty",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "ReactNode",
+                "name",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "filteringProperties",
+                "name",
+              ],
+              Array [
+                ":",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "readonly",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "PropertyFilterProperty",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "PropertyFilterProperty",
+                  ],
+                },
+              ],
+              Array [
+                "<",
+                "symbol",
+              ],
+              Array [
+                "any",
+                "name",
+              ],
+              Array [
+                ">",
+                "symbol",
+              ],
+              Array [
+                "[]",
+                "symbol",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "noMatch",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "ReactNode",
+                "name",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "filteringFunction",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "any",
+                "type",
+              ],
+              Array [
+                "
+",
+                "whitespace",
+              ],
+              Array [
+                "}",
+                "symbol",
+              ],
+            ],
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "selection",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "{ defaultSelectedItems?: readonly T[]; keepSelection?: boolean; trackBy?: TrackBy<T> }",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "{",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "defaultSelectedItems",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "readonly",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                "[]",
+                "symbol",
+              ],
+              Array [
+                ";",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "keepSelection",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "boolean",
+                "name",
+              ],
+              Array [
+                ";",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "trackBy",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "TrackBy",
+                "name",
+              ],
+              Array [
+                "<",
+                "symbol",
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                ">",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "}",
+                "symbol",
+              ],
+            ],
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [
+              "Optional",
+            ],
+            "kind": "Property",
+            "name": "sorting",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "{ defaultState?: SortingState<T> }",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "{",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "defaultState",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "SortingState",
+                "name",
+              ],
+              Array [
+                "<",
+                "symbol",
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                ">",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "}",
+                "symbol",
+              ],
+            ],
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+        ],
+      ],
+      "nodeType": "Table",
+      "title": "Properties",
+    },
+  ],
+  "nodeType": "Section",
+  "title": Object {
+    "flags": Array [],
+    "kind": "Interface",
+    "name": "UseCollectionOptions",
+    "nodeType": "Title",
+  },
+}
+`;
+
+exports[`useCollection definition Interface.UseCollectionResult to match snapshot 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "formatted": "UseCollectionResult<T>",
+      "nodeType": "Code",
+      "tokens": Array [
+        Array [
+          "UseCollectionResult",
+          "name",
+        ],
+        Array [
+          "<",
+          "symbol",
+        ],
+        Array [
+          "T",
+          "name",
+        ],
+        Array [
+          ">",
+          "symbol",
+        ],
+      ],
+    },
+    Object {
+      "header": Array [
+        "Name",
+        "Type",
+        "Description",
+      ],
+      "items": Array [
+        Array [
+          Object {
+            "flags": Array [],
+            "kind": "Property",
+            "name": "actions",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "CollectionActions<T>",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "CollectionActions",
+                "name",
+              ],
+              Array [
+                "<",
+                "symbol",
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                ">",
+                "symbol",
+              ],
+            ],
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [],
+            "kind": "Property",
+            "name": "collectionProps",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "{
+  empty?: ReactNode
+  ref: RefObject<CollectionRef>
+  selectedItems?: readonly T[]
+  sortingColumn?: SortingColumn<T>
+  sortingDescending?: boolean
+  trackBy?: string | ((item: T) => string)
+  onSelectionChange?: any
+  onSortingChange?: any
+}",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "{",
+                "symbol",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "empty",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "ReactNode",
+                "name",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "ref",
+                "name",
+              ],
+              Array [
+                ":",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "RefObject",
+                "name",
+              ],
+              Array [
+                "<",
+                "symbol",
+              ],
+              Array [
+                "CollectionRef",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "CollectionRef",
+                  ],
+                },
+              ],
+              Array [
+                ">",
+                "symbol",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "selectedItems",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "readonly",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                "[]",
+                "symbol",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "sortingColumn",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "SortingColumn",
+                "name",
+              ],
+              Array [
+                "<",
+                "symbol",
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                ">",
+                "symbol",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "sortingDescending",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "boolean",
+                "name",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "trackBy",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "string",
+                "name",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "|",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "(",
+                "symbol",
+              ],
+              Array [
+                "(",
+                "symbol",
+              ],
+              Array [
+                "item",
+                "name",
+              ],
+              Array [
+                ":",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                ")",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "=>",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "string",
+                "name",
+              ],
+              Array [
+                ")",
+                "symbol",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "onSelectionChange",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "any",
+                "type",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "onSortingChange",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "any",
+                "type",
+              ],
+              Array [
+                "
+",
+                "whitespace",
+              ],
+              Array [
+                "}",
+                "symbol",
+              ],
+            ],
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [],
+            "kind": "Property",
+            "name": "filterProps",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "{ disabled?: boolean; filteringText: string; onChange: any }",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "{",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "disabled",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "boolean",
+                "name",
+              ],
+              Array [
+                ";",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "filteringText",
+                "name",
+              ],
+              Array [
+                ":",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "string",
+                "name",
+              ],
+              Array [
+                ";",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "onChange",
+                "name",
+              ],
+              Array [
+                ":",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "any",
+                "type",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "}",
+                "symbol",
+              ],
+            ],
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [],
+            "kind": "Property",
+            "name": "filteredItemsCount",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "undefined | number",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "undefined",
+                "name",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "|",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "number",
+                "name",
+              ],
+            ],
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [],
+            "kind": "Property",
+            "name": "items",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "readonly T[]",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "readonly",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "T",
+                "name",
+                Object {},
+              ],
+              Array [
+                "[]",
+                "symbol",
+              ],
+            ],
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [],
+            "kind": "Property",
+            "name": "paginationProps",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "{ currentPageIndex: number; disabled?: boolean; onChange: any } & { pagesCount: number }",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "{",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "currentPageIndex",
+                "name",
+              ],
+              Array [
+                ":",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "number",
+                "name",
+              ],
+              Array [
+                ";",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "disabled",
+                "name",
+              ],
+              Array [
+                "?:",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "boolean",
+                "name",
+              ],
+              Array [
+                ";",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "onChange",
+                "name",
+              ],
+              Array [
+                ":",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "any",
+                "type",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "}",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "&",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "{",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "pagesCount",
+                "name",
+              ],
+              Array [
+                ":",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "number",
+                "name",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "}",
+                "symbol",
+              ],
+            ],
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+        ],
+        Array [
+          Object {
+            "flags": Array [],
+            "kind": "Property",
+            "name": "propertyFilterProps",
+            "nodeType": "Title",
+          },
+          Object {
+            "formatted": "{
+  filteringOptions: readonly PropertyFilterOption[]
+  filteringProperties: readonly PropertyFilterProperty<any>[]
+  query: PropertyFilterQuery
+  onChange: any
+}",
+            "nodeType": "Code",
+            "tokens": Array [
+              Array [
+                "{",
+                "symbol",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "filteringOptions",
+                "name",
+              ],
+              Array [
+                ":",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "readonly",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "PropertyFilterOption",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "PropertyFilterOption",
+                  ],
+                },
+              ],
+              Array [
+                "[]",
+                "symbol",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "filteringProperties",
+                "name",
+              ],
+              Array [
+                ":",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "readonly",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "PropertyFilterProperty",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "PropertyFilterProperty",
+                  ],
+                },
+              ],
+              Array [
+                "<",
+                "symbol",
+              ],
+              Array [
+                "any",
+                "name",
+              ],
+              Array [
+                ">",
+                "symbol",
+              ],
+              Array [
+                "[]",
+                "symbol",
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "query",
+                "name",
+              ],
+              Array [
+                ":",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "PropertyFilterQuery",
+                "name",
+                Object {
+                  "path": Array [
+                    "@cloudscape-design/documenter",
+                    "PropertyFilterQuery",
+                  ],
+                },
+              ],
+              Array [
+                "
+  ",
+                "whitespace",
+              ],
+              Array [
+                "onChange",
+                "name",
+              ],
+              Array [
+                ":",
+                "symbol",
+              ],
+              Array [
+                " ",
+                "whitespace",
+              ],
+              Array [
+                "any",
+                "type",
+              ],
+              Array [
+                "
+",
+                "whitespace",
+              ],
+              Array [
+                "}",
+                "symbol",
+              ],
+            ],
+          },
+          Object {
+            "nodeType": "Empty",
+          },
+        ],
+      ],
+      "nodeType": "Table",
+      "title": "Properties",
+    },
+  ],
+  "nodeType": "Section",
+  "title": Object {
+    "flags": Array [],
+    "kind": "Interface",
+    "name": "UseCollectionResult",
+    "nodeType": "Title",
+  },
+}
+`;

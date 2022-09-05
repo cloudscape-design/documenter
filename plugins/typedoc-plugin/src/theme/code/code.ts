@@ -365,7 +365,7 @@ function buildReflectionPath(reflection?: Reflection) {
   const url = [];
 
   while (reflection) {
-    if (reflection.name) {
+    if (reflection.name && reflection.name !== 'index') {
       url.push(reflection.name);
     }
     reflection = reflection.parent;

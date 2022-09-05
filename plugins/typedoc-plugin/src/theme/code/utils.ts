@@ -66,42 +66,46 @@ export function formatType(type: string): string {
 }
 
 export function enhanceTokensWithWhitespace(tokens: CodeToken[], formattedCode: string): FormattedToken[] {
+  // Trim token values to ensure no unexpected whitespaces.
+  const trimmedTokens: CodeToken[] = tokens.map(([first, ...last]) => [first.trim(), ...last]);
+
   const formattedTokens: FormattedToken[] = [];
 
+  let searchIndex = 0;
   let tokenIndex = 0;
-  let tokenValueIndex = 0;
-  let codeIndex = 0;
 
-  while (codeIndex !== formattedCode.length) {
-    const [tokenValue, tokenKind, tokenOptions] = tokens[tokenIndex];
-    const trimmedTokenValue = tokenValue.trim();
-    const nextTokenChar = trimmedTokenValue[tokenValueIndex];
-    const lastToken = formattedTokens[formattedTokens.length - 1];
+  while (tokenIndex < trimmedTokens.length) {
+    const token = trimmedTokens[tokenIndex];
+    const matchedIndex = formattedCode.indexOf(token[0], searchIndex);
 
-    // Add or append code token.
-    if (formattedCode[codeIndex] === nextTokenChar) {
-      if (tokenValueIndex === 0) {
-        formattedTokens.push([formattedCode[codeIndex], tokenKind, tokenOptions] as any);
-      } else if (lastToken[1] !== 'whitespace') {
-        lastToken[0] = lastToken[0] + formattedCode[codeIndex];
-      } else {
-        formattedTokens.push([formattedCode[codeIndex], tokenKind, tokenOptions] as any);
-      }
-      tokenValueIndex++;
-      if (tokenValueIndex === trimmedTokenValue.length) {
-        tokenValueIndex = 0;
-        tokenIndex++;
-      }
+    // Semicolons can disappear as result of formatting. Ignore.
+    if (matchedIndex === -1 && token[0] === ';') {
+      tokenIndex++;
+      continue;
     }
-    // Add or append whitespace.
-    else if (lastToken) {
-      if (lastToken[1] === 'whitespace') {
-        lastToken[0] = lastToken[0] + formattedCode[codeIndex];
-      } else {
-        formattedTokens.push([formattedCode[codeIndex], 'whitespace']);
-      }
+
+    // This is unexpected. Return unformatted tokens as a fallback.
+    if (matchedIndex === -1) {
+      return tokens;
     }
-    codeIndex++;
+
+    // Everything between two consequitive token matches is a whitespace.
+    const whitespaceValue = formattedCode.slice(searchIndex, matchedIndex);
+    if (whitespaceValue) {
+      formattedTokens.push([whitespaceValue, 'whitespace']);
+    }
+
+    // Insert original token after whitespace.
+    formattedTokens.push(token);
+
+    searchIndex = matchedIndex + token[0].length;
+    tokenIndex++;
+  }
+
+  // Insert trainling whitespace if available.
+  const whitespaceValue = formattedCode.slice(searchIndex, formattedCode.length);
+  if (whitespaceValue) {
+    formattedTokens.push([whitespaceValue, 'whitespace']);
   }
 
   return formattedTokens;
