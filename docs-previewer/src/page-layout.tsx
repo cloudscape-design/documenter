@@ -47,7 +47,17 @@ export default function PageLayout({
             }}
           />
         }
-        breadcrumbs={<BreadcrumbGroup items={breadcrumbs} expandAriaLabel="Show path" ariaLabel="Breadcrumbs" />}
+        breadcrumbs={
+          <BreadcrumbGroup
+            items={breadcrumbs}
+            expandAriaLabel="Show path"
+            ariaLabel="Breadcrumbs"
+            onFollow={e => {
+              e.preventDefault();
+              navigate(e.detail.href);
+            }}
+          />
+        }
         content={<ContentLayout header={<Header variant="h1">{header}</Header>}>{children}</ContentLayout>}
         ariaLabels={{ navigationClose: 'close' }}
       />
