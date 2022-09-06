@@ -12,7 +12,7 @@ import {
   SideNavigation,
   SideNavigationProps,
 } from '@cloudscape-design/components';
-import * as i18nStrings from './i18n-strings';
+import * as i18nStrings from '../i18n-strings';
 import { useNavigate } from 'react-router';
 
 export default function PageLayout({
@@ -31,7 +31,6 @@ export default function PageLayout({
   children: React.ReactNode;
 }): JSX.Element {
   const navigate = useNavigate();
-
   return (
     <>
       <TopNavigation identity={{ href: '/', title: 'Docs Previewer' }} i18nStrings={i18nStrings.topNavigation} />
