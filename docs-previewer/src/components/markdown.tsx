@@ -17,6 +17,6 @@ md.renderer = new RemarkableReactRenderer({
   },
 });
 
-export default function Markdown({ children }: { children: string }) {
+export default function Markdown({ children }: { children: string }): JSX.Element {
   return md.render(children);
 }

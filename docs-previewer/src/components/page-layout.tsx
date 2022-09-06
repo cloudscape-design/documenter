@@ -33,7 +33,17 @@ export default function PageLayout({
   const navigate = useNavigate();
   return (
     <>
-      <TopNavigation identity={{ href: '/', title: 'Docs Previewer' }} i18nStrings={i18nStrings.topNavigation} />
+      <TopNavigation
+        identity={{
+          href: '/',
+          title: 'Docs Previewer',
+          onFollow: e => {
+            e.preventDefault();
+            navigate('/');
+          },
+        }}
+        i18nStrings={i18nStrings.topNavigation}
+      />
       <AppLayout
         toolsHide={true}
         navigation={

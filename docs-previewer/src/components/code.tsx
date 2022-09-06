@@ -6,7 +6,7 @@ import Link from '@cloudscape-design/components/link';
 
 import './code.css';
 
-export function Code({ children }: { children: React.ReactNode }) {
+export function Code({ children }: { children: React.ReactNode }): JSX.Element {
   return <pre className="code">{children}</pre>;
 }
 
@@ -20,7 +20,7 @@ export function CodeToken({
   kind: string;
   options: any;
   onNavigate: (path: string[]) => void;
-}) {
+}): JSX.Element {
   switch (kind) {
     case 'whitespace':
       return (
