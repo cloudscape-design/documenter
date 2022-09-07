@@ -4,7 +4,7 @@
 import { Application, OptionsReader, Options, Renderer } from 'typedoc';
 
 import CloudscapeTheme from './theme';
-import { createIndex, removeAssets } from './scripts';
+import { removeAssets } from './scripts';
 
 export function load(app: Application, Theme?: new (renderer: Renderer) => CloudscapeTheme): void {
   // Define custom theme with overridden html output and apply it as default.
@@ -20,9 +20,6 @@ export function load(app: Application, Theme?: new (renderer: Renderer) => Cloud
       }
     })()
   );
-
-  // Write index.json with reflections meta-data.
-  createIndex(app);
 
   // Remove unneeded assets folder.
   removeAssets(app);

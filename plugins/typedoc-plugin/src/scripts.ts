@@ -3,20 +3,7 @@
 
 import * as path from 'path';
 import * as fs from 'fs';
-import { Application, Renderer, UrlMapping } from 'typedoc';
-
-export function createIndex(app: Application): void {
-  app.renderer.on(Renderer.EVENT_END, (context: any) => {
-    const modules = context.urls.map((url: UrlMapping) => ({
-      name: url.model.name,
-      path: url.url,
-      kind: url.model.kindString,
-    }));
-    const indexContent = JSON.stringify(modules, null, 2);
-
-    fs.writeFileSync(path.resolve(app.options.getValue('out'), 'index.json'), indexContent);
-  });
-}
+import { Application, Renderer } from 'typedoc';
 
 export function removeAssets(app: Application): void {
   app.renderer.on(Renderer.EVENT_END, () => {
