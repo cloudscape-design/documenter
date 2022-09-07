@@ -25,7 +25,7 @@ export default class extends Theme {
   // Builds the url for the the given reflection and all of its children.
   buildUrls(reflection: DeclarationReflection, urls: UrlMapping[]): UrlMapping[] {
     if (!reflection.url) {
-      const url = [reflection.kindString ?? 'Unknown', this.getUrl(reflection) + '.json'].join('/');
+      const url = ['nodes', reflection.kindString ?? 'Unknown', this.getUrl(reflection) + '.json'].join('/');
       urls.push(new UrlMapping(url, reflection, this.template as any));
       reflection.url = url;
       reflection.hasOwnDocument = true;
@@ -35,9 +35,11 @@ export default class extends Theme {
 
   getUrl(reflection: Reflection, relative?: Reflection, separator = '.'): string {
     if (reflection.parent && reflection.parent !== relative && !(reflection.parent instanceof ProjectReflection)) {
-      return this.getUrl(reflection.parent, relative, separator) + separator + reflection.getAlias();
+      return (
+        this.getUrl(reflection.parent, relative, separator) + separator + reflection.getAlias().replace(/-\d$/, '')
+      );
     }
-    return reflection.getAlias();
+    return reflection.getAlias().replace(/-\d$/, '');
   }
 
   // Renders generated output.

@@ -8,6 +8,6 @@ test.each([
   ['Interface', 'UseCollectionOptions'],
   ['Interface', 'UseCollectionResult'],
 ])('useCollection definition %s.%s to match snapshot', (kind, name) => {
-  const definition = require(path.join(process.cwd(), 'docs', 'collection-hooks', kind, name));
+  const definition = require(path.join(process.cwd(), 'docs', 'collection-hooks', 'nodes', kind, name));
   expect(definition).toMatchSnapshot();
 });

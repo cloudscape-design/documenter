@@ -94,27 +94,6 @@ export default function Docs({ docs, packageName }: { docs: DefinitionEntry[]; p
   );
 }
 
-function useParsedDefinitions(definitions: { name: string; folder: string; promise: Promise<Definition> }[]): {
-  [name: string]: any[];
-} {
-  const [parsed, setParsed] = useState<{ [name: string]: any[] }>({});
-
-  useEffect(() => {
-    for (const def of definitions.sort((a, b) => a.folder.localeCompare(b.folder))) {
-      def.promise.then(node => {
-        setParsed(prev => {
-          if (!prev[def.name]) {
-            prev[def.name] = [];
-          }
-          return { ...prev, [def.name]: [...prev[def.name], node] };
-        });
-      });
-    }
-  }, [definitions]);
-
-  return parsed;
-}
-
 function SelectedDoc({
   docs,
   selected,

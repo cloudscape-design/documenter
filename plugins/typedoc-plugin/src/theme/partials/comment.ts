@@ -9,12 +9,12 @@ export function comment(context: RenderContext, props: Reflection): CommentNode 
   if (!props.comment?.hasVisibleComponent()) {
     return null;
   }
-  const fullText = context.markdown([props.comment.shortText, props.comment.text].filter(Boolean).join('\n'));
-  const tags = (props.comment.tags || [])
-    .sort((t1, t2) => t2.tagName.localeCompare(t1.tagName))
+  const fullText = context.markdown(props.comment.summary.map(s => s.text).join('\n'));
+  const tags = (props.comment.blockTags || [])
+    .sort((t1, t2) => t2.tag.localeCompare(t1.tag))
     .map(item => ({
-      name: item.tagName + (item.paramName ? ` ${item.paramName}` : ''),
-      markdown: context.markdown(item.text),
+      name: item.tag.substring(1),
+      markdown: context.markdown(item.content.map(c => c.text).join(' ')),
     }));
 
   return new CommentNode(fullText, tags);

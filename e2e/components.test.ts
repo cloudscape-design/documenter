@@ -8,6 +8,6 @@ test.each([
   ['Interface', 'Table'],
   ['Namespace', 'Table'],
 ])('table definition %s.%s to match snapshot', (kind, name) => {
-  const definition = require(path.join(process.cwd(), 'docs', 'components', kind, name));
+  const definition = require(path.join(process.cwd(), 'docs', 'components', 'nodes', kind, name));
   expect(definition).toMatchSnapshot();
 });

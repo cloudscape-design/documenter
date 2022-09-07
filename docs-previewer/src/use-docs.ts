@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from 'react';
 
-const docsJson = import.meta.glob('../../docs/**/*.json');
+const docsJson = import.meta.glob('../../docs/**/nodes/**/*.json');
 
 export interface DefinitionEntry {
   packageName: string;
@@ -20,7 +20,7 @@ export default function useDocs(): { [packageName: string]: DefinitionEntry[] } 
     Promise.all(
       Object.entries(docsJson).map(([path, definitionImport]) => {
         path = path.replace('../../docs/', '');
-        const [packageName, folder, nameWithExtension] = path.split('/');
+        const [packageName, , folder, nameWithExtension] = path.split('/');
         const name = nameWithExtension.replace('.json', '');
         const fullName = folder + '/' + name;
         return definitionImport().then(definition => ({ packageName, folder, name, fullName, definition }));

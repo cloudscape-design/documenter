@@ -3,9 +3,9 @@
 
 import { Application } from 'typedoc';
 
-import ToolkitTheme from './theme';
+import CloudscapeTheme from './theme';
 import { load as extend } from '../../typedoc-plugin/lib';
 
 export function load(app: Application): void {
-  extend(app, ToolkitTheme);
+  extend(app, CloudscapeTheme);
 }

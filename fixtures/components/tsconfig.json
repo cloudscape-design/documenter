@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "lib": ["es5", "es2015.collection", "dom"],
+    "target": "es2019",
+    "lib": ["es2019", "dom"],
     "types": [],
     "module": "esnext",
     "moduleResolution": "node",
@@ -13,6 +14,5 @@
     "outDir": "lib",
     "incremental": true
   },
-  "include": ["src", "types"],
-  "exclude": ["**/__tests__/**", "src/test-utils/**", "**/__integ__/**", "**/__a11y__/**"]
+  "include": ["src"]
 }
