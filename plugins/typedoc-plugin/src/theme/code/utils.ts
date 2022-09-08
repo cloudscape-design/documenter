@@ -60,7 +60,7 @@ export function formatType(type: string): string {
 
     return formatted.trim();
   } catch (error: any) {
-    console.warn('An error occurred while formatting a type definition: ', type, error.message);
+    // console.warn('An error occurred while formatting a type definition: ', type, error.message);
     return type;
   }
 }

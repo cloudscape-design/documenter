@@ -35,10 +35,12 @@ export default class extends Theme {
 
   getUrl(reflection: Reflection, relative?: Reflection, separator = '.'): string {
     if (reflection.parent && reflection.parent !== relative && !(reflection.parent instanceof ProjectReflection)) {
-      return (
-        this.getUrl(reflection.parent, relative, separator) + separator + reflection.getAlias().replace(/-\d$/, '')
-      );
+      return this.getUrl(reflection.parent, relative, separator) + separator + this.getReflectionAlias(reflection);
     }
+    return this.getReflectionAlias(reflection);
+  }
+
+  getReflectionAlias(reflection: Reflection): string {
     return reflection.getAlias().replace(/-\d$/, '');
   }
 
