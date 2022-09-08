@@ -3,10 +3,10 @@
 
 import { Application, OptionsReader, Options, Renderer } from 'typedoc';
 
-import { CloudscapeTheme } from './theme';
+import { AbstractCloudscapeTheme, CloudscapeTheme } from './theme';
 import { removeAssets } from './scripts';
 
-export function load(app: Application, Theme?: new (renderer: Renderer) => CloudscapeTheme): void {
+export function load(app: Application, Theme?: new (renderer: Renderer) => AbstractCloudscapeTheme<any>): void {
   // Define custom theme with overridden html output and apply it as default.
   app.renderer.defineTheme('override', Theme || CloudscapeTheme);
   app.options.addReader(

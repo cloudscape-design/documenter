@@ -9,5 +9,5 @@ module.exports = {
   plugin: './plugins/typedoc-plugin-components-definitions/lib',
   tsconfig: 'fixtures/components/tsconfig.json',
   entryPoints: ['fixtures/components/src/index.ts'],
-  out: 'docs/components',
+  out: 'docs/components-definitions',
 };

@@ -18,13 +18,15 @@ export default function useDocs(): { [packageName: string]: DefinitionEntry[] } 
 
   useEffect(() => {
     Promise.all(
-      Object.entries(docsJson).map(([path, definitionImport]) => {
-        path = path.replace('../../docs/', '');
-        const [packageName, , folder, nameWithExtension] = path.split('/');
-        const name = nameWithExtension.replace('.json', '');
-        const fullName = folder + '/' + name;
-        return definitionImport().then(definition => ({ packageName, folder, name, fullName, definition }));
-      })
+      Object.entries(docsJson)
+        .filter(([path]) => !path.includes('components-definitions'))
+        .map(([path, definitionImport]) => {
+          path = path.replace('../../docs/', '');
+          const [packageName, , folder, nameWithExtension] = path.split('/');
+          const name = nameWithExtension.replace('.json', '');
+          const fullName = folder + '/' + name;
+          return definitionImport().then(definition => ({ packageName, folder, name, fullName, definition }));
+        })
     ).then(results => {
       setDocs(
         results

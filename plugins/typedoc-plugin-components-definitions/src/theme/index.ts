@@ -2,10 +2,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { Reflection } from 'typedoc';
-import { CloudscapeTheme } from '../../../typedoc-plugin/lib/theme';
+import { AbstractCloudscapeTheme } from '../../../typedoc-plugin/lib/theme';
+import { DefinitionNode } from './definition';
 import RenderContext from './render-context';
 
-export default class extends CloudscapeTheme {
+export default class extends AbstractCloudscapeTheme<DefinitionNode> {
   context = new RenderContext();
 
   getUrl(reflection: Reflection): string {

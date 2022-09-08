@@ -12,9 +12,8 @@
   ],
   "scripts": {
     "lint": "eslint --ignore-path .gitignore --ext js,ts,tsx .",
-    "build": "node ./scripts/build-plugins.mjs",
+    "build": "node ./scripts/build.mjs",
     "test": "jest -c jest.e2e.config.js",
-    "gen-docs": "npm run build && node ./scripts/gen-docs.mjs",
     "docs-previewer": "vite",
     "prepublishOnly": "npm run build",
     "prepare": "husky install"
