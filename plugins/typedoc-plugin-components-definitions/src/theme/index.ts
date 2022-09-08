@@ -8,6 +8,10 @@ import RenderContext from './render-context';
 export default class extends CloudscapeTheme {
   context = new RenderContext();
 
+  getUrl(reflection: Reflection): string {
+    return ['definitions', reflection.kindString ?? 'Unknown', this.getReflectionAlias(reflection) + '.json'].join('/');
+  }
+
   getReflectionAlias(reflection: Reflection): string {
     return super.getReflectionAlias(reflection).replace(/Props$/, '');
   }

@@ -3,7 +3,7 @@
 
 import { Application, OptionsReader, Options, Renderer } from 'typedoc';
 
-import CloudscapeTheme from './theme';
+import { CloudscapeTheme } from './theme';
 import { removeAssets } from './scripts';
 
 export function load(app: Application, Theme?: new (renderer: Renderer) => CloudscapeTheme): void {

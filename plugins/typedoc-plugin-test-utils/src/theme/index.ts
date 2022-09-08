@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { DeclarationReflection, ProjectReflection, Reflection, UrlMapping } from 'typedoc';
-import CloudscapeTheme from '../../../typedoc-plugin/lib/theme';
+import { CloudscapeTheme } from '../../../typedoc-plugin/lib/theme';
 
 export default class extends CloudscapeTheme {
   // Maps the models of the given project to the desired output files.
@@ -21,7 +21,7 @@ export default class extends CloudscapeTheme {
   }
 
   getUrl(reflection: Reflection): string {
-    return reflection.getAlias();
+    return ['nodes', reflection.kindString ?? 'Unknown', this.getReflectionAlias(reflection) + '.json'].join('/');
   }
 }
 
