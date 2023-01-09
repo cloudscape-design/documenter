@@ -2,15 +2,15 @@
 // SPDX-License-Identifier: Apache-2.0
 import { ComponentDefinition } from '../../src/components/interfaces';
 import { buildProject } from './test-helpers';
-
+import util from 'util';
+let select: ComponentDefinition;
 let sideNavigation: ComponentDefinition;
 let table: ComponentDefinition;
 
 beforeAll(() => {
   const result = buildProject('complex-types');
-  expect(result).toHaveLength(2);
-
-  [sideNavigation, table] = result;
+  expect(result).toHaveLength(3);
+  [select, sideNavigation, table] = result;
 });
 
 test('should only have expected properties, regions and events', () => {
@@ -138,4 +138,26 @@ test('should properly display string union types', () => {
       },
     ],
   });
+});
+
+test.only('should display details of the interface', () => {
+  console.log(util.inspect(select, true, 4));
+  console.log(select.properties[1].inlineType);
+  // expect(eventDetail?.detailType).toEqual('SideNavigationProps.FollowDetail');
+  // expect(eventDetail?.detailInlineType).toEqual({
+  //   type: 'object',
+  //   name: 'SideNavigationProps.FollowDetail',
+  //   properties: [
+  //     {
+  //       name: 'href',
+  //       optional: false,
+  //       type: 'string',
+  //     },
+  //     {
+  //       name: 'type',
+  //       optional: true,
+  //       type: '"expandable-link-group" | "link" | "link-group"',
+  //     },
+  //   ],
+  // });
 });
