@@ -19,6 +19,7 @@ export interface ExampleProps {
   /**
    * Main content
    * @displayname content
+   * @deprecated This slot is not supported.
    */
   children?: React.ReactNode;
 }

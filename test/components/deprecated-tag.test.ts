@@ -9,10 +9,9 @@ beforeAll(() => {
   expect(result).toHaveLength(1);
 
   component = result[0];
-  console.log(component);
 });
 
-test('should have correct region definitions', () => {
+test('should have correct region and properties definitions', () => {
   expect(component.properties).toEqual([
     {
       defaultValue: undefined,
@@ -37,6 +36,7 @@ test('should have correct region definitions', () => {
   ]);
   expect(component.regions).toEqual([
     {
+      deprecatedTag: 'This slot is not supported.',
       description: 'Main content',
       displayName: 'content',
       isDefault: true,
