@@ -6,6 +6,6 @@ import extractComponents from './components-extractor';
 import { bootstrapProject } from '../bootstrap';
 
 export function documentComponents(tsconfigPath: string, publicFilesGlob: string): ComponentDefinition[] {
-  const project = bootstrapProject({ tsconfig: tsconfigPath });
+  const project = bootstrapProject({ tsconfig: tsconfigPath }, publicFilesGlob);
   return extractComponents(publicFilesGlob, project);
 }

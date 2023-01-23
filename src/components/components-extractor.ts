@@ -10,32 +10,24 @@ import schema from '../schema';
 
 function returnsReactContent(node: DeclarationReflection) {
   return node.signatures?.some(
-    ({ type }) =>
-      schema.types.isReferenceType(type) &&
-      (type.symbolFullyQualifiedName === 'global.JSX.Element' || type.symbolFullyQualifiedName === 'React.ReactPortal')
+    ({ type }) => schema.types.isReferenceType(type) && (type.name === 'Element' || type.name === 'ReactPortal')
   );
 }
 
 function findComponent(module: DeclarationReflection) {
-  if (!module.children) {
-    return null;
-  }
   const components: DeclarationReflection[] = [];
-  for (const child of module.children) {
-    if (child.flags.isExported) {
-      switch (child.kind) {
-        case ReflectionKind.Function:
-          if (returnsReactContent(child)) {
-            components.push(child);
-          }
-          break;
-        case ReflectionKind.Variable:
-          if (schema.utils.isForwardRefDeclaration(child)) {
-            components.push(child);
-          }
-          break;
+
+  switch (module.kind) {
+    case ReflectionKind.Function:
+      if (returnsReactContent(module)) {
+        components.push(module);
       }
-    }
+      break;
+    case ReflectionKind.Variable:
+      if (schema.utils.isForwardRefDeclaration(module)) {
+        components.push(module);
+      }
+      break;
   }
   if (components.length > 1) {
     throw new Error(
@@ -86,37 +78,22 @@ function findProps(allDefinitions: DeclarationReflection[], propsName: string, d
 
 export default function extractComponents(publicFilesGlob: string, project: ProjectReflection): ComponentDefinition[] {
   const definitions: ComponentDefinition[] = [];
-  const isMatch = matcher(path.resolve(publicFilesGlob));
 
   if (!project.children) {
-    return [];
+    throw new Error('Attempt to analyse empty project');
   }
 
-  const allDefinitions = project.children.flatMap(module => {
-    if (!module.children) {
-      throw new Error(`Module ${module.originalName} does not contain a definition.`);
-    }
-
-    // Hack: Don't include sub version folders as they include duplicate interfaces
-    // TODO: Remove once Top Navigation has launched: (AWSUI-15424)
-    if (module.originalName.indexOf('-beta') > -1) {
-      return [];
-    }
-
-    return module.children;
-  });
-  const publicModules = project.children.filter(module => isMatch(module.originalName));
-
-  publicModules.forEach(module => {
+  project.children.forEach(module => {
     const component = findComponent(module);
     if (component) {
-      const directoryName = path.dirname(module.originalName);
-      if (component.name !== pascalCase(path.basename(directoryName))) {
-        throw new Error(`Component ${component.name} is exported from a mismatched folder: ${directoryName}`);
+      if (component.name !== 'default') {
+        throw new Error(`Component should use default export, found named: ${component.name}`);
       }
-      const propsNamespace = `${component.name}Props`;
-      const { props, objects } = findProps(allDefinitions, propsNamespace, directoryName);
-      definitions.push(buildDefinition(component, props, objects));
+      const directoryName = path.dirname(component.sources![0].fullFileName);
+      const componentName = pascalCase(path.basename(directoryName));
+      const propsNamespace = `${componentName}Props`;
+      const { props, objects } = findProps(project.children!, propsNamespace, directoryName);
+      definitions.push(buildDefinition(componentName, component, props, objects));
     }
   });
 

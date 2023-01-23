@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 import { DeclarationReflection, Type, UnionType } from 'typedoc/dist/lib/models';
-import { isIntrinsicType, isReferenceType, isTypeParameter, isUnionType } from './types';
+import { isIntrinsicType, isReferenceType, isUnionType } from './types';
 
 export function isOptionalDeclaration(prop: DeclarationReflection): boolean {
   if (prop.flags.isOptional) {
@@ -12,19 +12,19 @@ export function isOptionalDeclaration(prop: DeclarationReflection): boolean {
 }
 
 export function isForwardRefDeclaration({ type, name }: DeclarationReflection): boolean {
-  const isForwardRef = isReferenceType(type) && type.symbolFullyQualifiedName === 'React.ForwardRefExoticComponent';
+  const isForwardRef = isReferenceType(type) && type.name === 'React.ForwardRefExoticComponent';
   const isParametrizedForwardRef = Boolean(
     isReferenceType(type) &&
       type.name === `${name}ForwardRefType` &&
       (type.reflection as DeclarationReflection | undefined)?.signatures?.some(({ name, type }) => {
-        return name === '__call' && isReferenceType(type) && type.symbolFullyQualifiedName === 'global.JSX.Element';
+        return name === '__call' && isReferenceType(type) && type.name === 'global.JSX.Element';
       })
   );
   return isForwardRef || isParametrizedForwardRef;
 }
 
 export function getDeclarationSourceFilename(declaration: DeclarationReflection): string {
-  return declaration.sources?.[0].file?.fullFileName ?? 'unknown location';
+  return declaration.sources?.[0].fullFileName ?? 'unknown location';
 }
 
 export function excludeUndefinedTypeFromUnion(type: UnionType): Type[] {
@@ -32,10 +32,7 @@ export function excludeUndefinedTypeFromUnion(type: UnionType): Type[] {
 }
 
 export function isTypeDefined(type?: Type): boolean {
-  if (type && type.type === 'undefined') {
-    return false;
-  }
-  if (isIntrinsicType(type) || isTypeParameter(type)) {
+  if (isIntrinsicType(type)) {
     return type.name !== 'undefined';
   }
   if (isUnionType(type)) {

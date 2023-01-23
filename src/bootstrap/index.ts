@@ -1,36 +1,32 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { TypeDocAndTSOptions, Application, TSConfigReader, ProjectReflection } from 'typedoc';
-import * as path from 'path';
-import { matcher } from 'micromatch';
+import { TypeDocOptions, Application, TSConfigReader, ProjectReflection, OptionsReader, Options } from 'typedoc';
+import glob from 'glob';
 
-export function bootstrapProject(options: Partial<TypeDocAndTSOptions>, filteringGlob?: string): ProjectReflection {
+export class ArgumentsReader implements OptionsReader {
+  name = 'files';
+  priority = 0;
+
+  constructor(private filesGlob: string) {}
+
+  read(container: Options): void {
+    const entries = glob.sync(this.filesGlob);
+    container.setValue('entryPoints', entries);
+  }
+}
+
+export function bootstrapProject(options: Partial<TypeDocOptions>, entriesGlob: string): ProjectReflection {
   const app = new Application();
   app.options.addReader(new TSConfigReader());
+  app.options.addReader(new ArgumentsReader(entriesGlob));
 
-  const { inputFiles, hasErrors } = app.bootstrap(options);
-  if (hasErrors) {
-    throw new Error('Errors during parsing configuration');
-  }
+  app.bootstrap(options);
 
-  const filteredInputFiles = filterFiles(inputFiles, filteringGlob);
-  if (!filteredInputFiles.length) {
-    throw new Error('No input files to convert');
-  }
-
-  const project = app.convert(filteredInputFiles);
+  const project = app.convert();
   if (!project) {
     throw new Error('Project generation failed');
   }
 
   return project;
-}
-
-function filterFiles(inputFiles: string[], filteringGlob?: string): string[] {
-  if (!filteringGlob) {
-    return inputFiles;
-  }
-  const isMatch = matcher(path.resolve(filteringGlob));
-  return inputFiles.filter(file => isMatch(file));
 }

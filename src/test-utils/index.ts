@@ -1,14 +1,14 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { TypeDocAndTSOptions } from 'typedoc';
+import { TypeDocOptions } from 'typedoc';
 import extractDocumentation from './extractor';
 import { TestUtilsDoc } from './interfaces';
 import { bootstrapProject } from '../bootstrap';
 
 // TODO: Align API with components util
 export function documentTestUtils(
-  options: Partial<TypeDocAndTSOptions>,
+  options: Partial<TypeDocOptions>,
 
   // It would be nicer to just specify the files via the inputFiles option.
   // However, that doesn't work with typedoc 0.17: https://github.com/TypeStrong/typedoc/issues/1263

@@ -1,6 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import { DeclarationReflection, ReflectionKind } from 'typedoc';
+import { CommentTag, DeclarationReflection, ReflectionKind } from 'typedoc';
 import { Type } from 'typedoc/dist/lib/models';
 import { ComponentDefinition, ComponentFunction } from './interfaces';
 import schema from '../schema';
@@ -90,6 +90,7 @@ function getPropertyType(type?: Type) {
 }
 
 export default function buildDefinition(
+  componentName: string,
   component: DeclarationReflection,
   props: DeclarationReflection[],
   objects: DeclarationReflection[]
@@ -99,22 +100,26 @@ export default function buildDefinition(
   const onlyProps = props.filter(prop => !events.includes(prop) && !regions.includes(prop));
   const defaultValues = extractDefaultValues(component);
 
-  const betaTag = component.signatures && component.signatures[0].comment?.tags?.find(tag => tag.tagName === 'beta');
+  const betaTag = component.signatures && component.signatures[0].comment?.blockTags?.find(tag => tag.name === 'beta');
   const versionTag =
-    component.signatures && component.signatures[0].comment?.tags?.find(tag => tag.tagName === 'version');
+    component.signatures && component.signatures[0].comment?.blockTags?.find(tag => tag.name === 'version');
 
   return {
-    name: component.name,
-    version: versionTag?.text.trim().replace('\n', ''),
+    name: componentName,
+    version: schema.code.buildComment(versionTag?.content)?.replace('\n', ''),
     releaseStatus: betaTag ? 'beta' : 'stable',
     description: schema.code.buildDeclarationDescription(component),
     regions: regions.map(region => {
       return {
         name: region.name,
-        displayName: region.comment?.tags?.find(tag => tag.tagName === 'displayname')?.text.trim(),
+        displayName: schema.code.buildComment(
+          region.comment?.blockTags?.find(tag => tag.name === 'displayname')?.content
+        ),
         description: schema.code.buildNodeDescription(region),
         isDefault: region.name === 'children',
-        visualRefreshTag: region.comment?.tags?.find(tag => tag.tagName === 'visualrefresh')?.text.trim(),
+        visualRefreshTag: schema.code.buildComment(
+          region.comment?.blockTags?.find(tag => tag.name === 'visualrefresh')?.content
+        ),
       };
     }),
     functions: buildMethodsDefinition(objects.find(def => def.name === 'Ref')),
@@ -127,7 +132,9 @@ export default function buildDefinition(
         optional: schema.utils.isOptionalDeclaration(prop),
         description: schema.code.buildNodeDescription(prop),
         defaultValue: defaultValues[prop.name],
-        visualRefreshTag: prop.comment?.tags?.find(tag => tag.tagName === 'visualrefresh')?.text.trim(),
+        visualRefreshTag: schema.code.buildComment(
+          prop.comment?.blockTags?.find(tag => tag.name === 'visualrefresh')?.content
+        ),
       };
     }),
     events: events.map(handler => buildEventInfo(handler)),

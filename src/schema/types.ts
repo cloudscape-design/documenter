@@ -5,15 +5,14 @@ import {
   IntrinsicType,
   ReferenceType,
   ReflectionType,
-  StringLiteralType,
+  LiteralType,
   TupleType,
   Type,
-  TypeParameterType,
   UnionType,
 } from 'typedoc/dist/lib/models';
 
-export function isStringLiteralType(type?: Type): type is StringLiteralType {
-  return type !== undefined && type.type === 'stringLiteral';
+export function isStringLiteralType(type?: Type): type is LiteralType {
+  return type !== undefined && type.type === 'literal';
 }
 
 export function isReferenceType(type?: Type): type is ReferenceType {
@@ -34,10 +33,6 @@ export function isArrayType(type?: Type): type is ArrayType {
 
 export function isUnionType(type?: Type): type is UnionType {
   return type !== undefined && type.type === 'union';
-}
-
-export function isTypeParameter(type?: Type): type is TypeParameterType {
-  return type !== undefined && type.type === 'typeParameter';
 }
 
 export function isTupleType(type?: Type): type is TupleType {

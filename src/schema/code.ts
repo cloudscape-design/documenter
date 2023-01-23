@@ -1,6 +1,13 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import { Reflection, ReflectionKind, DeclarationReflection, SignatureReflection, Type } from 'typedoc/dist/lib/models';
+import {
+  Reflection,
+  ReflectionKind,
+  DeclarationReflection,
+  SignatureReflection,
+  Type,
+  CommentDisplayPart,
+} from 'typedoc/dist/lib/models';
 import {
   isReflectionType,
   isReferenceType,
@@ -9,7 +16,6 @@ import {
   isStringLiteralType,
   isUnionType,
   isTupleType,
-  isTypeParameter,
 } from './types';
 import { excludeUndefinedTypeFromUnion } from './utils';
 
@@ -50,7 +56,7 @@ export function buildType(type?: Type, enclose = false): string {
       const elementType = buildType(type.elementType);
       return `Array<${elementType}>`;
     }
-    if (isIntrinsicType(type) || isTypeParameter(type)) {
+    if (isIntrinsicType(type)) {
       return type.name;
     }
     if (isStringLiteralType(type)) {
@@ -71,10 +77,15 @@ export function buildType(type?: Type, enclose = false): string {
   return 'unknown';
 }
 
-export function buildNodeDescription(node: Reflection): string | undefined {
-  if (node.comment) {
-    return node.comment.text ? `${node.comment.shortText}\n${node.comment.text}` : node.comment.shortText;
+export function buildComment(contents: CommentDisplayPart[] | undefined): string | undefined {
+  if (!contents) {
+    return undefined;
   }
+  return contents.map(line => line.text.trim()).join('\n');
+}
+
+export function buildNodeDescription(node: Reflection): string | undefined {
+  return buildComment(node.comment?.summary);
 }
 
 export function buildDeclarationDescription(declaration: DeclarationReflection): string | undefined {
