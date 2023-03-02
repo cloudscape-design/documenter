@@ -25,6 +25,7 @@ function buildEventInfo(handler: DeclarationReflection) {
     cancelable: handler.type.name !== 'NonCancelableEventHandler',
     detailType: typeName,
     detailInlineType: typeDefinition,
+    deprecatedTag: handler.comment?.tags?.find(tag => tag.tagName === 'deprecated')?.text.trim(),
   };
 }
 
