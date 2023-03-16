@@ -44,4 +44,14 @@ test('should have correct region and properties definitions', () => {
       visualRefreshTag: undefined,
     },
   ]);
+  expect(component.events).toEqual([
+    {
+      deprecatedTag: 'This event handler is not supported.',
+      description: 'Fired when the user clicks the button.',
+      name: 'onButtonClick',
+      cancelable: false,
+      detailType: undefined,
+      detailInlineType: undefined,
+    },
+  ]);
 });
