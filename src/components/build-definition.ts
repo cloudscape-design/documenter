@@ -117,6 +117,7 @@ export default function buildDefinition(
         isDefault: region.name === 'children',
         visualRefreshTag: region.comment?.tags?.find(tag => tag.tagName === 'visualrefresh')?.text.trim(),
         deprecatedTag: region.comment?.tags?.find(tag => tag.tagName === 'deprecated')?.text.trim(),
+        i18nTag: region.comment?.tags?.find(tag => tag.tagName === 'i18n')?.text.trim(),
       };
     }),
     functions: buildMethodsDefinition(objects.find(def => def.name === 'Ref')),
@@ -131,6 +132,7 @@ export default function buildDefinition(
         defaultValue: defaultValues[prop.name],
         visualRefreshTag: prop.comment?.tags?.find(tag => tag.tagName === 'visualrefresh')?.text.trim(),
         deprecatedTag: prop.comment?.tags?.find(tag => tag.tagName === 'deprecated')?.text.trim(),
+        i18nTag: prop.comment?.tags?.find(tag => tag.tagName === 'i18n')?.text.trim(),
       };
     }),
     events: events.map(handler => buildEventInfo(handler)),
