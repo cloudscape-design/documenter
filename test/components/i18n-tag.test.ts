@@ -11,7 +11,7 @@ beforeAll(() => {
   component = result[0];
 });
 
-test.only('should have correct region and properties definitions', () => {
+test('should have correct region and properties definitions', () => {
   expect(component.properties).toEqual([
     {
       defaultValue: undefined,
