@@ -28,7 +28,7 @@ test('should have correct region and properties definitions', () => {
       defaultValue: undefined,
       deprecatedTag: undefined,
       description: 'Header',
-      i18nTag: '',
+      i18nTag: true,
       inlineType: undefined,
       name: 'header',
       optional: true,
@@ -38,7 +38,7 @@ test('should have correct region and properties definitions', () => {
   ]);
   expect(component.regions).toEqual([
     {
-      i18nTag: 'Special instructions',
+      i18nTag: true,
       description: 'Main content',
       displayName: 'content',
       isDefault: true,

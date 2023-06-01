@@ -117,7 +117,7 @@ export default function buildDefinition(
         isDefault: region.name === 'children',
         visualRefreshTag: region.comment?.tags?.find(tag => tag.tagName === 'visualrefresh')?.text.trim(),
         deprecatedTag: region.comment?.tags?.find(tag => tag.tagName === 'deprecated')?.text.trim(),
-        i18nTag: region.comment?.tags?.find(tag => tag.tagName === 'i18n')?.text.trim(),
+        i18nTag: region.comment?.tags?.some(tag => tag.tagName === 'i18n') || undefined,
       };
     }),
     functions: buildMethodsDefinition(objects.find(def => def.name === 'Ref')),
@@ -132,7 +132,7 @@ export default function buildDefinition(
         defaultValue: defaultValues[prop.name],
         visualRefreshTag: prop.comment?.tags?.find(tag => tag.tagName === 'visualrefresh')?.text.trim(),
         deprecatedTag: prop.comment?.tags?.find(tag => tag.tagName === 'deprecated')?.text.trim(),
-        i18nTag: prop.comment?.tags?.find(tag => tag.tagName === 'i18n')?.text.trim(),
+        i18nTag: prop.comment?.tags?.some(tag => tag.tagName === 'i18n') || undefined,
       };
     }),
     events: events.map(handler => buildEventInfo(handler)),

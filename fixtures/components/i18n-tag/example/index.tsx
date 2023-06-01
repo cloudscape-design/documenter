@@ -17,7 +17,7 @@ export interface ExampleProps {
   /**
    * Main content
    * @displayname content
-   * @i18n Special instructions
+   * @i18n
    */
   children?: React.ReactNode;
 }
