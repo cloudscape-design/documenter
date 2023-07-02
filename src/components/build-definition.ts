@@ -8,17 +8,23 @@ import buildTypeDefinition from './build-type-definition';
 import extractDefaultValues from './default-values-extractor';
 
 function buildEventInfo(handler: DeclarationReflection) {
-  if (schema.types.isUnionType(handler.type)) {
-    throw new Error(handler.toString());
-  }
-  if (!schema.types.isReferenceType(handler.type)) {
-    throw new Error(
-      `Unknown event handler type: ${handler.type && handler.type.type} at ${schema.utils.getDeclarationSourceFilename(
-        handler
-      )}`
-    );
-  }
-  const detailType = handler.type.typeArguments?.[0];
+  const getDetailType = () => {
+    if (schema.utils.isOptionalDeclaration(handler) && schema.types.isUnionType(handler.type)) {
+      const reference = handler.type.types.find(schema.types.isReferenceType);
+      if (typeof reference !== 'undefined') {
+        return reference.typeArguments?.[0];
+      }
+    }
+    if (!schema.types.isReferenceType(handler.type)) {
+      throw new Error(
+        `Unknown event handler type: ${
+          handler.type && handler.type.type
+        } at ${schema.utils.getDeclarationSourceFilename(handler)}`
+      );
+    }
+    return handler.type.typeArguments?.[0];
+  };
+  const detailType = getDetailType();
   const { typeName, typeDefinition } = detailType
     ? getPropertyType(detailType)
     : { typeName: undefined, typeDefinition: undefined };
