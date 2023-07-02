@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { CancelableEventHandler } from '../../internal/events';
 
-export interface ExactOptionalPropertyTypesProps {
+export interface ButtonProps {
   /**
    * String example
    */
@@ -18,6 +18,6 @@ export interface ExactOptionalPropertyTypesProps {
 /**
  * Component-level description
  */
-export default function ExactOptionalPropertyTypes({ children, onClick }: ExactOptionalPropertyTypesProps) {
+export default function Button({ children, onClick }: ExactOptionalPropertyTypesProps) {
   return <button onClick={onClick}>{children}</button>;
 }
