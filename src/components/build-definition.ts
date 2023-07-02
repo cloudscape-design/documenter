@@ -7,7 +7,7 @@ import schema from '../schema';
 import buildTypeDefinition from './build-type-definition';
 import extractDefaultValues from './default-values-extractor';
 
-const stripParent = ({ parent, ...rest }: DeclarationReflection['typeParameters'][number]) => rest;
+const stripParent = ({ parent, ...rest }: Required<DeclarationReflection>['typeParameters'][number]) => rest;
 
 function buildEventInfo(handler: DeclarationReflection) {
   if (schema.types.isUnionType(handler.type)) {
