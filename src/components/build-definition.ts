@@ -8,6 +8,9 @@ import buildTypeDefinition from './build-type-definition';
 import extractDefaultValues from './default-values-extractor';
 
 function buildEventInfo(handler: DeclarationReflection) {
+  if (schema.types.isUnionType(handler.type)) {
+    throw new Error(JSON.stringify(handler));
+  }
   if (!schema.types.isReferenceType(handler.type)) {
     throw new Error(
       `Unknown event handler type: ${handler.type && handler.type.type} at ${schema.utils.getDeclarationSourceFilename(
