@@ -18,6 +18,6 @@ export interface ButtonProps {
 /**
  * Component-level description
  */
-export default function Button({ children, onClick }: ExactOptionalPropertyTypesProps) {
+export default function Button({ children, onClick }: ButtonProps) {
   return <button onClick={onClick}>{children}</button>;
 }
