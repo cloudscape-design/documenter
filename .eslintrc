@@ -18,5 +18,13 @@
       [" Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.", " SPDX-License-Identifier: Apache-2.0"]
     ],
     "no-warning-comments": "warn"
-  }
+  },
+  "overrides": [
+    {
+      "files": "scripts/**/*.cjs",
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ]
 }
