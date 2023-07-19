@@ -1,5 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+
+// Component interfaces
+
 export interface ComponentDefinition {
   name: string;
   releaseStatus: string;
@@ -16,13 +19,22 @@ export interface ComponentProperty {
   description?: string;
   optional: boolean;
   type: string;
-  inlineType?: TypeDefinition;
+  inlineType?: InlineTypeDefinition;
   defaultValue?: string;
+  deprecatedTag?: string;
+  visualRefreshTag?: string;
+  i18nTag?: true;
 }
 
 export interface ComponentRegion {
   name: string;
+  isDefault: boolean;
+  displayName?: string;
   description?: string;
+  deprecatedTag: string | undefined;
+  inlineType?: InlineTypeDefinition;
+  visualRefreshTag: string | undefined;
+  i18nTag?: true;
 }
 
 export interface ComponentFunction {
@@ -32,7 +44,7 @@ export interface ComponentFunction {
   returnType: string;
 }
 
-type TypeDefinition = ObjectDefinition | FunctionDefinition | UnionTypeDefinition;
+export type InlineTypeDefinition = ObjectDefinition | FunctionDefinition | UnionTypeDefinition;
 
 export interface ObjectDefinition {
   name: string;
@@ -68,6 +80,32 @@ export interface EventHandler {
   name: string;
   description?: string;
   detailType?: string;
-  detailInlineType?: TypeDefinition;
+  detailInlineType?: InlineTypeDefinition;
   cancelable: boolean;
+  deprecatedTag?: string;
+}
+
+// Test utils interfaces
+
+export interface TestUtilParameter {
+  name: string;
+  typeName?: string;
+  description?: string;
+  flags: { isOptional?: boolean };
+  defaultValue?: string;
+}
+
+export interface TestUtilMethod {
+  name: string;
+  description?: string;
+  returnType?: string;
+  parameters: Array<TestUtilParameter>;
+  inheritedFrom?: {
+    name: string;
+  };
+}
+
+export interface TestUtilsDoc {
+  name: string;
+  methods: Array<TestUtilMethod>;
 }
