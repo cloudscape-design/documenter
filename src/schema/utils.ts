@@ -12,12 +12,15 @@ export function isOptionalDeclaration(prop: DeclarationReflection): boolean {
 }
 
 export function isForwardRefDeclaration({ type, name }: DeclarationReflection): boolean {
-  const isForwardRef = isReferenceType(type) && type.symbolFullyQualifiedName === 'React.ForwardRefExoticComponent';
+  const isForwardRef =
+    isReferenceType(type) && type.symbolFullyQualifiedName.endsWith('React.ForwardRefExoticComponent');
   const isParametrizedForwardRef = Boolean(
     isReferenceType(type) &&
       type.name === `${name}ForwardRefType` &&
       (type.reflection as DeclarationReflection | undefined)?.signatures?.some(({ name, type }) => {
-        return name === '__call' && isReferenceType(type) && type.symbolFullyQualifiedName === 'global.JSX.Element';
+        return (
+          name === '__call' && isReferenceType(type) && type.symbolFullyQualifiedName.endsWith('global.JSX.Element')
+        );
       })
   );
   return isForwardRef || isParametrizedForwardRef;

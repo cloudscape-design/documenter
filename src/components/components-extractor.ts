@@ -12,8 +12,8 @@ function returnsReactContent(node: DeclarationReflection) {
   return node.signatures?.some(
     ({ type }) =>
       schema.types.isReferenceType(type) &&
-      (type.symbolFullyQualifiedName.includes('JSX.Element') ||
-        type.symbolFullyQualifiedName.includes('React.ReactPortal'))
+      (type.symbolFullyQualifiedName.endsWith('JSX.Element') ||
+        type.symbolFullyQualifiedName.endsWith('React.ReactPortal'))
   );
 }
 
