@@ -18,9 +18,7 @@ export function isForwardRefDeclaration({ type, name }: DeclarationReflection): 
     isReferenceType(type) &&
       type.name === `${name}ForwardRefType` &&
       (type.reflection as DeclarationReflection | undefined)?.signatures?.some(({ name, type }) => {
-        return (
-          name === '__call' && isReferenceType(type) && type.symbolFullyQualifiedName.endsWith('global.JSX.Element')
-        );
+        return name === '__call' && isReferenceType(type) && type.symbolFullyQualifiedName.endsWith('JSX.Element');
       })
   );
   return isForwardRef || isParametrizedForwardRef;
