@@ -1,13 +1,48 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 import { DeclarationReflection, ReflectionKind } from 'typedoc';
-import { Type } from 'typedoc/dist/lib/models';
+import { ReferenceType, Type } from 'typedoc/dist/lib/models';
 import { ComponentDefinition, ComponentFunction } from './interfaces';
 import schema from '../schema';
 import buildTypeDefinition from './build-type-definition';
 import extractDefaultValues from './default-values-extractor';
 
+function mapHandlerToEventInfo(handler: DeclarationReflection) {
+  return {
+    name: handler.name,
+    description: schema.code.buildNodeDescription(handler),
+    deprecatedTag: handler.comment?.tags?.find(tag => tag.tagName === 'deprecated')?.text.trim(),
+  };
+}
+
+function mapReferenceToEventInfo(reference: ReferenceType) {
+  const cancelable = reference.name !== 'NonCancelableEventHandler';
+  const detailType = reference.typeArguments?.[0];
+  if (typeof detailType === 'undefined') {
+    return {
+      cancelable,
+      detailInlineType: undefined,
+      detailType: undefined,
+    };
+  }
+  const { typeName, typeDefinition } = getPropertyType(detailType);
+  return {
+    cancelable,
+    detailInlineType: typeDefinition,
+    detailType: typeName,
+  };
+}
+
 function buildEventInfo(handler: DeclarationReflection) {
+  if (schema.utils.isOptionalDeclaration(handler) && schema.types.isUnionType(handler.type)) {
+    const reference = handler.type.types.find(schema.types.isReferenceType);
+    if (typeof reference !== 'undefined') {
+      return {
+        ...mapHandlerToEventInfo(handler),
+        ...mapReferenceToEventInfo(reference),
+      };
+    }
+  }
   if (!schema.types.isReferenceType(handler.type)) {
     throw new Error(
       `Unknown event handler type: ${handler.type && handler.type.type} at ${schema.utils.getDeclarationSourceFilename(
@@ -15,17 +50,9 @@ function buildEventInfo(handler: DeclarationReflection) {
       )}`
     );
   }
-  const detailType = handler.type.typeArguments?.[0];
-  const { typeName, typeDefinition } = detailType
-    ? getPropertyType(detailType)
-    : { typeName: undefined, typeDefinition: undefined };
   return {
-    name: handler.name,
-    description: schema.code.buildNodeDescription(handler),
-    cancelable: handler.type.name !== 'NonCancelableEventHandler',
-    detailType: typeName,
-    detailInlineType: typeDefinition,
-    deprecatedTag: handler.comment?.tags?.find(tag => tag.tagName === 'deprecated')?.text.trim(),
+    ...mapHandlerToEventInfo(handler),
+    ...mapReferenceToEventInfo(handler.type),
   };
 }
 
