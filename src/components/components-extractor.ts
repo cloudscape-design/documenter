@@ -1,6 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 import * as path from 'path';
+import { resolve } from 'pathe';
 import { matcher } from 'micromatch';
 import { pascalCase } from 'change-case';
 import { DeclarationReflection, ProjectReflection, ReflectionKind } from 'typedoc';
@@ -87,7 +88,7 @@ function findProps(allDefinitions: DeclarationReflection[], propsName: string, d
 
 export default function extractComponents(publicFilesGlob: string, project: ProjectReflection): ComponentDefinition[] {
   const definitions: ComponentDefinition[] = [];
-  const isMatch = matcher(path.resolve(publicFilesGlob));
+  const isMatch = matcher(resolve(publicFilesGlob));
 
   if (!project.children) {
     return [];
