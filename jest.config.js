@@ -3,7 +3,7 @@
 module.exports = {
   testEnvironment: 'node',
   preset: 'ts-jest',
-  collectCoverage: true,
+  collectCoverage: process.env.CI === 'true',
   globals: {
     'ts-jest': {
       tsconfig: 'test/tsconfig.json',

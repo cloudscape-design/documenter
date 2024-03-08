@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { TypeDocAndTSOptions, Application, TSConfigReader, ProjectReflection } from 'typedoc';
-import * as path from 'path';
 import { matcher } from 'micromatch';
+import { resolve } from 'pathe';
 
 export function bootstrapProject(options: Partial<TypeDocAndTSOptions>, filteringGlob?: string): ProjectReflection {
   const app = new Application();
@@ -31,6 +31,6 @@ function filterFiles(inputFiles: string[], filteringGlob?: string): string[] {
   if (!filteringGlob) {
     return inputFiles;
   }
-  const isMatch = matcher(path.resolve(filteringGlob));
+  const isMatch = matcher(resolve(filteringGlob));
   return inputFiles.filter(file => isMatch(file));
 }
