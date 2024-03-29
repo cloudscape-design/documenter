@@ -7,6 +7,14 @@
   },
   "homepage": "https://cloudscape.design",
   "main": "./index.js",
+  "files": [
+    "bootstrap",
+    "components",
+    "schema",
+    "test-utils",
+    "*.js",
+    "*.d.ts"
+  ],
   "scripts": {
     "lint": "eslint --ignore-path .gitignore --ext js,ts,tsx .",
     "prebuild": "rimraf lib",
