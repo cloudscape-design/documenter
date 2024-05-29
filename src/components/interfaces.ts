@@ -18,11 +18,13 @@ export interface ComponentProperty {
   type: string;
   inlineType?: TypeDefinition;
   defaultValue?: string;
+  analyticsTag?: string;
 }
 
 export interface ComponentRegion {
   name: string;
   description?: string;
+  analyticsTag?: string;
 }
 
 export interface ComponentFunction {
