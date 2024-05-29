@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import { DeclarationReflection, ReflectionKind } from 'typedoc';
 import { Type } from 'typedoc/dist/lib/models';
-import { ComponentDefinition, ComponentFunction } from './interfaces';
+import { ComponentDefinition, ComponentFunction, ComponentProperty } from './interfaces';
 import schema from '../schema';
 import buildTypeDefinition from './build-type-definition';
 import extractDefaultValues from './default-values-extractor';
@@ -133,6 +133,7 @@ export default function buildDefinition(
         visualRefreshTag: prop.comment?.tags?.find(tag => tag.tagName === 'visualrefresh')?.text.trim(),
         deprecatedTag: prop.comment?.tags?.find(tag => tag.tagName === 'deprecated')?.text.trim(),
         i18nTag: prop.comment?.tags?.some(tag => tag.tagName === 'i18n') || undefined,
+        analyticsTag: prop.comment?.tags?.find(tag => tag.tagName === 'analytics')?.text.trim(),
       };
     }),
     events: events.map(handler => buildEventInfo(handler)),
