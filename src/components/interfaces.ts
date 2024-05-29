@@ -18,6 +18,7 @@ export interface ComponentProperty {
   type: string;
   inlineType?: TypeDefinition;
   defaultValue?: string;
+  analyticsTag?: string;
 }
 
 export interface ComponentRegion {
