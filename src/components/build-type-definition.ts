@@ -60,6 +60,7 @@ function buildStringLiteralTypeDefinition(obj: DeclarationReflection, type: Stri
         } catch (e) {
           // ignore json parse errors
         }
+        /* istanbul ignore next */
         return result;
       })(),
     ],
