@@ -3,7 +3,7 @@
 import { DeclarationReflection, Reflection, SignatureReflection } from 'typedoc';
 import { FunctionDefinition, ObjectDefinition, UnionTypeDefinition } from './interfaces';
 import schema from '../schema';
-import { UnionType } from 'typedoc/dist/lib/models';
+import { StringLiteralType, UnionType } from 'typedoc/dist/lib/models';
 
 function buildObjectDefinition(obj: DeclarationReflection): ObjectDefinition {
   return {
@@ -47,6 +47,25 @@ function buildUnionTypeDefinition(obj: DeclarationReflection, type: UnionType): 
   };
 }
 
+// Treat string literal type as a union with a single element.
+function buildStringLiteralTypeDefinition(obj: DeclarationReflection, type: StringLiteralType): UnionTypeDefinition {
+  return {
+    name: schema.code.buildFullName(obj),
+    type: 'union',
+    values: [
+      (() => {
+        const result = schema.code.buildType(type);
+        try {
+          return JSON.parse(result);
+        } catch (e) {
+          // ignore json parse errors
+        }
+        return result;
+      })(),
+    ],
+  };
+}
+
 export default function buildTypeDefinition(
   obj: DeclarationReflection
 ): ObjectDefinition | FunctionDefinition | UnionTypeDefinition {
@@ -59,6 +78,10 @@ export default function buildTypeDefinition(
   let definition;
   if (schema.types.isUnionType(obj.type)) {
     definition = buildUnionTypeDefinition(obj, obj.type);
+  }
+
+  if (schema.types.isStringLiteralType(obj.type)) {
+    definition = buildStringLiteralTypeDefinition(obj, obj.type);
   }
 
   if (obj.signatures) {

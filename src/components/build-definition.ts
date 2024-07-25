@@ -65,6 +65,7 @@ function buildMethodsDefinition(refType?: DeclarationReflection): ComponentFunct
 function getPropertyType(type?: Type) {
   const typeAlias = schema.types.isReferenceType(type) && (type.reflection as DeclarationReflection | undefined);
   const resolvedType = typeAlias ? typeAlias.type : type;
+
   if (schema.types.isUnionType(resolvedType)) {
     const subTypes = schema.utils.excludeUndefinedTypeFromUnion(resolvedType);
     if (subTypes.length > 1) {
@@ -84,6 +85,17 @@ function getPropertyType(type?: Type) {
       }
     }
   }
+  // Treat string literal type as a union with a single element.
+  if (schema.types.isStringLiteralType(resolvedType)) {
+    const referenceTypeName = schema.types.isReferenceType(type) ? schema.code.buildType(type) : '';
+    const declaration = new DeclarationReflection(referenceTypeName, ReflectionKind.TypeLiteral);
+    declaration.type = resolvedType;
+    return {
+      typeName: 'string',
+      typeDefinition: buildTypeDefinition(declaration),
+    };
+  }
+
   return {
     typeName: schema.code.buildType(type),
     typeDefinition: typeAlias ? buildTypeDefinition(typeAlias) : undefined,

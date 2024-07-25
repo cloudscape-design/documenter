@@ -28,11 +28,11 @@ test('should have correct properties', () => {
     {
       name: 'variant',
       description: 'This is variant',
-      type: 'ButtonGroupProps.Variant',
+      type: 'string',
       inlineType: {
-        name: 'string',
+        name: 'ButtonGroupProps.Variant',
         type: 'union',
-        values: ['icong'],
+        values: ['icon'],
       },
       optional: false,
     },
