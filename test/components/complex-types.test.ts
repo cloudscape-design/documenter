@@ -3,14 +3,15 @@
 import { ComponentDefinition } from '../../src/components/interfaces';
 import { buildProject } from './test-helpers';
 
+let buttonGroup: ComponentDefinition;
 let sideNavigation: ComponentDefinition;
 let table: ComponentDefinition;
 
 beforeAll(() => {
   const result = buildProject('complex-types');
-  expect(result).toHaveLength(2);
+  expect(result).toHaveLength(3);
 
-  [sideNavigation, table] = result;
+  [buttonGroup, sideNavigation, table] = result;
 });
 
 test('should only have expected properties, regions and events', () => {
@@ -138,4 +139,26 @@ test('should properly display string union types', () => {
       },
     ],
   });
+});
+
+test('should parse string literal type as single-value union', () => {
+  expect(buttonGroup.properties).toEqual([
+    {
+      name: 'items',
+      description: 'This is items array',
+      type: 'ReadonlyArray<ButtonGroupProps.Item>',
+      optional: false,
+    },
+    {
+      name: 'variant',
+      description: 'This is variant',
+      type: 'string',
+      inlineType: {
+        name: 'ButtonGroupProps.Variant',
+        type: 'union',
+        values: ['icon'],
+      },
+      optional: false,
+    },
+  ]);
 });
