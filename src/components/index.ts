@@ -5,7 +5,14 @@ import { ComponentDefinition } from './interfaces';
 import extractComponents from './components-extractor';
 import { bootstrapProject } from '../bootstrap';
 
-export function documentComponents(tsconfigPath: string, publicFilesGlob: string): ComponentDefinition[] {
-  const project = bootstrapProject({ tsconfig: tsconfigPath });
-  return extractComponents(publicFilesGlob, project);
+export function documentComponents(
+  tsconfigPath: string,
+  publicFilesGlob: string,
+  hasCoreComponentTypeDependency?: boolean
+): ComponentDefinition[] {
+  const project = bootstrapProject({
+    tsconfig: tsconfigPath,
+    includeDeclarations: hasCoreComponentTypeDependency,
+  });
+  return extractComponents(publicFilesGlob, project, hasCoreComponentTypeDependency);
 }

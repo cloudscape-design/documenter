@@ -86,7 +86,11 @@ function findProps(allDefinitions: DeclarationReflection[], propsName: string, d
   };
 }
 
-export default function extractComponents(publicFilesGlob: string, project: ProjectReflection): ComponentDefinition[] {
+export default function extractComponents(
+  publicFilesGlob: string,
+  project: ProjectReflection,
+  hasCoreComponentTypeDependency?: boolean
+): ComponentDefinition[] {
   const definitions: ComponentDefinition[] = [];
   const isMatch = matcher(resolve(publicFilesGlob));
 
@@ -96,6 +100,10 @@ export default function extractComponents(publicFilesGlob: string, project: Proj
 
   const allDefinitions = project.children.flatMap(module => {
     if (!module.children) {
+      if (hasCoreComponentTypeDependency) {
+        return [];
+      }
+
       throw new Error(`Module ${module.originalName} does not contain a definition.`);
     }
 
