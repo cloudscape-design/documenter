@@ -8,11 +8,17 @@ import { bootstrapProject } from '../bootstrap';
 export function documentComponents(
   tsconfigPath: string,
   publicFilesGlob: string,
-  hasCoreComponentTypeDependency?: boolean
+  nodeModulesInputFilePaths?: string[]
 ): ComponentDefinition[] {
-  const project = bootstrapProject({
-    tsconfig: tsconfigPath,
-    includeDeclarations: hasCoreComponentTypeDependency,
-  });
-  return extractComponents(publicFilesGlob, project, hasCoreComponentTypeDependency);
+  const includeNodeModulePaths = Boolean(nodeModulesInputFilePaths?.length);
+  const project = bootstrapProject(
+    {
+      tsconfig: tsconfigPath,
+      includeDeclarations: includeNodeModulePaths,
+      excludeExternals: includeNodeModulePaths,
+    },
+    undefined,
+    nodeModulesInputFilePaths
+  );
+  return extractComponents(publicFilesGlob, project);
 }

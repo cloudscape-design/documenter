@@ -5,13 +5,21 @@ import { TypeDocAndTSOptions, Application, TSConfigReader, ProjectReflection } f
 import { matcher } from 'micromatch';
 import { resolve } from 'pathe';
 
-export function bootstrapProject(options: Partial<TypeDocAndTSOptions>, filteringGlob?: string): ProjectReflection {
+export function bootstrapProject(
+  options: Partial<TypeDocAndTSOptions>,
+  filteringGlob?: string,
+  nodeModulesInputFilePaths?: string[]
+): ProjectReflection {
   const app = new Application();
   app.options.addReader(new TSConfigReader());
 
   const { inputFiles, hasErrors } = app.bootstrap(options);
   if (hasErrors) {
     throw new Error('Errors during parsing configuration');
+  }
+
+  if (nodeModulesInputFilePaths?.length) {
+    inputFiles.push(...nodeModulesInputFilePaths);
   }
 
   const filteredInputFiles = filterFiles(inputFiles, filteringGlob);
