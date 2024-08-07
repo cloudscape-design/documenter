@@ -25,7 +25,7 @@ test('should resolve object type to string', () => {
   ]);
 
   const resultAfter = buildProject('third-party-import-types', [
-    `${cwd}/fixtures/components/third-party-import-types/node_modules/icon/interfaces.d.ts`,
+    `${cwd}/fixtures/components/third-party-import-types/node_modules_mock/icon/interfaces.d.ts`,
   ]);
   const buttonAfter: ComponentDefinition | undefined = resultAfter.find(component => component.name === 'Button');
 
