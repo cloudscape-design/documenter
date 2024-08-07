@@ -2,8 +2,10 @@
 // SPDX-License-Identifier: Apache-2.0
 import { buildProject } from './test-helpers';
 import { ComponentDefinition } from '../../src';
+import * as bootstrap from '../../src/bootstrap';
 import process from 'node:process';
 const cwd = process.cwd();
+const nodeModulesPath = `${cwd}/fixtures/components/third-party-import-types/node_modules_mock/icon/interfaces.d.ts`;
 
 test('should resolve object type to string', () => {
   const resultBefore = buildProject('third-party-import-types');
@@ -24,9 +26,7 @@ test('should resolve object type to string', () => {
     },
   ]);
 
-  const resultAfter = buildProject('third-party-import-types', [
-    `${cwd}/fixtures/components/third-party-import-types/node_modules_mock/icon/interfaces.d.ts`,
-  ]);
+  const resultAfter = buildProject('third-party-import-types', [nodeModulesPath]);
   const buttonAfter: ComponentDefinition | undefined = resultAfter.find(component => component.name === 'Button');
 
   expect(buttonAfter?.properties).toEqual([
@@ -43,4 +43,14 @@ test('should resolve object type to string', () => {
       analyticsTag: undefined,
     },
   ]);
+});
+
+test('passing nodeModulesInputFilePaths should enable includeDeclarations and excludeExternals', () => {
+  const bootstrapProjectSpy = jest.spyOn(bootstrap, 'bootstrapProject');
+  buildProject('third-party-import-types', [nodeModulesPath]);
+
+  expect(bootstrapProjectSpy.mock.calls[0][0].includeDeclarations).toBe(true);
+  expect(bootstrapProjectSpy.mock.calls[0][0].excludeExternals).toBe(true);
+
+  jest.restoreAllMocks();
 });
