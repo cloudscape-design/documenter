@@ -45,7 +45,7 @@ test('should resolve object type to string', () => {
   ]);
 });
 
-test('passing nodeModulesInputFilePaths should enable includeDeclarations and excludeExternals', () => {
+test('passing nodeModulesDependencyFilePaths should enable includeDeclarations and excludeExternals', () => {
   const bootstrapProjectSpy = jest.spyOn(bootstrap, 'bootstrapProject');
   buildProject('third-party-import-types', [nodeModulesPath]);
 

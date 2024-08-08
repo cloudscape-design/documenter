@@ -8,7 +8,7 @@ import { resolve } from 'pathe';
 export function bootstrapProject(
   options: Partial<TypeDocAndTSOptions>,
   filteringGlob?: string,
-  nodeModulesInputFilePaths?: string[]
+  additionalInputFilePaths?: string[]
 ): ProjectReflection {
   const app = new Application();
   app.options.addReader(new TSConfigReader());
@@ -18,8 +18,8 @@ export function bootstrapProject(
     throw new Error('Errors during parsing configuration');
   }
 
-  if (nodeModulesInputFilePaths?.length) {
-    inputFiles.push(...nodeModulesInputFilePaths);
+  if (additionalInputFilePaths?.length) {
+    inputFiles.push(...additionalInputFilePaths);
   }
 
   const filteredInputFiles = filterFiles(inputFiles, filteringGlob);

@@ -5,12 +5,18 @@ import { ComponentDefinition } from './interfaces';
 import extractComponents from './components-extractor';
 import { bootstrapProject } from '../bootstrap';
 
+/**
+ * @param tsconfigPath Path to tsconfig file
+ * @param publicFilesGlob Filter to obtain public files
+ * @param nodeModulesDependencyFilePaths node_modules paths of libraries to include in documentation e.g.["dir/node_modules/@cloudscape-design/components/icon/interfaces.d.ts"]
+ * @returns Component definitions
+ */
 export function documentComponents(
   tsconfigPath: string,
   publicFilesGlob: string,
-  nodeModulesInputFilePaths?: string[]
+  nodeModulesDependencyFilePaths?: string[]
 ): ComponentDefinition[] {
-  const includeNodeModulePaths = Boolean(nodeModulesInputFilePaths?.length);
+  const includeNodeModulePaths = Boolean(nodeModulesDependencyFilePaths?.length);
   const project = bootstrapProject(
     {
       tsconfig: tsconfigPath,
@@ -18,7 +24,7 @@ export function documentComponents(
       excludeExternals: includeNodeModulePaths,
     },
     undefined,
-    nodeModulesInputFilePaths
+    nodeModulesDependencyFilePaths
   );
   return extractComponents(publicFilesGlob, project);
 }
