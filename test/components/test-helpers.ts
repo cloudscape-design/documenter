@@ -7,10 +7,11 @@ import { TestUtilsDoc } from '../../src/test-utils/interfaces';
 
 // TODO: Move this file into common location, improve naming
 
-export function buildProject(name: string): ComponentDefinition[] {
+export function buildProject(name: string, nodeModulesDependencyFilePaths?: string[]): ComponentDefinition[] {
   return documentComponents(
     require.resolve(`../../fixtures/components/${name}/tsconfig.json`),
-    `fixtures/components/${name}/*/index.tsx`
+    `fixtures/components/${name}/*/index.tsx`,
+    nodeModulesDependencyFilePaths
   );
 }
 
