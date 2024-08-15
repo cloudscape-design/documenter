@@ -18,4 +18,4 @@ The [contribution guidelines](https://github.com/cloudscape-design/documenter/bl
 
 ## License
 
-This project is licensed under the [Apache 2.0 License](/LICENSE)
+This project is licensed under the [Apache 2.0 License](/LICENSE).
