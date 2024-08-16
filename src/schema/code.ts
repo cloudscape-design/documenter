@@ -37,9 +37,6 @@ export function buildType(type?: Type, enclose = false): string {
       if (reflected.signatures && reflected.signatures[0]) {
         return buildCallSignature(reflected.signatures[0], enclose);
       }
-      if (Math.random() < 0.5) {
-        return '123';
-      }
       return buildType(type.declaration.type);
     }
     if (isReferenceType(type)) {
@@ -71,7 +68,7 @@ export function buildType(type?: Type, enclose = false): string {
     }
     return type.type;
   }
-  return 'unknown';
+  return 'known';
 }
 
 export function buildNodeDescription(node: Reflection): string | undefined {
