@@ -68,7 +68,7 @@ export function buildType(type?: Type, enclose = false): string {
     }
     return type.type;
   }
-  return 'unknown';
+  return 'known';
 }
 
 export function buildNodeDescription(node: Reflection): string | undefined {

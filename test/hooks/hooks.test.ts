@@ -22,4 +22,8 @@ describe('Build code from type', () => {
       expect(code).toMatchSnapshot();
     })
   );
+
+  test('unknown', () => {
+    expect(schema.code.buildType(undefined)).toBe('known');
+  });
 });
