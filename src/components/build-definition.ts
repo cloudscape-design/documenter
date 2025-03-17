@@ -135,6 +135,9 @@ export default function buildDefinition(
     functions: buildMethodsDefinition(objects.find(def => def.name === 'Ref')),
     properties: onlyProps.map(prop => {
       const { typeName, typeDefinition } = getPropertyType(prop.type);
+      const systemTags = prop.comment?.tags
+        ?.filter(tag => tag.tagName.toLowerCase() === 'awsuisystem')
+        .map(tag => tag?.text.trim());
       return {
         name: prop.name,
         type: typeName,
@@ -142,6 +145,7 @@ export default function buildDefinition(
         optional: schema.utils.isOptionalDeclaration(prop),
         description: schema.code.buildNodeDescription(prop),
         defaultValue: defaultValues[prop.name],
+        systemTags: systemTags?.length ? systemTags : undefined,
         visualRefreshTag: prop.comment?.tags?.find(tag => tag.tagName === 'visualrefresh')?.text.trim(),
         deprecatedTag: prop.comment?.tags?.find(tag => tag.tagName === 'deprecated')?.text.trim(),
         i18nTag: prop.comment?.tags?.some(tag => tag.tagName === 'i18n') || undefined,

@@ -19,6 +19,8 @@ export interface ComponentProperty {
   inlineType?: TypeDefinition;
   defaultValue?: string;
   analyticsTag?: string;
+  visualRefreshTag?: string;
+  systemTags?: Array<string>;
 }
 
 export interface ComponentRegion {
