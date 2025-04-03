@@ -15,11 +15,11 @@ test('should resolve object type', () => {
   expect(main?.properties).toEqual([
     {
       name: 'variant',
-      type: 'string',
+      type: 'DependencyProps.Variant',
       inlineType: {
         name: 'DependencyProps.Variant',
         type: 'union',
-        values: ['button', 'link'],
+        values: ['link', 'button'],
       },
       optional: false,
       defaultValue: undefined,
@@ -33,9 +33,9 @@ test('should resolve event detail types', () => {
     {
       name: 'onChange',
       cancelable: false,
-      detailType: 'MainProps.ChangeDetail',
+      detailType: 'BaseChangeDetail',
       detailInlineType: {
-        name: 'MainProps.ChangeDetail',
+        name: 'BaseChangeDetail',
         properties: [
           {
             name: 'value',

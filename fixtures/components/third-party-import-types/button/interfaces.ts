@@ -1,6 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import { IconProps } from '../node_modules_mock/icon';
+import { IconProps } from 'icon';
 
 export interface ButtonProps {
   /**

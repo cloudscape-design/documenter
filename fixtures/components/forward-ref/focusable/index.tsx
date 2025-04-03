@@ -9,7 +9,7 @@ export interface FocusableProps {
   children: React.ReactNode;
 }
 
-export namespace SomethingElse {
+namespace SomethingElse {
   export interface Ref {
     /**
      * Should be ignored
@@ -29,6 +29,11 @@ export namespace FocusableProps {
      * Focuses element using the CSS-selector
      */
     focusBySelector(selector: string): void;
+
+    /**
+     * Showcase for optional functions
+     */
+    cancelEdit?(): void;
   }
 }
 

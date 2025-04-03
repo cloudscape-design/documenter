@@ -3,6 +3,8 @@
 import * as React from 'react';
 import { TableProps } from './interfaces';
 
+export { TableProps };
+
 export default function Table<T = any>(props: TableProps<T>) {
   return <table />;
 }

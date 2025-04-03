@@ -39,13 +39,13 @@ test('should have correct property types', () => {
       defaultValue: undefined,
       description: undefined,
       inlineType: {
-        name: 'TableProps.AriaLabels',
+        name: 'TableProps.AriaLabels<T>',
         type: 'object',
         properties: [
           {
             name: 'allItemsSelectionLabel',
             optional: true,
-            type: '(data: TableProps.SelectionState<T>) => string',
+            type: '((data: TableProps.SelectionState<T>) => string)',
           },
         ],
       },
@@ -63,7 +63,7 @@ test('should have correct property types', () => {
       type: 'TableProps.FilteringFunction<T>',
       inlineType: {
         type: 'function',
-        name: 'TableProps.FilteringFunction',
+        name: 'TableProps.FilteringFunction<T>',
         returnType: 'boolean',
         parameters: [
           {
@@ -87,11 +87,6 @@ test('should have correct property types', () => {
     {
       name: 'trackBy',
       type: 'TableProps.TrackBy<T>',
-      inlineType: {
-        type: 'union',
-        name: 'TableProps.TrackBy',
-        values: ['string', '(item: T) => boolean'],
-      },
       optional: true,
       defaultValue: undefined,
       description: undefined,
@@ -135,7 +130,7 @@ test('should properly display string union types', () => {
       {
         name: 'type',
         optional: true,
-        type: '"expandable-link-group" | "link" | "link-group"',
+        type: '"link" | "link-group" | "expandable-link-group"',
       },
     ],
   });
@@ -152,12 +147,7 @@ test('should parse string literal type as single-value union', () => {
     {
       name: 'variant',
       description: 'This is variant',
-      type: 'string',
-      inlineType: {
-        name: 'ButtonGroupProps.Variant',
-        type: 'union',
-        values: ['icon'],
-      },
+      type: '"icon"',
       optional: false,
     },
   ]);

@@ -41,6 +41,12 @@ test('should detect default properties from forwardRef', () => {
 test('should provide correct function definition', () => {
   expect(component.functions).toEqual([
     {
+      description: 'Showcase for optional functions',
+      name: 'cancelEdit',
+      parameters: [],
+      returnType: 'void',
+    },
+    {
       description: 'Focuses the primary element',
       name: 'focus',
       parameters: [],

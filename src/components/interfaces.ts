@@ -2,8 +2,11 @@
 // SPDX-License-Identifier: Apache-2.0
 export interface ComponentDefinition {
   name: string;
+  /** @deprecated */
   releaseStatus: string;
+  /** @deprecated */
   version?: string;
+  /** @deprecated */
   description?: string;
   properties: ComponentProperty[];
   regions: ComponentRegion[];
@@ -19,11 +22,20 @@ export interface ComponentProperty {
   inlineType?: TypeDefinition;
   defaultValue?: string;
   analyticsTag?: string;
+  deprecatedTag?: string;
+  visualRefreshTag?: string;
+  i18nTag?: true | undefined;
+  systemTags?: Array<string>;
 }
 
 export interface ComponentRegion {
   name: string;
   description?: string;
+  displayName?: string;
+  isDefault: boolean;
+  deprecatedTag?: string;
+  visualRefreshTag?: string;
+  i18nTag?: true | undefined;
 }
 
 export interface ComponentFunction {
@@ -71,4 +83,5 @@ export interface EventHandler {
   detailType?: string;
   detailInlineType?: TypeDefinition;
   cancelable: boolean;
+  deprecatedTag?: string;
 }
