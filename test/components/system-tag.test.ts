@@ -17,19 +17,26 @@ test('should have correct region definitions', () => {
       name: 'color',
       description: 'Color',
       type: 'string',
-      inlineType: undefined,
       optional: true,
       systemTags: ['core'],
-      defaultValue: undefined,
     },
     {
       name: 'fontFamily',
       description: 'Font family\nMore text',
       type: 'string',
-      inlineType: undefined,
       optional: true,
       systemTags: ['core', 'something'],
-      defaultValue: undefined,
+    },
+    {
+      name: 'variant',
+      description: 'Variant',
+      type: 'string',
+      optional: true,
+      inlineType: {
+        name: 'ExampleProps.Variant',
+        type: 'union',
+        values: ['primary', 'secondary'],
+      },
     },
   ]);
   expect(component.regions).toEqual([

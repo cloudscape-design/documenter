@@ -2,6 +2,17 @@
 // SPDX-License-Identifier: Apache-2.0
 import * as React from 'react';
 
+export namespace ExampleProps {
+  export type Variant =
+    /** primary use-case */
+    | 'primary'
+    /**
+     * secondary use-case
+     * @awsuiSystem core
+     * */
+    | 'secondary';
+}
+
 export interface ExampleProps {
   /**
    * Color
@@ -18,6 +29,11 @@ export interface ExampleProps {
    * @awsuiSystem something
    */
   fontFamily?: string;
+
+  /**
+   * Variant
+   */
+  variant?: ExampleProps.Variant;
 
   /**
    * Main content
