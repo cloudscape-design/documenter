@@ -5,13 +5,14 @@ import { buildProject } from './test-helpers';
 
 let buttonGroup: ComponentDefinition;
 let sideNavigation: ComponentDefinition;
+let columnLayout: ComponentDefinition;
 let table: ComponentDefinition;
 
 beforeAll(() => {
   const result = buildProject('complex-types');
-  expect(result).toHaveLength(3);
+  expect(result).toHaveLength(4);
 
-  [buttonGroup, sideNavigation, table] = result;
+  [buttonGroup, columnLayout, sideNavigation, table] = result;
 });
 
 test('should only have expected properties, regions and events', () => {
@@ -87,6 +88,11 @@ test('should have correct property types', () => {
     {
       name: 'trackBy',
       type: 'TableProps.TrackBy<T>',
+      inlineType: {
+        type: 'union',
+        name: 'TableProps.TrackBy<T>',
+        values: ['string', '(item: T) => boolean'],
+      },
       optional: true,
       defaultValue: undefined,
       description: undefined,
@@ -116,9 +122,9 @@ test('should have correct detail type in the event', () => {
 });
 
 test('should properly display string union types', () => {
-  const eventDetail = sideNavigation.events.find(def => def.name === 'onFollow');
-  expect(eventDetail?.detailType).toEqual('SideNavigationProps.FollowDetail');
-  expect(eventDetail?.detailInlineType).toEqual({
+  const eventDetail = sideNavigation.events.find(def => def.name === 'onFollow')!;
+  expect(eventDetail.detailType).toEqual('SideNavigationProps.FollowDetail');
+  expect(eventDetail.detailInlineType).toEqual({
     type: 'object',
     name: 'SideNavigationProps.FollowDetail',
     properties: [
@@ -133,6 +139,29 @@ test('should properly display string union types', () => {
         type: '"link" | "link-group" | "expandable-link-group"',
       },
     ],
+  });
+});
+
+test('should properly display number and mixed union types', () => {
+  expect(columnLayout.properties.find(def => def.name === 'columns')).toEqual({
+    name: 'columns',
+    optional: false,
+    type: 'number',
+    inlineType: {
+      name: 'ColumnLayoutProps.Columns',
+      type: 'union',
+      values: ['2', '1', '3', '4'],
+    },
+  });
+  expect(columnLayout.properties.find(def => def.name === 'widths')).toEqual({
+    name: 'widths',
+    optional: false,
+    type: 'ColumnLayoutProps.Widths',
+    inlineType: {
+      name: 'ColumnLayoutProps.Widths',
+      type: 'union',
+      values: ['25', '"50%"', '100', '"33%"'],
+    },
   });
 });
 

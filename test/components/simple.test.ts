@@ -43,7 +43,7 @@ test('should have correct properties', () => {
     {
       name: 'variant',
       description: 'This is variant',
-      type: '"link" | "button"',
+      type: 'string',
       inlineType: {
         name: '"link" | "button"',
         type: 'union',

@@ -9,7 +9,7 @@ test('should resolve object type coming from node_modules', () => {
   expect(buttonAfter.properties).toEqual([
     {
       name: 'iconName',
-      type: 'IconProps.Name',
+      type: 'string',
       inlineType: { name: 'IconProps.Name', type: 'union', values: ['icon1', 'icon2', 'icon3'] },
       optional: false,
       description: 'This is icon name',

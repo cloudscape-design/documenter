@@ -15,7 +15,7 @@ test('should resolve object type', () => {
   expect(main?.properties).toEqual([
     {
       name: 'variant',
-      type: 'DependencyProps.Variant',
+      type: 'string',
       inlineType: {
         name: 'DependencyProps.Variant',
         type: 'union',
