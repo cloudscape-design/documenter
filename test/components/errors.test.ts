@@ -18,17 +18,13 @@ test('should throw error if event handler has an invalid type', () => {
   expect(() => buildProject('unknown-event-handler')).toThrow('Unknown event handler type: string');
 });
 
-// TODO cannot find Ref export
-test.skip('should throw error if component ref contains function overloads', () => {
-  expect(() => buildProject('error-ref-overload')).toThrow(
-    'Method overloads are not supported, found multiple signatures'
-  );
+test('should throw error if component ref contains function overloads', () => {
+  expect(() => buildProject('error-ref-overload')).toThrow('Multiple declarations found for symbol: focus');
 });
 
-// TODO cannot find Ref export
-test.skip('should throw error if component ref contains non-method properties', () => {
+test('should throw error if component ref contains non-method properties', () => {
   expect(() => buildProject('error-ref-property-type')).toThrow(
-    'ButtonProps.Ref.value should contain only methods, "value" has a "string" type'
+    'ButtonProps.Ref should contain only methods, "value" has a "string" type'
   );
 });
 

@@ -25,7 +25,6 @@ export interface ComponentProperty {
   deprecatedTag?: string;
   visualRefreshTag?: string;
   i18nTag?: true | undefined;
-  systemTags?: Array<string>;
 }
 
 export interface ComponentRegion {
