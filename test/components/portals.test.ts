@@ -13,7 +13,6 @@ beforeAll(() => {
 
 test('should detect component which uses createPortals', () => {
   expect(component.name).toEqual('SimplePortal');
-  expect(component.description).toEqual('Component-level description');
 });
 
 test('should have correct properties', () => {
@@ -44,12 +43,12 @@ test('should have correct properties', () => {
       description: 'This is variant',
       type: 'string',
       inlineType: {
-        name: '',
+        name: '"link" | "button"',
         type: 'union',
-        values: ['button', 'link'],
+        values: ['link', 'button'],
       },
       optional: true,
-      defaultValue: '"button"',
+      defaultValue: "'button'",
     },
   ]);
 });

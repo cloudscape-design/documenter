@@ -18,7 +18,7 @@ test('should have correct region definitions', () => {
       type: 'string',
       inlineType: undefined,
       optional: true,
-      description: 'Footer\nMore text',
+      description: 'Footer\n\nMore text',
       visualRefreshTag: '',
       defaultValue: undefined,
     },

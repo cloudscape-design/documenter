@@ -17,14 +17,8 @@ describe('Analytics tag', () => {
       {
         name: 'analyticsMetadata',
         analyticsTag: 'View details in Analytics tab',
-        defaultValue: undefined,
-        deprecatedTag: undefined,
-        description: '',
-        i18nTag: undefined,
-        inlineType: undefined,
         optional: true,
         type: 'string',
-        visualRefreshTag: undefined,
       },
     ]);
   });
@@ -33,13 +27,7 @@ describe('Analytics tag', () => {
     expect(component.regions).toEqual([
       {
         name: 'children',
-        analyticsTag: undefined,
         isDefault: true,
-        deprecatedTag: undefined,
-        description: undefined,
-        displayName: undefined,
-        i18nTag: undefined,
-        visualRefreshTag: undefined,
       },
     ]);
   });

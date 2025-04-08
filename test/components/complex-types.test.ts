@@ -5,13 +5,14 @@ import { buildProject } from './test-helpers';
 
 let buttonGroup: ComponentDefinition;
 let sideNavigation: ComponentDefinition;
+let columnLayout: ComponentDefinition;
 let table: ComponentDefinition;
 
 beforeAll(() => {
   const result = buildProject('complex-types');
-  expect(result).toHaveLength(3);
+  expect(result).toHaveLength(4);
 
-  [buttonGroup, sideNavigation, table] = result;
+  [buttonGroup, columnLayout, sideNavigation, table] = result;
 });
 
 test('should only have expected properties, regions and events', () => {
@@ -39,13 +40,13 @@ test('should have correct property types', () => {
       defaultValue: undefined,
       description: undefined,
       inlineType: {
-        name: 'TableProps.AriaLabels',
+        name: 'TableProps.AriaLabels<T>',
         type: 'object',
         properties: [
           {
             name: 'allItemsSelectionLabel',
             optional: true,
-            type: '(data: TableProps.SelectionState<T>) => string',
+            type: '((data: TableProps.SelectionState<T>) => string)',
           },
         ],
       },
@@ -63,7 +64,7 @@ test('should have correct property types', () => {
       type: 'TableProps.FilteringFunction<T>',
       inlineType: {
         type: 'function',
-        name: 'TableProps.FilteringFunction',
+        name: 'TableProps.FilteringFunction<T>',
         returnType: 'boolean',
         parameters: [
           {
@@ -89,7 +90,7 @@ test('should have correct property types', () => {
       type: 'TableProps.TrackBy<T>',
       inlineType: {
         type: 'union',
-        name: 'TableProps.TrackBy',
+        name: 'TableProps.TrackBy<T>',
         values: ['string', '(item: T) => boolean'],
       },
       optional: true,
@@ -121,9 +122,9 @@ test('should have correct detail type in the event', () => {
 });
 
 test('should properly display string union types', () => {
-  const eventDetail = sideNavigation.events.find(def => def.name === 'onFollow');
-  expect(eventDetail?.detailType).toEqual('SideNavigationProps.FollowDetail');
-  expect(eventDetail?.detailInlineType).toEqual({
+  const eventDetail = sideNavigation.events.find(def => def.name === 'onFollow')!;
+  expect(eventDetail.detailType).toEqual('SideNavigationProps.FollowDetail');
+  expect(eventDetail.detailInlineType).toEqual({
     type: 'object',
     name: 'SideNavigationProps.FollowDetail',
     properties: [
@@ -135,9 +136,32 @@ test('should properly display string union types', () => {
       {
         name: 'type',
         optional: true,
-        type: '"expandable-link-group" | "link" | "link-group"',
+        type: '"link" | "link-group" | "expandable-link-group"',
       },
     ],
+  });
+});
+
+test('should properly display number and mixed union types', () => {
+  expect(columnLayout.properties.find(def => def.name === 'columns')).toEqual({
+    name: 'columns',
+    optional: false,
+    type: 'number',
+    inlineType: {
+      name: 'ColumnLayoutProps.Columns',
+      type: 'union',
+      values: ['2', '1', '3', '4'],
+    },
+  });
+  expect(columnLayout.properties.find(def => def.name === 'widths')).toEqual({
+    name: 'widths',
+    optional: false,
+    type: 'ColumnLayoutProps.Widths',
+    inlineType: {
+      name: 'ColumnLayoutProps.Widths',
+      type: 'union',
+      values: ['25', '"50%"', '100', '"33%"'],
+    },
   });
 });
 
@@ -152,12 +176,7 @@ test('should parse string literal type as single-value union', () => {
     {
       name: 'variant',
       description: 'This is variant',
-      type: 'string',
-      inlineType: {
-        name: 'ButtonGroupProps.Variant',
-        type: 'union',
-        values: ['icon'],
-      },
+      type: '"icon"',
       optional: false,
     },
   ]);

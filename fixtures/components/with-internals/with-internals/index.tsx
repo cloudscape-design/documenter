@@ -10,6 +10,11 @@ function InternalSameFile() {
   return <Internal name="test" />;
 }
 
-export default function WithInternals() {
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface WithInternalsProps {
+  // nothing here
+}
+
+export default function WithInternals(props: WithInternalsProps) {
   return <InternalSameFile />;
 }

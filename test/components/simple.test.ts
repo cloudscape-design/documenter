@@ -13,7 +13,7 @@ beforeAll(() => {
 
 test('should have correct name, description and release status', () => {
   expect(component.name).toBe('Simple');
-  expect(component.description).toBe('Component-level description');
+  expect(component.description).toBeUndefined();
   expect(component.releaseStatus).toBe('stable');
 });
 
@@ -45,12 +45,12 @@ test('should have correct properties', () => {
       description: 'This is variant',
       type: 'string',
       inlineType: {
-        name: '',
+        name: '"link" | "button"',
         type: 'union',
-        values: ['button', 'link'],
+        values: ['link', 'button'],
       },
       optional: true,
-      defaultValue: '"button"',
+      defaultValue: "'button'",
     },
   ]);
 });

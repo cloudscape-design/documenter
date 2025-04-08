@@ -1,30 +1,57 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+import { pascalCase } from 'change-case';
+import pathe from 'pathe';
+import { matcher } from 'micromatch';
 
-import { ComponentDefinition } from './interfaces';
-import extractComponents from './components-extractor';
-import { bootstrapProject } from '../bootstrap';
+import { buildComponentDefinition } from './component-definition';
+import { extractDefaultValues, extractExports, extractFunctions, extractProps } from './extractor';
+import type { ComponentDefinition } from './interfaces';
+import { bootstrapTypescriptProject } from '../bootstrap/typescript';
 
-/**
- * @param tsconfigPath Path to tsconfig file
- * @param publicFilesGlob Filter to obtain public files
- * @param nodeModulesDependencyFilePaths node_modules paths of libraries to include in documentation e.g.["dir/node_modules/@cloudscape-design/components/icon/interfaces.d.ts"]
- * @returns Component definitions
- */
+function componentNameFromPath(componentPath: string) {
+  const directoryName = pathe.dirname(componentPath);
+  return pascalCase(pathe.basename(directoryName));
+}
+
+interface DocumenterOptions {
+  extraExports?: Record<string, Array<string>>;
+}
+
 export function documentComponents(
   tsconfigPath: string,
   publicFilesGlob: string,
-  nodeModulesDependencyFilePaths?: string[]
-): ComponentDefinition[] {
-  const includeNodeModulePaths = Boolean(nodeModulesDependencyFilePaths?.length);
-  const project = bootstrapProject(
-    {
-      tsconfig: tsconfigPath,
-      includeDeclarations: includeNodeModulePaths,
-      excludeExternals: includeNodeModulePaths,
-    },
-    undefined,
-    nodeModulesDependencyFilePaths
-  );
-  return extractComponents(publicFilesGlob, project);
+  // deprecated, now unused
+  additionalInputFilePaths?: Array<string>,
+  options?: DocumenterOptions
+): Array<ComponentDefinition> {
+  const program = bootstrapTypescriptProject(tsconfigPath);
+  const checker = program.getTypeChecker();
+
+  const isMatch = matcher(pathe.resolve(publicFilesGlob));
+
+  return program
+    .getSourceFiles()
+    .filter(file => isMatch(file.fileName))
+    .map(sourceFile => {
+      const moduleSymbol = checker.getSymbolAtLocation(sourceFile);
+      const name = componentNameFromPath(sourceFile.fileName);
+
+      // istanbul ignore next
+      if (!moduleSymbol) {
+        throw new Error(`Unable to resolve module: ${sourceFile.fileName}`);
+      }
+      const exportSymbols = checker.getExportsOfModule(moduleSymbol);
+      const { propsSymbol, componentSymbol } = extractExports(
+        name,
+        exportSymbols,
+        checker,
+        options?.extraExports ?? {}
+      );
+      const props = extractProps(propsSymbol, checker);
+      const functions = extractFunctions(propsSymbol, checker);
+      const defaultValues = extractDefaultValues(componentSymbol, checker);
+
+      return buildComponentDefinition(name, props, functions, defaultValues, checker);
+    });
 }

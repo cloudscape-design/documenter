@@ -3,12 +3,12 @@
 import * as React from 'react';
 
 export namespace ButtonProps {
-  interface Ref {
+  export interface Ref {
     value: string;
   }
 }
 
-const Button = React.forwardRef((props, ref) => {
+const Button = React.forwardRef<ButtonProps.Ref>((props, ref) => {
   return <button />;
 });
 

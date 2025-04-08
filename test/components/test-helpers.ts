@@ -5,13 +5,10 @@ import { ComponentDefinition, documentComponents, documentTestUtils } from '../.
 import { bootstrapProject } from '../../src/bootstrap';
 import { TestUtilsDoc } from '../../src/test-utils/interfaces';
 
-// TODO: Move this file into common location, improve naming
-
-export function buildProject(name: string, nodeModulesDependencyFilePaths?: string[]): ComponentDefinition[] {
+export function buildProject(name: string): ComponentDefinition[] {
   return documentComponents(
     require.resolve(`../../fixtures/components/${name}/tsconfig.json`),
-    `fixtures/components/${name}/*/index.tsx`,
-    nodeModulesDependencyFilePaths
+    `fixtures/components/${name}/*/index.tsx`
   );
 }
 
