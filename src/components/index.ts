@@ -37,6 +37,7 @@ export function documentComponents(
       const moduleSymbol = checker.getSymbolAtLocation(sourceFile);
       const name = componentNameFromPath(sourceFile.fileName);
 
+      // istanbul ignore next
       if (!moduleSymbol) {
         throw new Error(`Unable to resolve module: ${sourceFile.fileName}`);
       }

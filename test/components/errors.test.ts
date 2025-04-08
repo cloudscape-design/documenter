@@ -14,6 +14,10 @@ test('should throw error when multiple components exported from the main file', 
   expect(() => buildProject('ambiguous-exports')).toThrow('Missing default export for Component');
 });
 
+test('should throw error if default export is not a react component', () => {
+  expect(() => buildProject('error-not-a-component')).toThrow('Unknown default export type () => { type: string; }');
+});
+
 test('should throw error if event handler has an invalid type', () => {
   expect(() => buildProject('unknown-event-handler')).toThrow('Unknown event handler type: string');
 });
