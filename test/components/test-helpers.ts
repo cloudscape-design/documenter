@@ -4,6 +4,7 @@ import { ProjectReflection } from 'typedoc';
 import { ComponentDefinition, documentComponents, documentTestUtils } from '../../src';
 import { bootstrapProject } from '../../src/bootstrap';
 import { TestUtilsDoc } from '../../src/test-utils/interfaces';
+import ts from 'typescript';
 
 export function buildProject(name: string): ComponentDefinition[] {
   return documentComponents(
@@ -29,4 +30,18 @@ export function buildCustomProject(tsConfig: string, testGlob: string): ProjectR
     testGlob
   );
   return project;
+}
+
+export function getInMemoryProject(source: string) {
+  const host = ts.createCompilerHost({});
+  const mockFs = new Map<string, string>([['temp.ts', source]]);
+  // mock file system access
+  host.readFile = name => mockFs.get(name);
+  host.writeFile = () => {};
+  const program = ts.createProgram(['temp.ts'], {}, host);
+  const checker = program.getTypeChecker();
+  const moduleSymbol = checker.getSymbolAtLocation(program.getSourceFile('temp.ts')!)!;
+  const exportSymbol = checker.getExportsOfModule(moduleSymbol)[0];
+
+  return { exportSymbol, checker };
 }

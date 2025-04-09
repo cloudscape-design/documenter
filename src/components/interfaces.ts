@@ -8,33 +8,39 @@ export interface ComponentDefinition {
   version?: string;
   /** @deprecated */
   description?: string;
+  systemTag?: Array<string>;
   properties: ComponentProperty[];
   regions: ComponentRegion[];
   functions: ComponentFunction[];
   events: EventHandler[];
 }
 
-export interface ComponentProperty {
+interface Taggable {
+  analyticsTag?: string;
+  deprecatedTag?: string;
+  visualRefreshTag?: string;
+  i18nTag?: true | undefined;
+  systemTag?: Array<string>;
+}
+
+export interface ValueDescription {
+  systemTag: Array<string>;
+}
+
+export interface ComponentProperty extends Taggable {
   name: string;
   description?: string;
   optional: boolean;
   type: string;
   inlineType?: TypeDefinition;
   defaultValue?: string;
-  analyticsTag?: string;
-  deprecatedTag?: string;
-  visualRefreshTag?: string;
-  i18nTag?: true | undefined;
 }
 
-export interface ComponentRegion {
+export interface ComponentRegion extends Taggable {
   name: string;
   description?: string;
   displayName?: string;
   isDefault: boolean;
-  deprecatedTag?: string;
-  visualRefreshTag?: string;
-  i18nTag?: true | undefined;
 }
 
 export interface ComponentFunction {
@@ -73,14 +79,14 @@ export interface FunctionParameter {
 export interface UnionTypeDefinition {
   name: string;
   type: 'union';
+  valueDescriptions?: Record<string, ValueDescription>;
   values: string[];
 }
 
-export interface EventHandler {
+export interface EventHandler extends Taggable {
   name: string;
   description?: string;
   detailType?: string;
   detailInlineType?: TypeDefinition;
   cancelable: boolean;
-  deprecatedTag?: string;
 }

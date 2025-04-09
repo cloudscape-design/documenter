@@ -1,20 +1,12 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import ts from 'typescript';
 import { extractDefaultValues } from '../../src/components/extractor';
+import { getInMemoryProject } from './test-helpers';
 
 function extractFromSource(source: string) {
-  const host = ts.createCompilerHost({});
-  const mockFs = new Map<string, string>([['temp.ts', source]]);
-  // mock file system access
-  host.readFile = name => mockFs.get(name);
-  host.writeFile = () => {};
-  const program = ts.createProgram(['temp.ts'], {}, host);
-  const checker = program.getTypeChecker();
+  const { exportSymbol, checker } = getInMemoryProject(source);
 
-  const moduleSymbol = checker.getSymbolAtLocation(program.getSourceFile('temp.ts')!)!;
-
-  return extractDefaultValues(checker.getExportsOfModule(moduleSymbol)[0], checker);
+  return extractDefaultValues(exportSymbol, checker);
 }
 
 test('should throw on unsupported syntax', () => {
