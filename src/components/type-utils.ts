@@ -89,7 +89,7 @@ export function extractValueDescriptions(type: ts.UnionOrIntersectionType, typeN
   return rawComments.map((comment): ValueDescription | undefined =>
     comment
       ? {
-          systemTag: Array.from(comment.matchAll(/@awsuiSystem\s+(\w+)/g), ([_, system]) => system),
+          systemTags: Array.from(comment.matchAll(/@awsuiSystem\s+(\w+)/g), ([_, system]) => system),
         }
       : undefined
   );

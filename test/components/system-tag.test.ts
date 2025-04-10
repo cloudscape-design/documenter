@@ -14,8 +14,8 @@ describe('System tag', () => {
   });
 
   test('should annotate whole components', () => {
-    expect(button.systemTag).toBeUndefined();
-    expect(tree.systemTag).toEqual(['core']);
+    expect(button.systemTags).toBeUndefined();
+    expect(tree.systemTags).toEqual(['core']);
   });
 
   test('should annotate individual properties', () => {
@@ -27,7 +27,7 @@ describe('System tag', () => {
         inlineType: {
           name: '"normal" | "danger"',
           type: 'union',
-          valueDescriptions: { danger: { systemTag: ['core'] } },
+          valueDescriptions: { danger: { systemTags: ['core'] } },
           values: ['normal', 'danger'],
         },
       },
@@ -35,7 +35,7 @@ describe('System tag', () => {
         name: 'size',
         type: 'string',
         optional: false,
-        systemTag: ['core'],
+        systemTags: ['core'],
         inlineType: {
           name: '"small" | "medium" | "large"',
           type: 'union',
@@ -50,8 +50,8 @@ describe('System tag', () => {
           name: 'ButtonProps.Variant',
           type: 'union',
           valueDescriptions: {
-            fire: { systemTag: ['core'] },
-            ultra: { systemTag: ['core', 'experimental'] },
+            fire: { systemTags: ['core'] },
+            ultra: { systemTags: ['core', 'experimental'] },
           },
           values: ['primary', 'secondary', 'fire', 'ultra'],
         },

@@ -32,7 +32,7 @@ test('extract description comments', () => {
   /** @awsuiSystem barSystem */
   | 'bar';`;
 
-  expect(extractFromSource(source)).toEqual([{ systemTag: ['fooSystem'] }, { systemTag: ['barSystem'] }]);
+  expect(extractFromSource(source)).toEqual([{ systemTags: ['fooSystem'] }, { systemTags: ['barSystem'] }]);
 });
 
 test('extract description comments from a type alias', () => {
@@ -44,7 +44,7 @@ test('extract description comments from a type alias', () => {
   /** @awsuiSystem barSystem */
   | 'bar';`;
 
-  expect(extractFromSource(source)).toEqual([{ systemTag: ['fooSystem'] }, { systemTag: ['barSystem'] }]);
+  expect(extractFromSource(source)).toEqual([{ systemTags: ['fooSystem'] }, { systemTags: ['barSystem'] }]);
 });
 
 test('allows some members without comments', () => {
@@ -59,9 +59,9 @@ test('allows some members without comments', () => {
 
   expect(extractFromSource(source)).toEqual([
     undefined,
-    { systemTag: ['barSystem'] },
+    { systemTags: ['barSystem'] },
     undefined,
-    { systemTag: ['quxSystem'] },
+    { systemTags: ['quxSystem'] },
   ]);
 });
 
@@ -76,7 +76,7 @@ test('ignores leading and trailing comments', () => {
   /** @awsuiSystem willNotBeParsedToo */
   ;`;
 
-  expect(extractFromSource(source)).toEqual([{ systemTag: ['fooSystem'] }, { systemTag: ['barSystem'] }]);
+  expect(extractFromSource(source)).toEqual([{ systemTags: ['fooSystem'] }, { systemTags: ['barSystem'] }]);
 });
 
 test('merges comments before and after bar character', () => {
@@ -87,7 +87,7 @@ test('merges comments before and after bar character', () => {
   | 'bar'
   ;`;
 
-  expect(extractFromSource(source)).toEqual([{ systemTag: ['fooBefore', 'fooAfter'] }, { systemTag: ['barSystem'] }]);
+  expect(extractFromSource(source)).toEqual([{ systemTags: ['fooBefore', 'fooAfter'] }, { systemTags: ['barSystem'] }]);
 });
 
 test('extracts multiple tags from a single comment', () => {
@@ -100,5 +100,5 @@ test('extracts multiple tags from a single comment', () => {
   | 'bar'
   ;`;
 
-  expect(extractFromSource(source)).toEqual([undefined, { systemTag: ['barFirst', 'barSecond'] }]);
+  expect(extractFromSource(source)).toEqual([undefined, { systemTags: ['barFirst', 'barSecond'] }]);
 });

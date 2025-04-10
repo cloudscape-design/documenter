@@ -8,7 +8,7 @@ export interface ComponentDefinition {
   version?: string;
   /** @deprecated */
   description?: string;
-  systemTag?: Array<string>;
+  systemTags?: Array<string>;
   properties: ComponentProperty[];
   regions: ComponentRegion[];
   functions: ComponentFunction[];
@@ -20,11 +20,11 @@ interface Taggable {
   deprecatedTag?: string;
   visualRefreshTag?: string;
   i18nTag?: true | undefined;
-  systemTag?: Array<string>;
+  systemTags?: Array<string>;
 }
 
 export interface ValueDescription {
-  systemTag: Array<string>;
+  systemTags: Array<string>;
 }
 
 export interface ComponentProperty extends Taggable {

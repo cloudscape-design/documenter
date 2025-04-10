@@ -79,7 +79,7 @@ export function getObjectDefinition(
   return { type };
 }
 
-function getPromitiveType(type: ts.UnionOrIntersectionType) {
+function getPrimitiveType(type: ts.UnionOrIntersectionType) {
   if (type.types.every(subtype => subtype.isStringLiteral())) {
     return 'string';
   }
@@ -96,7 +96,7 @@ function getUnionTypeDefinition(
   checker: ts.TypeChecker
 ): { type: string; inlineType: UnionTypeDefinition } {
   const valueDescriptions = extractValueDescriptions(realType, typeNode);
-  const primitiveType = getPromitiveType(realType);
+  const primitiveType = getPrimitiveType(realType);
   const values = realType.types.map(subtype =>
     primitiveType ? (subtype as ts.LiteralType).value.toString() : stringifyType(subtype, checker)
   );

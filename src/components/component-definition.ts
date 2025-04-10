@@ -18,7 +18,7 @@ function getCommentTag(description: ExtractedDescription, name: string) {
   return tag ? tag.text ?? '' : undefined;
 }
 
-function getMultipleCommentTag(description: ExtractedDescription, name: string) {
+function getCommentTags(description: ExtractedDescription, name: string) {
   const tags = description.tags
     .filter(tag => tag.name === name)
     .map(tag => {
@@ -50,14 +50,14 @@ export function buildComponentDefinition(
     name,
     releaseStatus: 'stable',
     description: componentDescription.text,
-    systemTag: getMultipleCommentTag(componentDescription, 'awsuiSystem'),
+    systemTags: getCommentTags(componentDescription, 'awsuiSystem'),
     regions: regions.map(
       (region): ComponentRegion => ({
         name: region.name,
         displayName: getCommentTag(region.description, 'displayname'),
         description: region.description.text,
         isDefault: region.name === 'children',
-        systemTag: getMultipleCommentTag(region.description, 'awsuiSystem'),
+        systemTags: getCommentTags(region.description, 'awsuiSystem'),
         visualRefreshTag: getCommentTag(region.description, 'visualrefresh'),
         deprecatedTag: getCommentTag(region.description, 'deprecated'),
         i18nTag: castI18nTag(getCommentTag(region.description, 'i18n')),
@@ -90,7 +90,7 @@ export function buildComponentDefinition(
         optional: property.isOptional,
         description: property.description.text,
         defaultValue: defaultValues[property.name],
-        systemTag: getMultipleCommentTag(property.description, 'awsuiSystem'),
+        systemTags: getCommentTags(property.description, 'awsuiSystem'),
         visualRefreshTag: getCommentTag(property.description, 'visualrefresh'),
         deprecatedTag: getCommentTag(property.description, 'deprecated'),
         analyticsTag: getCommentTag(property.description, 'analytics'),
@@ -109,7 +109,7 @@ export function buildComponentDefinition(
         cancelable,
         detailType,
         detailInlineType,
-        systemTag: getMultipleCommentTag(event.description, 'awsuiSystem'),
+        systemTags: getCommentTags(event.description, 'awsuiSystem'),
         deprecatedTag: getCommentTag(event.description, 'deprecated'),
       };
     }),
