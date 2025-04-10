@@ -1,15 +1,18 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+import ts from 'typescript';
 import { ProjectReflection } from 'typedoc';
 import { ComponentDefinition, documentComponents, documentTestUtils } from '../../src';
 import { bootstrapProject } from '../../src/bootstrap';
 import { TestUtilsDoc } from '../../src/test-utils/interfaces';
-import ts from 'typescript';
+import { DocumenterOptions } from '../../src/components';
 
-export function buildProject(name: string): ComponentDefinition[] {
+export function buildProject(name: string, options?: DocumenterOptions): ComponentDefinition[] {
   return documentComponents(
     require.resolve(`../../fixtures/components/${name}/tsconfig.json`),
-    `fixtures/components/${name}/*/index.tsx`
+    `fixtures/components/${name}/*/index.tsx`,
+    undefined,
+    options
   );
 }
 
