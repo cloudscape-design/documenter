@@ -15,6 +15,17 @@ beforeAll(() => {
   [buttonGroup, columnLayout, sideNavigation, table] = result;
 });
 
+test('should have camel and dash-cased names', () => {
+  expect(buttonGroup.name).toEqual('ButtonGroup');
+  expect(buttonGroup.dashCaseName).toEqual('button-group');
+  expect(sideNavigation.name).toEqual('SideNavigation');
+  expect(sideNavigation.dashCaseName).toEqual('side-navigation');
+  expect(columnLayout.name).toEqual('ColumnLayout');
+  expect(columnLayout.dashCaseName).toEqual('column-layout');
+  expect(table.name).toEqual('Table');
+  expect(table.dashCaseName).toEqual('table');
+});
+
 test('should only have expected properties, regions and events', () => {
   expect(table.properties.map(prop => prop.name)).toEqual(['ariaLabels', 'columns', 'filteringFn', 'items', 'trackBy']);
   expect(table.events.map(prop => prop.name)).toEqual(['onWidthChange']);

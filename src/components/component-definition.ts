@@ -36,6 +36,7 @@ function castI18nTag(tag: string | undefined) {
 
 export function buildComponentDefinition(
   name: string,
+  dashCaseName: string,
   props: Array<ExpandedProp>,
   functions: Array<ExpandedProp>,
   defaultValues: Record<string, string>,
@@ -48,6 +49,7 @@ export function buildComponentDefinition(
 
   return {
     name,
+    dashCaseName,
     releaseStatus: 'stable',
     description: componentDescription.text,
     systemTags: getCommentTags(componentDescription, 'awsuiSystem'),
