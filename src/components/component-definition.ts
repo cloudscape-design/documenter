@@ -10,12 +10,24 @@ import type {
   ComponentRegion,
   EventHandler,
 } from './interfaces';
-import type { ExpandedProp } from './extractor';
+import type { ExpandedProp, ExtractedDescription } from './extractor';
 import { getObjectDefinition } from './object-definition';
 
-function getCommentTag(property: ExpandedProp, name: string) {
-  const tag = property.description.tags.find(tag => tag.name === name);
+function getCommentTag(description: ExtractedDescription, name: string) {
+  const tag = description.tags.find(tag => tag.name === name);
   return tag ? tag.text ?? '' : undefined;
+}
+
+function getCommentTags(description: ExtractedDescription, name: string) {
+  const tags = description.tags
+    .filter(tag => tag.name === name)
+    .map(tag => {
+      if (!tag.text) {
+        throw new Error(`Tag ${name} is missing text`);
+      }
+      return tag.text;
+    });
+  return tags.length > 0 ? tags : undefined;
 }
 
 function castI18nTag(tag: string | undefined) {
@@ -27,6 +39,7 @@ export function buildComponentDefinition(
   props: Array<ExpandedProp>,
   functions: Array<ExpandedProp>,
   defaultValues: Record<string, string>,
+  componentDescription: ExtractedDescription,
   checker: ts.TypeChecker
 ): ComponentDefinition {
   const regions = props.filter(prop => prop.type === 'React.ReactNode');
@@ -36,15 +49,18 @@ export function buildComponentDefinition(
   return {
     name,
     releaseStatus: 'stable',
+    description: componentDescription.text,
+    systemTags: getCommentTags(componentDescription, 'awsuiSystem'),
     regions: regions.map(
       (region): ComponentRegion => ({
         name: region.name,
-        displayName: getCommentTag(region, 'displayname'),
+        displayName: getCommentTag(region.description, 'displayname'),
         description: region.description.text,
         isDefault: region.name === 'children',
-        visualRefreshTag: getCommentTag(region, 'visualrefresh'),
-        deprecatedTag: getCommentTag(region, 'deprecated'),
-        i18nTag: castI18nTag(getCommentTag(region, 'i18n')),
+        systemTags: getCommentTags(region.description, 'awsuiSystem'),
+        visualRefreshTag: getCommentTag(region.description, 'visualrefresh'),
+        deprecatedTag: getCommentTag(region.description, 'deprecated'),
+        i18nTag: castI18nTag(getCommentTag(region.description, 'i18n')),
       })
     ),
     functions: functions.map(
@@ -66,7 +82,7 @@ export function buildComponentDefinition(
       })
     ),
     properties: onlyProps.map((property): ComponentProperty => {
-      const { type, inlineType } = getObjectDefinition(property.type, property.rawType, checker);
+      const { type, inlineType } = getObjectDefinition(property.type, property.rawType, property.rawTypeNode, checker);
       return {
         name: property.name,
         type: type,
@@ -74,27 +90,33 @@ export function buildComponentDefinition(
         optional: property.isOptional,
         description: property.description.text,
         defaultValue: defaultValues[property.name],
-        visualRefreshTag: getCommentTag(property, 'visualrefresh'),
-        deprecatedTag: getCommentTag(property, 'deprecated'),
-        analyticsTag: getCommentTag(property, 'analytics'),
-        i18nTag: castI18nTag(getCommentTag(property, 'i18n')),
+        systemTags: getCommentTags(property.description, 'awsuiSystem'),
+        visualRefreshTag: getCommentTag(property.description, 'visualrefresh'),
+        deprecatedTag: getCommentTag(property.description, 'deprecated'),
+        analyticsTag: getCommentTag(property.description, 'analytics'),
+        i18nTag: castI18nTag(getCommentTag(property.description, 'i18n')),
       };
     }),
     events: events.map((event): EventHandler => {
-      const { detailType, detailInlineType, cancelable } = extractEventDetails(event.rawType, checker);
+      const { detailType, detailInlineType, cancelable } = extractEventDetails(
+        event.rawType,
+        event.rawTypeNode,
+        checker
+      );
       return {
         name: event.name,
         description: event.description.text,
         cancelable,
         detailType,
         detailInlineType,
-        deprecatedTag: getCommentTag(event, 'deprecated'),
+        systemTags: getCommentTags(event.description, 'awsuiSystem'),
+        deprecatedTag: getCommentTag(event.description, 'deprecated'),
       };
     }),
   };
 }
 
-function extractEventDetails(type: ts.Type, checker: ts.TypeChecker) {
+function extractEventDetails(type: ts.Type, typeNode: ts.TypeNode | undefined, checker: ts.TypeChecker) {
   const realType = type.getNonNullableType();
   const handlerName = realType.aliasSymbol?.getName();
   if (handlerName !== 'CancelableEventHandler' && handlerName !== 'NonCancelableEventHandler') {
@@ -103,7 +125,7 @@ function extractEventDetails(type: ts.Type, checker: ts.TypeChecker) {
   const cancelable = handlerName === 'CancelableEventHandler';
   const detailType = realType.aliasTypeArguments?.[0];
   if (detailType && detailType.getProperties().length > 0) {
-    const { type, inlineType } = getObjectDefinition(stringifyType(detailType, checker), detailType, checker);
+    const { type, inlineType } = getObjectDefinition(stringifyType(detailType, checker), detailType, typeNode, checker);
     return {
       detailType: type,
       detailInlineType: inlineType,

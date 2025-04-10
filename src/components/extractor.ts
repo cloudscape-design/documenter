@@ -10,15 +10,18 @@ import {
   unwrapNamespaceDeclaration,
 } from './type-utils';
 
+export interface ExtractedDescription {
+  text: string | undefined;
+  tags: Array<{ name: string; text: string | undefined }>;
+}
+
 export interface ExpandedProp {
   name: string;
   type: string;
   isOptional: boolean;
   rawType: ts.Type;
-  description: {
-    text: string | undefined;
-    tags: Array<{ name: string; text: string | undefined }>;
-  };
+  rawTypeNode: ts.TypeNode | undefined;
+  description: ExtractedDescription;
 }
 
 export function extractDefaultValues(exportSymbol: ts.Symbol, checker: ts.TypeChecker) {
@@ -87,6 +90,7 @@ export function extractProps(propsSymbol: ts.Symbol, checker: ts.TypeChecker) {
         name: value.name,
         type: stringifyType(type, checker),
         rawType: type,
+        rawTypeNode: (declaration as ts.PropertyDeclaration).type,
         isOptional: isOptional(type),
         description: getDescription(value.getDocumentationComment(checker), declaration),
       };
@@ -124,6 +128,7 @@ export function extractFunctions(propsSymbol: ts.Symbol, checker: ts.TypeChecker
         name: value.name,
         type: stringifyType(realType, checker),
         rawType: realType,
+        rawTypeNode: (declaration as ts.PropertyDeclaration).type,
         isOptional: isOptional(type),
         description: getDescription(value.getDocumentationComment(checker), declaration),
       };

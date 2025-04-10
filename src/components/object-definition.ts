@@ -1,8 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 import ts from 'typescript';
-import type { TypeDefinition, UnionTypeDefinition } from './interfaces';
-import { extractDeclaration, isOptional, stringifyType } from './type-utils';
+import type { TypeDefinition, UnionTypeDefinition, ValueDescription } from './interfaces';
+import { extractDeclaration, extractValueDescriptions, isOptional, stringifyType } from './type-utils';
 
 function isArrayType(type: ts.Type) {
   const symbol = type.getSymbol();
@@ -15,6 +15,7 @@ function isArrayType(type: ts.Type) {
 export function getObjectDefinition(
   type: string,
   rawType: ts.Type,
+  rawTypeNode: ts.TypeNode | undefined,
   checker: ts.TypeChecker
 ): { type: string; inlineType?: TypeDefinition } {
   const realType = rawType.getNonNullableType();
@@ -31,7 +32,7 @@ export function getObjectDefinition(
     return { type };
   }
   if (realType.isUnionOrIntersection()) {
-    return getUnionTypeDefinition(realTypeName, realType, checker);
+    return getUnionTypeDefinition(realTypeName, realType, rawTypeNode, checker);
   }
   if (realType.getProperties().length > 0) {
     return {
@@ -78,36 +79,46 @@ export function getObjectDefinition(
   return { type };
 }
 
+function getPrimitiveType(type: ts.UnionOrIntersectionType) {
+  if (type.types.every(subtype => subtype.isStringLiteral())) {
+    return 'string';
+  }
+  if (type.types.every(subtype => subtype.isNumberLiteral())) {
+    return 'number';
+  }
+  return undefined;
+}
+
 function getUnionTypeDefinition(
   realTypeName: string,
   realType: ts.UnionOrIntersectionType,
+  typeNode: ts.TypeNode | undefined,
   checker: ts.TypeChecker
 ): { type: string; inlineType: UnionTypeDefinition } {
-  if (realType.types.every(subtype => subtype.isStringLiteral())) {
-    return {
-      type: 'string',
-      inlineType: {
-        name: realTypeName,
-        type: 'union',
-        values: realType.types.map(subtype => (subtype as ts.StringLiteralType).value),
-      },
-    };
-  } else if (realType.types.every(subtype => subtype.isNumberLiteral())) {
-    return {
-      type: 'number',
-      inlineType: {
-        name: realTypeName,
-        type: 'union',
-        values: realType.types.map(subtype => (subtype as ts.NumberLiteralType).value.toString()),
-      },
-    };
-  }
+  const valueDescriptions = extractValueDescriptions(realType, typeNode);
+  const primitiveType = getPrimitiveType(realType);
+  const values = realType.types.map(subtype =>
+    primitiveType ? (subtype as ts.LiteralType).value.toString() : stringifyType(subtype, checker)
+  );
+
   return {
-    type: realTypeName,
+    type: primitiveType ?? realTypeName,
     inlineType: {
       name: realTypeName,
       type: 'union',
-      values: realType.types.map(subtype => stringifyType(subtype, checker)),
+      valueDescriptions: valueDescriptions.length > 0 ? zipValueDescriptions(values, valueDescriptions) : undefined,
+      values: values,
     },
   };
+}
+
+function zipValueDescriptions(values: Array<string>, descriptions: Array<ValueDescription | undefined>) {
+  const descriptionsMap: Record<string, ValueDescription> = {};
+  values.forEach((value, index) => {
+    const description = descriptions[index];
+    if (description) {
+      descriptionsMap[value] = description;
+    }
+  });
+  return descriptionsMap;
 }

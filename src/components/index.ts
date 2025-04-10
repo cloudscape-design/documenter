@@ -8,6 +8,7 @@ import { buildComponentDefinition } from './component-definition';
 import { extractDefaultValues, extractExports, extractFunctions, extractProps } from './extractor';
 import type { ComponentDefinition } from './interfaces';
 import { bootstrapTypescriptProject } from '../bootstrap/typescript';
+import { extractDeclaration, getDescription } from './type-utils';
 
 function componentNameFromPath(componentPath: string) {
   const directoryName = pathe.dirname(componentPath);
@@ -51,7 +52,11 @@ export function documentComponents(
       const props = extractProps(propsSymbol, checker);
       const functions = extractFunctions(propsSymbol, checker);
       const defaultValues = extractDefaultValues(componentSymbol, checker);
+      const componentDescription = getDescription(
+        componentSymbol.getDocumentationComment(checker),
+        extractDeclaration(componentSymbol)
+      );
 
-      return buildComponentDefinition(name, props, functions, defaultValues, checker);
+      return buildComponentDefinition(name, props, functions, defaultValues, componentDescription, checker);
     });
 }
