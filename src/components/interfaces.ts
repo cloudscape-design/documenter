@@ -16,7 +16,6 @@ export interface ComponentDefinition {
 }
 
 interface Taggable {
-  analyticsTag?: string;
   deprecatedTag?: string;
   visualRefreshTag?: string;
   i18nTag?: true | undefined;
@@ -34,6 +33,7 @@ export interface ComponentProperty extends Taggable {
   type: string;
   inlineType?: TypeDefinition;
   defaultValue?: string;
+  analyticsTag?: string;
 }
 
 export interface ComponentRegion extends Taggable {
