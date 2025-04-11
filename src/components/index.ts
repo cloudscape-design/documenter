@@ -15,7 +15,7 @@ function componentNameFromPath(componentPath: string) {
   return pascalCase(pathe.basename(directoryName));
 }
 
-interface DocumenterOptions {
+export interface DocumenterOptions {
   extraExports?: Record<string, Array<string>>;
 }
 

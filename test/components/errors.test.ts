@@ -10,8 +10,12 @@ test('should throw in case of type errors', () => {
   expect(() => buildProject('errors-types')).toThrow('Compilation failed');
 });
 
-test('should throw error when multiple components exported from the main file', () => {
-  expect(() => buildProject('ambiguous-exports')).toThrow('Missing default export for Component');
+test('should throw error when component exported without default export', () => {
+  expect(() => buildProject('error-no-default-export')).toThrow('Missing default export for Component');
+});
+
+test('should throw error when there are unexpected exports', () => {
+  expect(() => buildProject('custom-exports')).toThrow('Unexpected exports in Button: InternalButton');
 });
 
 test('should throw error if default export is not a react component', () => {

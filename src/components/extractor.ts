@@ -155,10 +155,9 @@ export function extractExports(
       unknownExports.push(exportSymbol.name);
     }
   }
-  // disabled until migration is complete
-  // if (unknownExports.length > 0) {
-  // throw new Error(`Unexpected exports in ${componentName}: ${unknownExports.join(', ')}`);
-  // }
+  if (unknownExports.length > 0) {
+    throw new Error(`Unexpected exports in ${componentName}: ${unknownExports.join(', ')}`);
+  }
   if (!componentSymbol) {
     throw new Error(`Missing default export for ${componentName}`);
   }
