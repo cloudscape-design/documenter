@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 export interface ComponentDefinition {
   name: string;
+  dashCaseName: string;
   /** @deprecated */
   releaseStatus: string;
   /** @deprecated */
