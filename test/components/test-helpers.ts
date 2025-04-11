@@ -2,18 +2,17 @@
 // SPDX-License-Identifier: Apache-2.0
 import ts from 'typescript';
 import { ProjectReflection } from 'typedoc';
-import { ComponentDefinition, documentComponents, documentTestUtils } from '../../src';
+import { documentComponents, documentTestUtils } from '../../src';
 import { bootstrapProject } from '../../src/bootstrap';
 import { TestUtilsDoc } from '../../src/test-utils/interfaces';
 import { DocumenterOptions } from '../../src/components';
 
-export function buildProject(name: string, options?: DocumenterOptions): ComponentDefinition[] {
-  return documentComponents(
-    require.resolve(`../../fixtures/components/${name}/tsconfig.json`),
-    `fixtures/components/${name}/*/index.tsx`,
-    undefined,
-    options
-  );
+export function buildProject(name: string, options?: Partial<DocumenterOptions>) {
+  return documentComponents({
+    tsconfigPath: require.resolve(`../../fixtures/components/${name}/tsconfig.json`),
+    publicFilesGlob: `fixtures/components/${name}/*/index.tsx`,
+    ...options,
+  });
 }
 
 export function buildTestUtilsProject(name: string, testGlob?: string): TestUtilsDoc[] {

@@ -16,20 +16,41 @@ function componentNameFromPath(componentPath: string) {
 }
 
 export interface DocumenterOptions {
+  tsconfigPath: string;
+  publicFilesGlob: string;
   extraExports?: Record<string, Array<string>>;
 }
-
 export function documentComponents(
   tsconfigPath: string,
   publicFilesGlob: string,
   // deprecated, now unused
   additionalInputFilePaths?: Array<string>,
   options?: DocumenterOptions
+): Array<ComponentDefinition>;
+export function documentComponents(options: DocumenterOptions): Array<ComponentDefinition>;
+export function documentComponents(
+  ...args:
+    | [
+        tsconfigPath: string,
+        publicFilesGlob: string,
+        additionalInputFilePaths?: Array<string>,
+        options?: DocumenterOptions
+      ]
+    | [options: DocumenterOptions]
 ): Array<ComponentDefinition> {
-  const program = bootstrapTypescriptProject(tsconfigPath);
+  const options =
+    args.length === 1
+      ? args[0]
+      : {
+          tsconfigPath: args[0],
+          publicFilesGlob: args[1],
+          additionalInputFilePaths: args[2],
+          ...args[3],
+        };
+  const program = bootstrapTypescriptProject(options.tsconfigPath);
   const checker = program.getTypeChecker();
 
-  const isMatch = matcher(pathe.resolve(publicFilesGlob));
+  const isMatch = matcher(pathe.resolve(options.publicFilesGlob));
 
   return program
     .getSourceFiles()
