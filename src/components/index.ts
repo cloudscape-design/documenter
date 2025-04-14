@@ -11,8 +11,8 @@ import { bootstrapTypescriptProject } from '../bootstrap/typescript';
 import { extractDeclaration, getDescription } from './type-utils';
 
 function componentNameFromPath(componentPath: string) {
-  const directoryName = pathe.dirname(componentPath);
-  return pascalCase(pathe.basename(directoryName));
+  const dashCaseName = pathe.basename(pathe.dirname(componentPath));
+  return { dashCaseName, name: pascalCase(dashCaseName) };
 }
 
 export interface DocumenterOptions {
@@ -57,7 +57,7 @@ export function documentComponents(
     .filter(file => isMatch(file.fileName))
     .map(sourceFile => {
       const moduleSymbol = checker.getSymbolAtLocation(sourceFile);
-      const name = componentNameFromPath(sourceFile.fileName);
+      const { name, dashCaseName } = componentNameFromPath(sourceFile.fileName);
 
       // istanbul ignore next
       if (!moduleSymbol) {
@@ -78,6 +78,14 @@ export function documentComponents(
         extractDeclaration(componentSymbol)
       );
 
-      return buildComponentDefinition(name, props, functions, defaultValues, componentDescription, checker);
+      return buildComponentDefinition(
+        name,
+        dashCaseName,
+        props,
+        functions,
+        defaultValues,
+        componentDescription,
+        checker
+      );
     });
 }
