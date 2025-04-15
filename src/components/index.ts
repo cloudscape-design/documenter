@@ -20,33 +20,8 @@ export interface DocumenterOptions {
   publicFilesGlob: string;
   extraExports?: Record<string, Array<string>>;
 }
-export function documentComponents(
-  tsconfigPath: string,
-  publicFilesGlob: string,
-  // deprecated, now unused
-  additionalInputFilePaths?: Array<string>,
-  options?: DocumenterOptions
-): Array<ComponentDefinition>;
-export function documentComponents(options: DocumenterOptions): Array<ComponentDefinition>;
-export function documentComponents(
-  ...args:
-    | [
-        tsconfigPath: string,
-        publicFilesGlob: string,
-        additionalInputFilePaths?: Array<string>,
-        options?: DocumenterOptions
-      ]
-    | [options: DocumenterOptions]
-): Array<ComponentDefinition> {
-  const options =
-    args.length === 1
-      ? args[0]
-      : {
-          tsconfigPath: args[0],
-          publicFilesGlob: args[1],
-          additionalInputFilePaths: args[2],
-          ...args[3],
-        };
+
+export function documentComponents(options: DocumenterOptions): Array<ComponentDefinition> {
   const program = bootstrapTypescriptProject(options.tsconfigPath);
   const checker = program.getTypeChecker();
 
