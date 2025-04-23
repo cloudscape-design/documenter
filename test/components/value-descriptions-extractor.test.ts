@@ -1,5 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+import { expect, test } from 'vitest';
 import ts from 'typescript';
 import { extractDeclaration, extractValueDescriptions } from '../../src/components/type-utils';
 import { getInMemoryProject } from './test-helpers';

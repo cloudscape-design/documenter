@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // issues with old Typescript version https://github.com/vitest-dev/vitest/issues/4567
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["test"]
+}
