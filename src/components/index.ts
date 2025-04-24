@@ -1,5 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+import fs from 'node:fs';
 import { pascalCase } from 'change-case';
 import pathe from 'pathe';
 import { matcher } from 'micromatch';
@@ -19,6 +20,35 @@ export interface DocumenterOptions {
   tsconfigPath: string;
   publicFilesGlob: string;
   extraExports?: Record<string, Array<string>>;
+}
+
+export interface WriteOptions {
+  outDir: string;
+}
+
+export function writeComponentsDocumentation({ outDir, ...options }: WriteOptions & DocumenterOptions): void {
+  const definitions = documentComponents(options);
+  fs.mkdirSync(outDir, { recursive: true });
+  for (const definition of definitions) {
+    fs.writeFileSync(
+      pathe.join(outDir, definition.dashCaseName + '.js'),
+      `module.exports = ${JSON.stringify(definition, null, 2)};`
+    );
+  }
+  const indexContent = `module.exports = {
+    ${definitions
+      .map(definition => `${JSON.stringify(definition.dashCaseName)}:require('./${definition.dashCaseName}')`)
+      .join(',\n')}
+  }`;
+  fs.writeFileSync(pathe.join(outDir, 'index.js'), indexContent);
+  fs.copyFileSync(require.resolve('./interfaces.d.ts'), pathe.join(outDir, 'interfaces.d.ts'));
+  fs.writeFileSync(
+    pathe.join(outDir, 'index.d.ts'),
+    `import { ComponentDefinition } from './interfaces';
+const definitions: Record<string, ComponentDefinition>;
+export default definitions;
+`
+  );
 }
 
 export function documentComponents(options: DocumenterOptions): Array<ComponentDefinition> {

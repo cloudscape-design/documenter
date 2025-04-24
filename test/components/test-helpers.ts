@@ -1,5 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+import fs from 'node:fs';
+import os from 'node:os';
+import pathe from 'pathe';
 import ts from 'typescript';
 import { ProjectReflection } from 'typedoc';
 import { documentComponents, documentTestUtils } from '../../src';
@@ -13,6 +16,10 @@ export function buildProject(name: string, options?: Partial<DocumenterOptions>)
     publicFilesGlob: `fixtures/components/${name}/*/index.tsx`,
     ...options,
   });
+}
+
+export function getTemporaryDir() {
+  return fs.mkdtempSync(pathe.join(os.tmpdir(), 'documenter-'));
 }
 
 export function buildTestUtilsProject(name: string, testGlob?: string): TestUtilsDoc[] {
