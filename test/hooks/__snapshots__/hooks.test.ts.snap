@@ -1,13 +1,13 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Build code from type Snapshot: useContainerQuery 1`] = `
-Object {
-  "parameters": Array [
-    Object {
+exports[`Build code from type > Snapshot: useContainerQuery 1`] = `
+{
+  "parameters": [
+    {
       "name": "mapFn",
       "type": "(entry: ContainerQueryEntry, prev: ObservedState | null) => ObservedState",
     },
-    Object {
+    {
       "name": "deps",
       "type": "React.DependencyList",
     },
@@ -16,14 +16,14 @@ Object {
 }
 `;
 
-exports[`Build code from type Snapshot: useResizeObserver 1`] = `
-Object {
-  "parameters": Array [
-    Object {
+exports[`Build code from type > Snapshot: useResizeObserver 1`] = `
+{
+  "parameters": [
+    {
       "name": "elementRef",
       "type": "ElementReference",
     },
-    Object {
+    {
       "name": "onObserve",
       "type": "(entry: ContainerQueryEntry) => void",
     },
@@ -32,9 +32,9 @@ Object {
 }
 `;
 
-exports[`Build code from type Snapshot: useStableEventHandler 1`] = `
-Object {
-  "parameters": Array [],
+exports[`Build code from type > Snapshot: useStableEventHandler 1`] = `
+{
+  "parameters": [],
   "returnType": "",
 }
 `;

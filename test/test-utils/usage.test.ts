@@ -1,8 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+import { describe, expect, test } from 'vitest';
 import { buildTestUtilsProject } from '../components/test-helpers';
 
-// TODO: Move typedoc project generation functionality to a common place
 describe('documentTestUtils throws error for ', () => {
   test('failing project generation because of invalid config', () => {
     expect(() => buildTestUtilsProject('errors-config')).toThrow('Errors during parsing configuration');

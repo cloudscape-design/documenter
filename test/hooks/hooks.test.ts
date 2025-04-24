@@ -1,6 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-
+import { describe, expect, test } from 'vitest';
 import { buildCustomProject } from '../components/test-helpers';
 import schema from '../../src/schema';
 import { DeclarationReflection, ReflectionKind } from 'typedoc';

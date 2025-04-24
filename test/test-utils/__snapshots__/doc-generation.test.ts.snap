@@ -1,13 +1,13 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Generate documentation For simple cases 1`] = `
-Array [
-  Object {
+exports[`Generate documentation > For simple cases 1`] = `
+[
+  {
     "defaultValue": undefined,
     "description": "
 
 ",
-    "flags": Object {
+    "flags": {
       "isOptional": false,
     },
     "name": "newString",
@@ -16,12 +16,12 @@ Array [
 ]
 `;
 
-exports[`Generate documentation deal with more complex types 1`] = `
-Array [
-  Object {
+exports[`Generate documentation > deal with more complex types 1`] = `
+[
+  {
     "defaultValue": undefined,
     "description": undefined,
-    "flags": Object {
+    "flags": {
       "isOptional": false,
     },
     "name": "all",
