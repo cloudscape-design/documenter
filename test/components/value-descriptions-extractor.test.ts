@@ -36,6 +36,16 @@ test('extract description comments', () => {
   expect(extractFromSource(source)).toEqual([{ systemTags: ['fooSystem'] }, { systemTags: ['barSystem'] }]);
 });
 
+test('should ignore non-system comments', () => {
+  const source = `export type MyUnion =
+  /** this is a foo property */
+  | 'foo'
+  /** @awsuiSystem barSystem */
+  | 'bar';`;
+
+  expect(extractFromSource(source)).toEqual([undefined, { systemTags: ['barSystem'] }]);
+});
+
 test('extract description comments from a type alias', () => {
   const source = `
   export type MyUnion = InternalUnion;

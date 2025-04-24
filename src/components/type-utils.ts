@@ -86,13 +86,13 @@ export function extractValueDescriptions(type: ts.UnionOrIntersectionType, typeN
       memberIndex++;
     }
   }
-  return rawComments.map((comment): ValueDescription | undefined =>
-    comment
-      ? {
-          systemTags: Array.from(comment.matchAll(/@awsuiSystem\s+(\w+)/g), ([_, system]) => system),
-        }
-      : undefined
-  );
+  return rawComments.map((comment): ValueDescription | undefined => {
+    if (!comment) {
+      return undefined;
+    }
+    const systemTags = Array.from(comment.matchAll(/@awsuiSystem\s+(\w+)/g), ([_, system]) => system);
+    return systemTags.length > 0 ? { systemTags } : undefined;
+  });
 }
 
 export function extractDeclaration(symbol: ts.Symbol) {
