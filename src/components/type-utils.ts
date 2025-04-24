@@ -86,7 +86,9 @@ export function extractValueDescriptions(type: ts.UnionOrIntersectionType, typeN
       memberIndex++;
     }
   }
-  return rawComments.map((comment): ValueDescription | undefined => {
+  // Array.from to fix sparse array
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#array_methods_and_empty_slots
+  return Array.from(rawComments).map((comment): ValueDescription | undefined => {
     if (!comment) {
       return undefined;
     }
