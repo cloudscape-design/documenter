@@ -7,6 +7,16 @@ test('should throw in case of configuration errors', () => {
   expect(() => buildProject('errors-config')).toThrow('Failed to parse tsconfig.json');
 });
 
+test('should throw if tsconfig is not found', () => {
+  expect(() => buildProject('fixture-does-not-exist')).toThrow('Failed to read tsconfig.json');
+});
+
+test('should throw if no components in the output', () => {
+  expect(() => buildProject('simple', { publicFilesGlob: 'does-not-exist' })).toThrow(
+    'No files found matching does-not-exist'
+  );
+});
+
 test('should throw in case of type errors', () => {
   expect(() => buildProject('errors-types')).toThrow('Compilation failed');
 });

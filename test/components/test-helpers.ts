@@ -12,7 +12,7 @@ import { DocumenterOptions } from '../../src/components';
 
 export function buildProject(name: string, options?: Partial<DocumenterOptions>) {
   return documentComponents({
-    tsconfigPath: require.resolve(`../../fixtures/components/${name}/tsconfig.json`),
+    tsconfigPath: pathe.resolve(`fixtures/components/${name}/tsconfig.json`),
     publicFilesGlob: `fixtures/components/${name}/*/index.tsx`,
     ...options,
   });
