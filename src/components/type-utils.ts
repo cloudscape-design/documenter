@@ -86,13 +86,15 @@ export function extractValueDescriptions(type: ts.UnionOrIntersectionType, typeN
       memberIndex++;
     }
   }
-  return rawComments.map((comment): ValueDescription | undefined =>
-    comment
-      ? {
-          systemTags: Array.from(comment.matchAll(/@awsuiSystem\s+(\w+)/g), ([_, system]) => system),
-        }
-      : undefined
-  );
+  // Array.from to fix sparse array
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#array_methods_and_empty_slots
+  return Array.from(rawComments).map((comment): ValueDescription | undefined => {
+    if (!comment) {
+      return undefined;
+    }
+    const systemTags = Array.from(comment.matchAll(/@awsuiSystem\s+(\w+)/g), ([_, system]) => system);
+    return systemTags.length > 0 ? { systemTags } : undefined;
+  });
 }
 
 export function extractDeclaration(symbol: ts.Symbol) {
