@@ -15,6 +15,9 @@
     "*.js",
     "*.d.ts"
   ],
+  "exports": {
+    ".": "./index.js"
+  },
   "scripts": {
     "lint": "eslint --ignore-path .gitignore --ext js,ts,tsx .",
     "prebuild": "rimraf lib",
