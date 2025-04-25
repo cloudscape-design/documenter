@@ -10,7 +10,7 @@ import type {
   ComponentRegion,
   EventHandler,
 } from './interfaces';
-import type { ExpandedProp, ExtractedDescription } from './extractor';
+import { ExtractedDescription, extractFunctions, extractProps, extractTypes } from './extractor';
 import { getObjectDefinition } from './object-definition';
 
 function getCommentTag(description: ExtractedDescription, name: string) {
@@ -37,12 +37,18 @@ function castI18nTag(tag: string | undefined) {
 export function buildComponentDefinition(
   name: string,
   dashCaseName: string,
-  props: Array<ExpandedProp>,
-  functions: Array<ExpandedProp>,
+  propsSymbol: ts.Symbol,
   defaultValues: Record<string, string>,
   componentDescription: ExtractedDescription,
   checker: ts.TypeChecker
 ): ComponentDefinition {
+  const props = extractProps(propsSymbol, checker);
+  const types = extractTypes(propsSymbol, checker);
+  const functions = extractFunctions(
+    name,
+    types.find(typeNode => typeNode.name.text === 'Ref'),
+    checker
+  );
   const regions = props.filter(prop => prop.type === 'React.ReactNode');
   const events = props.filter(prop => prop.name.match(/^on[A-Z]/));
   const onlyProps = props.filter(prop => !events.includes(prop) && !regions.includes(prop));
@@ -115,6 +121,7 @@ export function buildComponentDefinition(
         deprecatedTag: getCommentTag(event.description, 'deprecated'),
       };
     }),
+    types: Object.fromEntries(types.map(type => [type.name.text, {}])),
   };
 }
 

@@ -16,6 +16,7 @@ test('should have correct name, description and release status', () => {
   expect(component.name).toBe('Simple');
   expect(component.description).toEqual('Component-level description');
   expect(component.releaseStatus).toBe('stable');
+  expect(component.types).toEqual({});
 });
 
 test('should have correct properties', () => {

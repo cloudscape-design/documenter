@@ -73,14 +73,12 @@ export function documentComponents(options: DocumenterOptions): Array<ComponentD
     }
     const exportSymbols = checker.getExportsOfModule(moduleSymbol);
     const { propsSymbol, componentSymbol } = extractExports(name, exportSymbols, checker, options?.extraExports ?? {});
-    const props = extractProps(propsSymbol, checker);
-    const functions = extractFunctions(propsSymbol, checker);
     const defaultValues = extractDefaultValues(componentSymbol, checker);
     const componentDescription = getDescription(
       componentSymbol.getDocumentationComment(checker),
       extractDeclaration(componentSymbol)
     );
 
-    return buildComponentDefinition(name, dashCaseName, props, functions, defaultValues, componentDescription, checker);
+    return buildComponentDefinition(name, dashCaseName, propsSymbol, defaultValues, componentDescription, checker);
   });
 }

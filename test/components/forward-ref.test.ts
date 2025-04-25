@@ -14,6 +14,7 @@ beforeAll(() => {
 
 test('should detect component which uses forwardRef', () => {
   expect(component.name).toEqual('Focusable');
+  expect(component.types).toEqual({ Ref: {} });
 });
 
 test('should detect default properties from forwardRef', () => {

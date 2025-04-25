@@ -4,16 +4,16 @@ import { expect, test, beforeAll } from 'vitest';
 import { buildProject } from './test-helpers';
 import { ComponentDefinition } from '../../src';
 
-let main: ComponentDefinition | undefined;
+let main: ComponentDefinition;
 beforeAll(() => {
   const result = buildProject('import-types');
   expect(result.map(component => component.name)).toEqual(['Dependency', 'Main']);
 
-  main = result.find(component => component.name === 'Main');
+  main = result.find(component => component.name === 'Main')!;
 });
 
 test('should resolve object type', () => {
-  expect(main?.properties).toEqual([
+  expect(main.properties).toEqual([
     {
       name: 'variant',
       type: 'string',
@@ -30,7 +30,7 @@ test('should resolve object type', () => {
 });
 
 test('should resolve event detail types', () => {
-  expect(main?.events).toEqual([
+  expect(main.events).toEqual([
     {
       name: 'onChange',
       cancelable: false,
