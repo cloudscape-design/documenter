@@ -1,6 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 import { expect, test } from 'vitest';
+import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 import pathe from 'pathe';
 import { getTemporaryDir } from './test-helpers';
@@ -22,4 +23,5 @@ test('should write documentation files into the outDir', async () => {
   expect(definitions).toEqual({
     simple: expect.objectContaining({ name: 'Simple', dashCaseName: 'simple' }),
   });
+  expect(() => execSync('tsc index.d.ts', { cwd: outDir, stdio: 'inherit' })).not.toThrow();
 });
