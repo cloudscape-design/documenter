@@ -46,7 +46,7 @@ export function writeComponentsDocumentation({ outDir, ...options }: WriteOption
     pathe.join(outDir, 'index.d.ts'),
     `import { ComponentDefinition } from './interfaces';
 declare const definitions: Record<string, ComponentDefinition>;
-export default definitions;
+export = definitions;
 `
   );
 }
