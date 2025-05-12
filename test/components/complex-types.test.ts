@@ -193,3 +193,19 @@ test('should parse string literal type as single-value union', () => {
     },
   ]);
 });
+
+test('should export type declarations', () => {
+  expect(buttonGroup.types).toEqual({ Variant: {}, Item: {} });
+  expect(columnLayout.types).toEqual({ Columns: {}, Widths: {} });
+  expect(sideNavigation.types).toEqual({ FollowDetail: {} });
+  expect(table.types).toEqual({
+    AriaLabels: {},
+    ColumnWidthsChangeDetail: {},
+    ComplexAlias: {},
+    FilteringFunction: {},
+    Item: {},
+    SelectionState: {},
+    TableColumn: {},
+    TrackBy: {},
+  });
+});

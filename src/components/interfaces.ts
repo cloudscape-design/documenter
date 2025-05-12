@@ -14,6 +14,7 @@ export interface ComponentDefinition {
   regions: ComponentRegion[];
   functions: ComponentFunction[];
   events: EventHandler[];
+  types: Record<string, Record<string, never>>;
 }
 
 interface Taggable {

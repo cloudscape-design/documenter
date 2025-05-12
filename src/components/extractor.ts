@@ -98,21 +98,26 @@ export function extractProps(propsSymbol: ts.Symbol, checker: ts.TypeChecker) {
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 
-export function extractFunctions(propsSymbol: ts.Symbol, checker: ts.TypeChecker) {
-  const propsName = propsSymbol.getName();
+export function extractTypes(propsSymbol: ts.Symbol, checker: ts.TypeChecker) {
   const namespaceDeclaration = [
     // if we got the namespace directly
     ...(propsSymbol.getDeclarations() ?? []),
     // find namespace declaration from the interface with the same name
     ...(checker.getDeclaredTypeOfSymbol(propsSymbol).getSymbol()?.getDeclarations() ?? []),
   ].find(decl => decl.kind === ts.SyntaxKind.ModuleDeclaration);
-  const refType = unwrapNamespaceDeclaration(namespaceDeclaration)
-    .map(child => checker.getTypeAtLocation(child))
-    .find(type => (type.getSymbol() ?? type.aliasSymbol)?.getName() === 'Ref');
+  return unwrapNamespaceDeclaration(namespaceDeclaration).map(node => {
+    if (!ts.isTypeAliasDeclaration(node) && !ts.isInterfaceDeclaration(node)) {
+      throw new Error(`Unexpected node type ${ts.SyntaxKind[node.kind]}`);
+    }
+    return node;
+  });
+}
 
-  if (!refType) {
+export function extractFunctions(componentName: string, typeNode: ts.Node | undefined, checker: ts.TypeChecker) {
+  if (!typeNode) {
     return [];
   }
+  const refType = checker.getTypeAtLocation(typeNode);
   return refType
     .getProperties()
     .map((value): ExpandedProp => {
@@ -121,7 +126,10 @@ export function extractFunctions(propsSymbol: ts.Symbol, checker: ts.TypeChecker
       const realType = type.getNonNullableType();
       if (realType.getCallSignatures().length === 0) {
         throw new Error(
-          `${propsName}.Ref should contain only methods, "${value.name}" has a "${stringifyType(type, checker)}" type`
+          `${componentName}Props.Ref should contain only methods, "${value.name}" has a "${stringifyType(
+            type,
+            checker
+          )}" type`
         );
       }
       return {
