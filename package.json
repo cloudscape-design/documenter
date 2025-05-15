@@ -22,7 +22,7 @@
     "lint": "eslint --ignore-path .gitignore --ext js,ts,tsx .",
     "prebuild": "rimraf lib",
     "build": "tsc -p tsconfig.json && tsc -p tsconfig.test.json",
-    "postbuild": "cp package.json README.md LICENSE lib",
+    "postbuild": "cp package.json README.md NOTICE LICENSE lib",
     "test": "vitest run",
     "prepare": "husky"
   },
