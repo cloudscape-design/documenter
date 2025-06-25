@@ -4,6 +4,7 @@ import { expect, test, beforeAll } from 'vitest';
 import { ComponentDefinition } from '../../src/components/interfaces';
 import { buildProject } from './test-helpers';
 
+let button: ComponentDefinition;
 let buttonGroup: ComponentDefinition;
 let sideNavigation: ComponentDefinition;
 let columnLayout: ComponentDefinition;
@@ -11,9 +12,9 @@ let table: ComponentDefinition;
 
 beforeAll(() => {
   const result = buildProject('complex-types');
-  expect(result).toHaveLength(4);
+  expect(result).toHaveLength(5);
 
-  [buttonGroup, columnLayout, sideNavigation, table] = result;
+  [button, buttonGroup, columnLayout, sideNavigation, table] = result;
 });
 
 test('should have camel and dash-cased names', () => {
@@ -189,6 +190,16 @@ test('should parse string literal type as single-value union', () => {
       name: 'variant',
       description: 'This is variant',
       type: '"icon"',
+      optional: false,
+    },
+  ]);
+});
+
+test('should trim long inline types', () => {
+  expect(button.properties).toEqual([
+    {
+      name: 'style',
+      type: 'ButtonProps.Style',
       optional: false,
     },
   ]);

@@ -35,24 +35,27 @@ export function getObjectDefinition(
     return getUnionTypeDefinition(realTypeName, realType, rawTypeNode, checker);
   }
   if (realType.getProperties().length > 0) {
-    return {
-      type: type,
-      inlineType: {
-        name: realTypeName,
-        type: 'object',
-        properties: realType
-          .getProperties()
-          .map(prop => {
-            const propType = checker.getTypeAtLocation(extractDeclaration(prop));
-            return {
-              name: prop.getName(),
-              type: stringifyType(propType, checker),
-              optional: isOptional(propType),
-            };
-          })
-          .sort((a, b) => a.name.localeCompare(b.name)),
-      },
-    };
+    const properties = realType
+      .getProperties()
+      .map(prop => {
+        const propType = checker.getTypeAtLocation(extractDeclaration(prop));
+        return {
+          name: prop.getName(),
+          type: stringifyType(propType, checker),
+          optional: isOptional(propType),
+        };
+      })
+      .sort((a, b) => a.name.localeCompare(b.name));
+    if (properties.every(prop => prop.type.length < 200)) {
+      return {
+        type: type,
+        inlineType: {
+          name: realTypeName,
+          type: 'object',
+          properties: properties,
+        },
+      };
+    }
   }
   if (realType.getCallSignatures().length > 0) {
     if (realType.getCallSignatures().length > 1) {
