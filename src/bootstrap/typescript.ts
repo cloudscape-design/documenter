@@ -22,6 +22,7 @@ function loadTSConfig(tsconfigPath: string): ts.ParsedCommandLine {
   }
   const config = ts.parseJsonConfigFileContent(configFile.config, ts.sys, pathe.dirname(tsconfigPath));
   if (config.errors.length > 0) {
+    console.error(...config.errors);
     throw new Error('Failed to parse tsconfig.json');
   }
   // this prints a warning that incremental mode is not supported in programmatic API
