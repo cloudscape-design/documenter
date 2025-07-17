@@ -6,9 +6,7 @@ import pathe from 'pathe';
 import ts from 'typescript';
 import { ProjectReflection } from 'typedoc';
 import { documentComponents } from '../../src/components';
-import { documentTestUtils } from '../../src/test-utils';
 import { bootstrapProject } from '../../src/bootstrap';
-import { TestUtilsDoc } from '../../src/test-utils/interfaces';
 import { DocumenterOptions } from '../../src/components';
 
 export function buildProject(name: string, options?: Partial<DocumenterOptions>) {
@@ -21,15 +19,6 @@ export function buildProject(name: string, options?: Partial<DocumenterOptions>)
 
 export function getTemporaryDir() {
   return fs.mkdtempSync(pathe.join(os.tmpdir(), 'documenter-'));
-}
-
-export function buildTestUtilsProject(name: string, testGlob?: string): TestUtilsDoc[] {
-  return documentTestUtils(
-    {
-      tsconfig: require.resolve(`../../fixtures/test-utils/${name}/tsconfig.json`),
-    },
-    testGlob || `fixtures/test-utils/${name}/**/*`
-  );
 }
 
 export function buildCustomProject(tsConfig: string, testGlob: string): ProjectReflection {

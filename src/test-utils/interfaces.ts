@@ -1,6 +1,5 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-
 export interface Parameter {
   name: string;
   typeName?: string;
@@ -19,8 +18,8 @@ export interface TestUtilMethod {
   description?: string;
   returnType?: {
     name: string;
-    type: string;
-    typeArguments: Array<TypeArgument>;
+    type?: string;
+    typeArguments?: Array<TypeArgument>;
   };
   parameters: Array<Parameter>;
   inheritedFrom?: {
