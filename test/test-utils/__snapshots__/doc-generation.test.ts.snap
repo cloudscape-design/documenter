@@ -4,9 +4,7 @@ exports[`Generate documentation > For simple cases 1`] = `
 [
   {
     "defaultValue": undefined,
-    "description": "
-
-",
+    "description": undefined,
     "flags": {
       "isOptional": false,
     },
@@ -25,7 +23,7 @@ exports[`Generate documentation > deal with more complex types 1`] = `
       "isOptional": false,
     },
     "name": "all",
-    "typeName": "Array",
+    "typeName": "Array<HTMLElement>",
   },
 ]
 `;

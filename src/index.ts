@@ -3,3 +3,4 @@
 export * from './components/interfaces';
 export { writeComponentsDocumentation } from './components';
 export { documentTestUtils } from './test-utils';
+export { writeTestUtilsDocumentation } from './test-utils-new';
