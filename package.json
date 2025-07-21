@@ -12,6 +12,7 @@
     "components",
     "schema",
     "test-utils",
+    "test-utils-new",
     "*.js",
     "*.d.ts"
   ],
