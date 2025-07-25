@@ -204,6 +204,33 @@ test('should parse string literal type as single-value union', () => {
       optional: false,
     },
     {
+      name: 'mainAction',
+      description: 'Main action for the group',
+      type: '{ alwaysFalse: false; alwaysOne: 1; alwaysSomething: "something"; }',
+      optional: true,
+      inlineType: {
+        name: '{ alwaysFalse: false; alwaysOne: 1; alwaysSomething: "something"; }',
+        type: 'object',
+        properties: [
+          {
+            name: 'alwaysFalse',
+            optional: false,
+            type: 'false',
+          },
+          {
+            name: 'alwaysOne',
+            optional: false,
+            type: '1',
+          },
+          {
+            name: 'alwaysSomething',
+            optional: false,
+            type: '"something"',
+          },
+        ],
+      },
+    },
+    {
       name: 'variant',
       description: 'This is variant',
       type: '"icon"',

@@ -22,7 +22,7 @@ export function getObjectDefinition(
   const realTypeName = stringifyType(realType, checker);
   if (
     realType.flags & ts.TypeFlags.String ||
-    realType.flags & ts.TypeFlags.StringLiteral ||
+    realType.flags & ts.TypeFlags.Literal ||
     realType.flags & ts.TypeFlags.Boolean ||
     realType.flags & ts.TypeFlags.Number ||
     isArrayType(realType) ||

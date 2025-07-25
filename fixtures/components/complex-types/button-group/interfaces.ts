@@ -3,6 +3,15 @@
 
 export interface ButtonGroupProps {
   /**
+   * Main action for the group
+   */
+  mainAction?: {
+    alwaysFalse: false;
+    alwaysOne: 1;
+    alwaysSomething: 'something';
+  };
+
+  /**
    * This is variant
    */
   variant: ButtonGroupProps.Variant;
