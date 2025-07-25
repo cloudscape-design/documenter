@@ -13,7 +13,25 @@ beforeAll(() => {
 });
 
 test('should have correct region definitions', () => {
-  expect(component.properties).toEqual([]);
+  expect(component.properties).toEqual([
+    {
+      name: 'media',
+      description: 'Media content',
+      optional: true,
+      type: '{ content: React.ReactNode; }',
+      inlineType: {
+        name: '{ content: React.ReactNode; }',
+        properties: [
+          {
+            name: 'content',
+            optional: true,
+            type: 'React.ReactNode',
+          },
+        ],
+        type: 'object',
+      },
+    },
+  ]);
   expect(component.regions).toEqual([
     {
       name: 'children',

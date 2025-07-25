@@ -13,12 +13,20 @@ export interface ContainerProps {
    * @displayname content
    */
   children?: React.ReactNode;
+
+  /**
+   * Media content
+   */
+  media?: {
+    content: React.ReactNode;
+  };
 }
 
-export default function Container({ header, children }: ContainerProps) {
+export default function Container({ header, children, media }: ContainerProps) {
   return (
     <div>
       <header>{header}</header>
+      {media?.content}
       {children}
     </div>
   );
