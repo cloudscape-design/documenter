@@ -38,24 +38,25 @@ export function getObjectDefinition(
     const properties = realType
       .getProperties()
       .map(prop => {
-        const propType = checker.getTypeAtLocation(extractDeclaration(prop));
+        const propNode = extractDeclaration(prop) as ts.PropertyDeclaration;
+        const propType = checker.getTypeAtLocation(propNode);
+        const typeString = stringifyType(propType, checker);
+
         return {
           name: prop.getName(),
-          type: stringifyType(propType, checker),
           optional: isOptional(propType),
+          ...getObjectDefinition(typeString, propType, propNode.type, checker),
         };
       })
       .sort((a, b) => a.name.localeCompare(b.name));
-    if (properties.every(prop => prop.type.length < 200)) {
-      return {
-        type: type,
-        inlineType: {
-          name: realTypeName,
-          type: 'object',
-          properties: properties,
-        },
-      };
-    }
+    return {
+      type: type,
+      inlineType: {
+        name: realTypeName.length < 100 ? realTypeName : 'object',
+        type: 'object',
+        properties: properties,
+      },
+    };
   }
   if (realType.getCallSignatures().length > 0) {
     if (realType.getCallSignatures().length > 1) {

@@ -60,6 +60,17 @@ test('should have correct property types', () => {
             name: 'allItemsSelectionLabel',
             optional: true,
             type: '((data: TableProps.SelectionState<T>) => string)',
+            inlineType: {
+              name: '(data: TableProps.SelectionState<T>) => string',
+              parameters: [
+                {
+                  name: 'data',
+                  type: 'TableProps.SelectionState<T>',
+                },
+              ],
+              returnType: 'string',
+              type: 'function',
+            },
           },
         ],
       },
@@ -149,7 +160,13 @@ test('should properly display string union types', () => {
       {
         name: 'type',
         optional: true,
-        type: '"link" | "link-group" | "expandable-link-group"',
+        type: 'string',
+        inlineType: {
+          name: '"link" | "link-group" | "expandable-link-group"',
+          type: 'union',
+          valueDescriptions: undefined,
+          values: ['link', 'link-group', 'expandable-link-group'],
+        },
       },
     ],
   });
@@ -195,12 +212,6 @@ test('should parse string literal type as single-value union', () => {
   ]);
 });
 
-test('should trim long inline types', () => {
-  expect(button.properties).toEqual([
-    {
-      name: 'style',
-      type: 'ButtonProps.Style',
-      optional: false,
-    },
-  ]);
+test('should print long inline types', () => {
+  expect(button.properties).toMatchSnapshot();
 });
