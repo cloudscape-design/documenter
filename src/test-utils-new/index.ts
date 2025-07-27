@@ -6,10 +6,15 @@ import { bootstrapTypescriptProject } from '../bootstrap/typescript';
 import extractDocumentation from './extractor';
 import { TestUtilsDoc } from '../test-utils/interfaces';
 
+export interface TestUtilsVariantOptions {
+  root: string;
+  extraExports?: Array<string>;
+}
+
 export interface TestUtilsDocumenterOptions {
   tsconfigPath: string;
-  domUtilsRoot: string;
-  selectorsUtilsRoot: string;
+  domUtils: TestUtilsVariantOptions;
+  selectorsUtils: TestUtilsVariantOptions;
 }
 
 interface TestUtilsDefinitions {
@@ -18,8 +23,8 @@ interface TestUtilsDefinitions {
 }
 
 export function documentTestUtilsNew(options: TestUtilsDocumenterOptions): TestUtilsDefinitions {
-  const domUtilsRoot = pathe.resolve(options.domUtilsRoot);
-  const selectorsUtilsRoot = pathe.resolve(options.selectorsUtilsRoot);
+  const domUtilsRoot = pathe.resolve(options.domUtils.root);
+  const selectorsUtilsRoot = pathe.resolve(options.selectorsUtils.root);
   const program = bootstrapTypescriptProject(options.tsconfigPath);
   const checker = program.getTypeChecker();
 
@@ -33,8 +38,8 @@ export function documentTestUtilsNew(options: TestUtilsDocumenterOptions): TestU
     throw new Error(`File '${selectorsUtilsFile}' not found`);
   }
   return {
-    domDefinitions: extractDocumentation(domUtilsFile, checker),
-    selectorsDefinitions: extractDocumentation(selectorsUtilsFile, checker),
+    domDefinitions: extractDocumentation(domUtilsFile, checker, options.domUtils.extraExports ?? []),
+    selectorsDefinitions: extractDocumentation(selectorsUtilsFile, checker, options.selectorsUtils.extraExports ?? []),
   };
 }
 
