@@ -63,6 +63,7 @@ export interface ObjectDefinitionProperty {
   name: string;
   optional: boolean;
   type: string;
+  inlineType?: TypeDefinition;
 }
 
 export interface FunctionDefinition {

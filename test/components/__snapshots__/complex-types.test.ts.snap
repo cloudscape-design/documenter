@@ -1,0 +1,128 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should print long inline types 1`] = `
+[
+  {
+    "analyticsTag": undefined,
+    "defaultValue": undefined,
+    "deprecatedTag": undefined,
+    "description": undefined,
+    "i18nTag": undefined,
+    "inlineType": {
+      "name": "ButtonProps.Style",
+      "properties": [
+        {
+          "inlineType": {
+            "name": "object",
+            "properties": [
+              {
+                "inlineType": {
+                  "name": "object",
+                  "properties": [
+                    {
+                      "name": "active",
+                      "optional": true,
+                      "type": "string",
+                    },
+                    {
+                      "name": "default",
+                      "optional": true,
+                      "type": "string",
+                    },
+                    {
+                      "name": "disabled",
+                      "optional": true,
+                      "type": "string",
+                    },
+                    {
+                      "name": "hover",
+                      "optional": true,
+                      "type": "string",
+                    },
+                  ],
+                  "type": "object",
+                },
+                "name": "background",
+                "optional": true,
+                "type": "{ active?: string | undefined; default?: string | undefined; disabled?: string | undefined; hover?: string | undefined; }",
+              },
+              {
+                "inlineType": {
+                  "name": "object",
+                  "properties": [
+                    {
+                      "name": "active",
+                      "optional": true,
+                      "type": "string",
+                    },
+                    {
+                      "name": "default",
+                      "optional": true,
+                      "type": "string",
+                    },
+                    {
+                      "name": "disabled",
+                      "optional": true,
+                      "type": "string",
+                    },
+                    {
+                      "name": "hover",
+                      "optional": true,
+                      "type": "string",
+                    },
+                  ],
+                  "type": "object",
+                },
+                "name": "borderColor",
+                "optional": true,
+                "type": "{ active?: string | undefined; default?: string | undefined; disabled?: string | undefined; hover?: string | undefined; }",
+              },
+              {
+                "inlineType": {
+                  "name": "object",
+                  "properties": [
+                    {
+                      "name": "active",
+                      "optional": true,
+                      "type": "string",
+                    },
+                    {
+                      "name": "default",
+                      "optional": true,
+                      "type": "string",
+                    },
+                    {
+                      "name": "disabled",
+                      "optional": true,
+                      "type": "string",
+                    },
+                    {
+                      "name": "hover",
+                      "optional": true,
+                      "type": "string",
+                    },
+                  ],
+                  "type": "object",
+                },
+                "name": "color",
+                "optional": true,
+                "type": "{ active?: string | undefined; default?: string | undefined; disabled?: string | undefined; hover?: string | undefined; }",
+              },
+            ],
+            "type": "object",
+          },
+          "name": "root",
+          "optional": true,
+          "type": "{ background?: { active?: string | undefined; default?: string | undefined; disabled?: string | undefined; hover?: string | undefined; } | undefined; color?: { active?: string | undefined; default?: string | undefined; disabled?: string | undefined; hover?: string | undefined; } | undefined; borderColor?: { ...; } |...",
+        },
+      ],
+      "type": "object",
+    },
+    "name": "style",
+    "optional": false,
+    "systemTags": undefined,
+    "type": "ButtonProps.Style",
+    "visualRefreshTag": undefined,
+  },
+]
+`;
