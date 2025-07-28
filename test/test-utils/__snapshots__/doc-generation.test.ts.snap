@@ -17,13 +17,70 @@ exports[`Generate documentation > For simple cases 1`] = `
 exports[`Generate documentation > deal with more complex types 1`] = `
 [
   {
-    "defaultValue": undefined,
-    "description": undefined,
-    "flags": {
-      "isOptional": false,
+    "description": "Generic return value",
+    "inheritedFrom": undefined,
+    "name": "findAll",
+    "parameters": [],
+    "returnType": {
+      "name": "Array<HTMLElement>",
     },
-    "name": "all",
-    "typeName": "Array<HTMLElement>",
+  },
+  {
+    "description": "Method overload example",
+    "inheritedFrom": undefined,
+    "name": "keydown",
+    "parameters": [
+      {
+        "defaultValue": undefined,
+        "description": undefined,
+        "flags": {
+          "isOptional": false,
+        },
+        "name": "keyCode",
+        "typeName": "number",
+      },
+    ],
+    "returnType": {
+      "name": "void",
+    },
+  },
+  {
+    "description": "Method overload example",
+    "inheritedFrom": undefined,
+    "name": "keydown",
+    "parameters": [
+      {
+        "defaultValue": undefined,
+        "description": undefined,
+        "flags": {
+          "isOptional": false,
+        },
+        "name": "keyboardEventProps",
+        "typeName": "KeyboardEventInit",
+      },
+    ],
+    "returnType": {
+      "name": "void",
+    },
+  },
+  {
+    "description": "Generic arguments",
+    "inheritedFrom": undefined,
+    "name": "setAll",
+    "parameters": [
+      {
+        "defaultValue": undefined,
+        "description": undefined,
+        "flags": {
+          "isOptional": false,
+        },
+        "name": "all",
+        "typeName": "Array<HTMLElement>",
+      },
+    ],
+    "returnType": {
+      "name": "void",
+    },
   },
 ]
 `;

@@ -49,7 +49,7 @@ describe('Generate documentation', () => {
   });
 
   test('deal with more complex types', () => {
-    const results = buildTestUtilsProject('advanced-types');
+    const results = buildTestUtilsProject('advanced-types', { extraExports: ['default'] });
 
     expect(results.length).toBe(1);
     const classDoc = results[0];
@@ -57,21 +57,8 @@ describe('Generate documentation', () => {
     expect(classDoc.name).toBe('TestUtilWrapper');
 
     const methods = classDoc.methods;
-    expect(methods.length).toBe(2);
-
-    const findAllMethod = methods.find(method => method.name === 'findAll');
-    expect(findAllMethod).toBeDefined();
-    expect(findAllMethod?.returnType).toEqual({ name: 'Array<HTMLElement>' });
-    expect(findAllMethod?.parameters).toEqual([]);
-    expect(findAllMethod?.description).toBeUndefined();
-    expect(findAllMethod?.inheritedFrom).toBeUndefined();
-
-    const setAllMethod = methods.find(method => method.name === 'setAll');
-    expect(setAllMethod).toBeDefined();
-    expect(setAllMethod?.returnType).toEqual({ name: 'void' });
-    expect(setAllMethod?.parameters).toMatchSnapshot();
-    expect(setAllMethod?.description).toBeUndefined();
-    expect(setAllMethod?.inheritedFrom).toBeUndefined();
+    expect(methods.length).toBe(4);
+    expect(methods).toMatchSnapshot();
   });
 
   test('and deal with inheritance', () => {

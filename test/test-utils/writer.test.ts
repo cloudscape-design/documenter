@@ -14,8 +14,8 @@ test('should write documentation files into the outDir', async () => {
 
   writeTestUtilsDocumentation({
     tsconfigPath: pathe.resolve('fixtures/test-utils/simple/tsconfig.json'),
-    domUtilsRoot: 'fixtures/test-utils/simple/index.ts',
-    selectorsUtilsRoot: 'fixtures/test-utils/simple/index.ts',
+    domUtils: { root: 'fixtures/test-utils/simple/index.ts' },
+    selectorsUtils: { root: 'fixtures/test-utils/simple/index.ts' },
     outDir,
   });
 
