@@ -107,3 +107,10 @@ export function extractDeclaration(symbol: ts.Symbol) {
   }
   return declarations[0];
 }
+
+export function printFlags(flags: number, mapping: Record<number, string>) {
+  return Object.entries(mapping)
+    .filter(([key, value]) => Number(key) & flags)
+    .map(([key, value]) => value)
+    .join(' | ');
+}

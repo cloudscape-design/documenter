@@ -83,6 +83,15 @@ describe('Generate documentation', () => {
     expect(childClassMethod?.inheritedFrom).toBeUndefined();
   });
 
+  test('deal with re-exports', () => {
+    const results = buildTestUtilsProject('exports');
+    expect(results.map(classDoc => classDoc.name)).toEqual(['AlertWrapper', 'ButtonWrapper']);
+    const alertWrapper = results.find(classDoc => classDoc.name === 'AlertWrapper')!;
+    expect(alertWrapper.methods.map(method => method.name)).toEqual(['findContent']);
+    const buttonWrapper = results.find(classDoc => classDoc.name === 'ButtonWrapper')!;
+    expect(buttonWrapper.methods.map(method => method.name)).toEqual(['findText']);
+  });
+
   test('default value rendering', () => {
     const results = buildTestUtilsProject('default-values');
     expect(results.length).toBe(1);

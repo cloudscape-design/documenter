@@ -16,6 +16,12 @@ describe('documentTestUtils throws error for ', () => {
     expect(() => buildTestUtilsProject('errors-empty')).toThrow('Failed to parse tsconfig.json');
   });
 
+  test('throws error on unknown export', () => {
+    expect(() => buildTestUtilsProject('errors-no-wrapper-classes')).toThrow(
+      'Exported symbol is not a class, got speakTruth'
+    );
+  });
+
   test('having no input files because of a non-matching glob', () => {
     expect(() =>
       buildTestUtilsProject('simple', {

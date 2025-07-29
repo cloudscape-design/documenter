@@ -43,11 +43,11 @@ export default function extractDocumentation(
     if (extraExports.includes(className)) {
       continue;
     }
-    if (!(symbol.flags & ts.SymbolFlags.Class)) {
+    const classType = checker.getDeclaredTypeOfSymbol(symbol);
+    if (!classType.isClass()) {
       throw new Error(`Exported symbol is not a class, got ${checker.symbolToString(symbol)}`);
     }
 
-    const classType = checker.getTypeAtLocation(extractDeclaration(symbol));
     const classDefinition: TestUtilsDoc = { name: className, methods: [] };
     for (const property of classType.getProperties()) {
       const declaration = property.valueDeclaration;
