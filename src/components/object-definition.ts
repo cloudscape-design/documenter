@@ -27,6 +27,7 @@ export function getObjectDefinition(
     realType.flags & ts.TypeFlags.Number ||
     isArrayType(realType) ||
     realTypeName === 'HTMLElement' ||
+    realTypeName.split('.')[0] === 'Highcharts' ||
     type === 'React.ReactNode'
   ) {
     // do not expand built-in Javascript methods or primitive values

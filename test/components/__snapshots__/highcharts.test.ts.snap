@@ -1,0 +1,66 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should not expand highcharts types 1`] = `
+[
+  {
+    "dashCaseName": "chart",
+    "description": "Chart description",
+    "events": [
+      {
+        "cancelable": false,
+        "deprecatedTag": undefined,
+        "description": undefined,
+        "detailInlineType": {
+          "name": "{ point: Highcharts.Point; group: Highcharts.Group; }",
+          "properties": [
+            {
+              "name": "group",
+              "optional": false,
+              "type": "Highcharts.Group",
+            },
+            {
+              "name": "point",
+              "optional": false,
+              "type": "Highcharts.Point",
+            },
+          ],
+          "type": "object",
+        },
+        "detailType": "{ point: Highcharts.Point; group: Highcharts.Group; }",
+        "name": "onHighlight",
+        "systemTags": undefined,
+      },
+    ],
+    "functions": [],
+    "name": "Chart",
+    "properties": [
+      {
+        "analyticsTag": undefined,
+        "defaultValue": undefined,
+        "deprecatedTag": undefined,
+        "description": undefined,
+        "i18nTag": undefined,
+        "inlineType": {
+          "name": "(highcharts: Highcharts) => void",
+          "parameters": [
+            {
+              "name": "highcharts",
+              "type": "Highcharts",
+            },
+          ],
+          "returnType": "void",
+          "type": "function",
+        },
+        "name": "callback",
+        "optional": false,
+        "systemTags": undefined,
+        "type": "(highcharts: Highcharts) => void",
+        "visualRefreshTag": undefined,
+      },
+    ],
+    "regions": [],
+    "releaseStatus": "stable",
+    "systemTags": undefined,
+  },
+]
+`;
