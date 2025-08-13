@@ -11,8 +11,13 @@ exports[`should not expand highcharts types 1`] = `
         "deprecatedTag": undefined,
         "description": undefined,
         "detailInlineType": {
-          "name": "{ point: Highcharts.Point; }",
+          "name": "{ point: Highcharts.Point; group: Highcharts.Group; }",
           "properties": [
+            {
+              "name": "group",
+              "optional": false,
+              "type": "Highcharts.Group",
+            },
             {
               "name": "point",
               "optional": false,
@@ -21,14 +26,38 @@ exports[`should not expand highcharts types 1`] = `
           ],
           "type": "object",
         },
-        "detailType": "{ point: Highcharts.Point; }",
+        "detailType": "{ point: Highcharts.Point; group: Highcharts.Group; }",
         "name": "onHighlight",
         "systemTags": undefined,
       },
     ],
     "functions": [],
     "name": "Chart",
-    "properties": [],
+    "properties": [
+      {
+        "analyticsTag": undefined,
+        "defaultValue": undefined,
+        "deprecatedTag": undefined,
+        "description": undefined,
+        "i18nTag": undefined,
+        "inlineType": {
+          "name": "(highcharts: Highcharts) => void",
+          "parameters": [
+            {
+              "name": "highcharts",
+              "type": "Highcharts",
+            },
+          ],
+          "returnType": "void",
+          "type": "function",
+        },
+        "name": "callback",
+        "optional": false,
+        "systemTags": undefined,
+        "type": "(highcharts: Highcharts) => void",
+        "visualRefreshTag": undefined,
+      },
+    ],
     "regions": [],
     "releaseStatus": "stable",
     "systemTags": undefined,

@@ -4,15 +4,20 @@
 import * as React from 'react';
 import { NonCancelableEventHandler } from '../../internal/events';
 
+class Highcharts {}
+
 namespace Highcharts {
   export interface Point {
     x: number;
     y: number;
   }
+
+  export type Group = readonly Point[];
 }
 
 export interface ChartProps {
-  onHighlight?: NonCancelableEventHandler<{ point: Highcharts.Point }>;
+  callback(highcharts: Highcharts): void;
+  onHighlight?: NonCancelableEventHandler<{ point: Highcharts.Point; group: Highcharts.Group }>;
 }
 
 /**
