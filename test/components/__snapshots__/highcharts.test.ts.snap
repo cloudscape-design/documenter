@@ -1,0 +1,37 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should not expand highcharts types 1`] = `
+[
+  {
+    "dashCaseName": "chart",
+    "description": "Chart description",
+    "events": [
+      {
+        "cancelable": false,
+        "deprecatedTag": undefined,
+        "description": undefined,
+        "detailInlineType": {
+          "name": "{ point: Highcharts.Point; }",
+          "properties": [
+            {
+              "name": "point",
+              "optional": false,
+              "type": "Highcharts.Point",
+            },
+          ],
+          "type": "object",
+        },
+        "detailType": "{ point: Highcharts.Point; }",
+        "name": "onHighlight",
+        "systemTags": undefined,
+      },
+    ],
+    "functions": [],
+    "name": "Chart",
+    "properties": [],
+    "regions": [],
+    "releaseStatus": "stable",
+    "systemTags": undefined,
+  },
+]
+`;
