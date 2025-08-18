@@ -19,14 +19,14 @@ describe('Generate documentation', () => {
 
     const noOpMethod = methods.find(method => method.name === 'noOp');
     expect(noOpMethod).toBeDefined();
-    expect(noOpMethod?.returnType).toEqual({ name: 'void' });
+    expect(noOpMethod?.returnType).toEqual({ name: 'void', isNullable: false });
     expect(noOpMethod?.parameters).toEqual([]);
     expect(noOpMethod?.description).toBeUndefined();
     expect(noOpMethod?.inheritedFrom).toBeUndefined();
 
     const findStringMethod = methods.find(method => method.name === 'findString');
     expect(findStringMethod).toBeDefined();
-    expect(findStringMethod?.returnType).toEqual({ name: 'string' });
+    expect(findStringMethod?.returnType).toEqual({ name: 'string', isNullable: false });
     expect(findStringMethod?.parameters).toEqual([]);
     expect(findStringMethod?.description).toBe(
       'Finds a string.\n\nThe function may look trivial but people have been losing their words\nsince centuries.'
@@ -35,14 +35,14 @@ describe('Generate documentation', () => {
 
     const setStringMethod = methods.find(method => method.name === 'setString');
     expect(setStringMethod).toBeDefined();
-    expect(setStringMethod?.returnType).toEqual({ name: 'void' });
+    expect(setStringMethod?.returnType).toEqual({ name: 'void', isNullable: false });
     expect(setStringMethod?.parameters).toMatchSnapshot();
     expect(setStringMethod?.description).toBe('Short Text');
     expect(setStringMethod?.inheritedFrom).toBeUndefined();
 
     const findObjectMethod = methods.find(method => method.name === 'findObject');
     expect(findObjectMethod).toBeDefined();
-    expect(findObjectMethod?.returnType).toEqual({ name: 'TestReturnType' });
+    expect(findObjectMethod?.returnType).toEqual({ name: 'TestReturnType', isNullable: false });
     expect(findObjectMethod?.parameters).toEqual([]);
     expect(findObjectMethod?.description).toBe('Short Text.\n\nLong Text.');
     expect(findObjectMethod?.inheritedFrom).toBeUndefined();
@@ -57,7 +57,7 @@ describe('Generate documentation', () => {
     expect(classDoc.name).toBe('TestUtilWrapper');
 
     const methods = classDoc.methods;
-    expect(methods.length).toBe(4);
+    expect(methods.length).toBe(5);
     expect(methods).toMatchSnapshot();
   });
 
@@ -85,11 +85,13 @@ describe('Generate documentation', () => {
 
   test('deal with re-exports', () => {
     const results = buildTestUtilsProject('exports');
-    expect(results.map(classDoc => classDoc.name)).toEqual(['AlertWrapper', 'ButtonWrapper']);
+    expect(results.map(classDoc => classDoc.name)).toEqual(['AlertWrapper', 'ButtonWrapper', 'CardsWrapper']);
     const alertWrapper = results.find(classDoc => classDoc.name === 'AlertWrapper')!;
     expect(alertWrapper.methods.map(method => method.name)).toEqual(['findContent']);
     const buttonWrapper = results.find(classDoc => classDoc.name === 'ButtonWrapper')!;
     expect(buttonWrapper.methods.map(method => method.name)).toEqual(['findText']);
+    const cardsWrapper = results.find(classDoc => classDoc.name === 'CardsWrapper')!;
+    expect(cardsWrapper.methods.map(method => method.name)).toEqual(['findItems']);
   });
 
   test('default value rendering', () => {
@@ -110,7 +112,7 @@ describe('Generate documentation', () => {
             defaultValue: "'first'",
           },
         ],
-        returnType: { name: 'void' },
+        returnType: { name: 'void', isNullable: false },
       },
       {
         name: 'openDropdown',
@@ -122,7 +124,7 @@ describe('Generate documentation', () => {
             defaultValue: 'false',
           },
         ],
-        returnType: { name: 'void' },
+        returnType: { name: 'void', isNullable: false },
       },
       {
         name: 'selectOption',
@@ -134,7 +136,7 @@ describe('Generate documentation', () => {
             defaultValue: '1',
           },
         ],
-        returnType: { name: 'void' },
+        returnType: { name: 'void', isNullable: false },
       },
     ]);
   });

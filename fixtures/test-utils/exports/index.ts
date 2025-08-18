@@ -2,3 +2,4 @@
 // SPDX-License-Identifier: Apache-2.0
 export { AlertWrapper } from './alert';
 export { ButtonWrapper } from './button';
+export { CardsWrapper } from './cards';

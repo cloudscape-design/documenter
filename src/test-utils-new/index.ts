@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import pathe from 'pathe';
 import { bootstrapTypescriptProject } from '../bootstrap/typescript';
 import extractDocumentation from './extractor';
-import { TestUtilsDoc } from '../test-utils/interfaces';
+import { TestUtilsDoc } from './interfaces';
 
 export interface TestUtilsVariantOptions {
   root: string;

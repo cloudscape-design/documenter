@@ -10,6 +10,13 @@ export function isOptional(type: ts.Type) {
   return !!type.types.find(t => t.flags & ts.TypeFlags.Undefined);
 }
 
+export function isNullable(type: ts.Type) {
+  if (!type.isUnionOrIntersection()) {
+    return false;
+  }
+  return !!type.types.find(t => t.flags & ts.TypeFlags.Null);
+}
+
 export function unwrapNamespaceDeclaration(declaration: ts.Declaration | undefined) {
   if (!declaration) {
     return [];
@@ -113,4 +120,17 @@ export function printFlags(flags: number, mapping: Record<number, string>) {
     .filter(([key, value]) => Number(key) & flags)
     .map(([key, value]) => value)
     .join(' | ');
+}
+
+export function extractTypeArguments(type: ts.Type, checker: ts.TypeChecker) {
+  const typeParameters = checker.getTypeArguments(type as ts.TypeReference);
+
+  if (typeParameters.length <= 0) {
+    return { typeName: stringifyType(type, checker) };
+  }
+  const symbol = type.getSymbol();
+  if (!symbol) {
+    throw new Error(`Unknown generic type without symbol: ${stringifyType(type, checker)}`);
+  }
+  return { typeParameters, typeName: symbol.getName() };
 }

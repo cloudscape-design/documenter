@@ -8,6 +8,10 @@ export class TestUtilWrapper {
     return [];
   }
 
+  findSomething(): TestUtilWrapper | null {
+    return Math.random() > 0.5 ? new TestUtilWrapper() : null;
+  }
+
   /**
    * Generic arguments
    */

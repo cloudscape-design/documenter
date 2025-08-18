@@ -1,8 +1,15 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 import ts from 'typescript';
-import { extractDeclaration, getDescription, isOptional, stringifyType } from '../components/type-utils';
-import { TestUtilsDoc } from '../test-utils/interfaces';
+import {
+  extractDeclaration,
+  extractTypeArguments,
+  getDescription,
+  isNullable,
+  isOptional,
+  stringifyType,
+} from '../components/type-utils';
+import { TestUtilsDoc } from './interfaces';
 
 function getInheritedFrom(declaration: ts.Declaration, currentClassName: string) {
   if (!ts.isMethodDeclaration(declaration) || !ts.isClassDeclaration(declaration.parent) || !declaration.parent.name) {
@@ -63,12 +70,23 @@ export default function extractDocumentation(
         continue;
       }
       const type = checker.getTypeAtLocation(declaration);
+      // report each function signature as a separate method
       for (const signature of type.getCallSignatures()) {
-        // report each function signature as a separate method
+        const returnType = signature.getReturnType();
+        // non-nullable type of `void` is `never`
+        const realReturnType = returnType.flags & ts.TypeFlags.Void ? returnType : returnType.getNonNullableType();
+        const { typeName, typeParameters } = extractTypeArguments(realReturnType, checker);
+
         classDefinition.methods.push({
           name: property.getName(),
           description: getDescription(property.getDocumentationComment(checker), declaration).text,
-          returnType: { name: stringifyType(signature.getReturnType(), checker) },
+          returnType: {
+            name: typeName,
+            isNullable: isNullable(returnType),
+            typeArguments: typeParameters?.map(typeArgument => ({
+              name: stringifyType(typeArgument, checker),
+            })),
+          },
           parameters: signature.parameters.map(parameter => {
             const paramType = checker.getTypeAtLocation(extractDeclaration(parameter));
             return {
