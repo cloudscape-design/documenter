@@ -22,7 +22,24 @@ exports[`Generate documentation > deal with more complex types 1`] = `
     "name": "findAll",
     "parameters": [],
     "returnType": {
-      "name": "Array<HTMLElement>",
+      "isNullable": false,
+      "name": "Array",
+      "typeArguments": [
+        {
+          "name": "HTMLElement",
+        },
+      ],
+    },
+  },
+  {
+    "description": undefined,
+    "inheritedFrom": undefined,
+    "name": "findSomething",
+    "parameters": [],
+    "returnType": {
+      "isNullable": true,
+      "name": "TestUtilWrapper",
+      "typeArguments": undefined,
     },
   },
   {
@@ -41,7 +58,9 @@ exports[`Generate documentation > deal with more complex types 1`] = `
       },
     ],
     "returnType": {
+      "isNullable": false,
       "name": "void",
+      "typeArguments": undefined,
     },
   },
   {
@@ -60,7 +79,9 @@ exports[`Generate documentation > deal with more complex types 1`] = `
       },
     ],
     "returnType": {
+      "isNullable": false,
       "name": "void",
+      "typeArguments": undefined,
     },
   },
   {
@@ -79,7 +100,9 @@ exports[`Generate documentation > deal with more complex types 1`] = `
       },
     ],
     "returnType": {
+      "isNullable": false,
       "name": "void",
+      "typeArguments": undefined,
     },
   },
 ]

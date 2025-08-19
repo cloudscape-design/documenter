@@ -8,11 +8,17 @@ export interface Parameter {
   defaultValue?: string;
 }
 
+interface TypeArgument {
+  name: string;
+}
+
 export interface TestUtilMethod {
   name: string;
   description?: string;
   returnType?: {
     name: string;
+    isNullable: boolean;
+    typeArguments?: Array<TypeArgument>;
   };
   parameters: Array<Parameter>;
   inheritedFrom?: {
