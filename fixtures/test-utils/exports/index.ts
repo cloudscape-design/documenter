@@ -3,3 +3,4 @@
 export { AlertWrapper } from './alert';
 export { ButtonWrapper } from './button';
 export { CardsWrapper } from './cards';
+export { DropdownWrapper } from './dropdown';
