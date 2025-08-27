@@ -85,13 +85,23 @@ describe('Generate documentation', () => {
 
   test('deal with re-exports', () => {
     const results = buildTestUtilsProject('exports');
-    expect(results.map(classDoc => classDoc.name)).toEqual(['AlertWrapper', 'ButtonWrapper', 'CardsWrapper']);
+    expect(results.map(classDoc => classDoc.name)).toEqual([
+      'AlertWrapper',
+      'ButtonWrapper',
+      'CardsWrapper',
+      'CardWrapper',
+      'DropdownWrapper',
+    ]);
     const alertWrapper = results.find(classDoc => classDoc.name === 'AlertWrapper')!;
     expect(alertWrapper.methods.map(method => method.name)).toEqual(['findContent']);
     const buttonWrapper = results.find(classDoc => classDoc.name === 'ButtonWrapper')!;
     expect(buttonWrapper.methods.map(method => method.name)).toEqual(['findText']);
     const cardsWrapper = results.find(classDoc => classDoc.name === 'CardsWrapper')!;
     expect(cardsWrapper.methods.map(method => method.name)).toEqual(['findItems']);
+    const cardItemWrapper = results.find(classDoc => classDoc.name === 'CardWrapper')!;
+    expect(cardItemWrapper.methods.map(method => method.name)).toEqual(['findContent', 'findHeader']);
+    const dropdownWrapper = results.find(classDoc => classDoc.name === 'DropdownWrapper')!;
+    expect(dropdownWrapper.methods.map(method => method.name)).toEqual(['findItemGroup', 'findItems']);
   });
 
   test('default value rendering', () => {
