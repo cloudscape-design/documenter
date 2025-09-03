@@ -2,10 +2,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { ElementWrapper } from './core';
+import OptionWrapper from './internal/option';
 
 export class DropdownWrapper extends ElementWrapper {
-  findItems(): Array<ElementWrapper> {
+  findItems(): Array<OptionWrapper> {
     return [];
+  }
+
+  findHighlightedOption() {
+    return new OptionWrapper();
   }
 
   // test for circular dependency

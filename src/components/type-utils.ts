@@ -132,5 +132,5 @@ export function extractTypeArguments(type: ts.Type, checker: ts.TypeChecker) {
   if (!symbol) {
     throw new Error(`Unknown generic type without symbol: ${stringifyType(type, checker)}`);
   }
-  return { typeParameters, typeName: symbol.getName() };
+  return { typeParameters, typeName: checker.symbolToString(symbol) };
 }
