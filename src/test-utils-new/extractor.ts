@@ -66,7 +66,7 @@ function documentClass(
   if (!classType.isClass()) {
     throw new Error(`Exported symbol is not a class, got ${checker.symbolToString(symbol)}`);
   }
-  const className = symbol.getName();
+  const className = checker.symbolToString(symbol);
   const definition: TestUtilsDoc = { name: className, methods: [] };
   definitions.set(className, definition);
 
@@ -91,7 +91,7 @@ function documentClass(
       const returnType =
         maybeReturnType.flags & ts.TypeFlags.Void ? maybeReturnType : maybeReturnType.getNonNullableType();
       const dependency = findDependencyType(returnType, checker);
-      if (dependency && !definitions.has(dependency.symbol.getName())) {
+      if (dependency && !definitions.has(dependency.typeName)) {
         documentClass(definitions, dependency.symbol, dependency.type, checker);
       }
 
@@ -124,13 +124,16 @@ function documentClass(
   definition.methods.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-function findDependencyType(type: ts.Type, checker: ts.TypeChecker): { type: ts.Type; symbol: ts.Symbol } | undefined {
+function findDependencyType(
+  type: ts.Type,
+  checker: ts.TypeChecker
+): { typeName: string; type: ts.Type; symbol: ts.Symbol } | undefined {
   const symbol = type.getSymbol();
   if (!symbol) {
     return;
   }
 
-  const typeName = symbol.getName();
+  const typeName = checker.symbolToString(symbol);
   if (typeName === 'Array') {
     const itemType = checker.getTypeArguments(type as ts.TypeReference)[0];
     return findDependencyType(itemType, checker);
@@ -144,6 +147,7 @@ function findDependencyType(type: ts.Type, checker: ts.TypeChecker): { type: ts.
   }
 
   return {
+    typeName,
     type,
     symbol,
   };

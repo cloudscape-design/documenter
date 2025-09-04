@@ -91,17 +91,20 @@ describe('Generate documentation', () => {
       'CardsWrapper',
       'CardWrapper',
       'DropdownWrapper',
+      'OptionWrapper',
     ]);
     const alertWrapper = results.find(classDoc => classDoc.name === 'AlertWrapper')!;
-    expect(alertWrapper.methods.map(method => method.name)).toEqual(['findContent']);
+    expect(alertWrapper.methods).toMatchSnapshot('alert wrapper methods');
     const buttonWrapper = results.find(classDoc => classDoc.name === 'ButtonWrapper')!;
-    expect(buttonWrapper.methods.map(method => method.name)).toEqual(['findText']);
+    expect(buttonWrapper.methods).toMatchSnapshot('button wrapper methods');
     const cardsWrapper = results.find(classDoc => classDoc.name === 'CardsWrapper')!;
-    expect(cardsWrapper.methods.map(method => method.name)).toEqual(['findItems']);
+    expect(cardsWrapper.methods).toMatchSnapshot('cards wrapper methods');
     const cardItemWrapper = results.find(classDoc => classDoc.name === 'CardWrapper')!;
-    expect(cardItemWrapper.methods.map(method => method.name)).toEqual(['findContent', 'findHeader']);
+    expect(cardItemWrapper.methods).toMatchSnapshot('card item wrapper methods');
     const dropdownWrapper = results.find(classDoc => classDoc.name === 'DropdownWrapper')!;
-    expect(dropdownWrapper.methods.map(method => method.name)).toEqual(['findItemGroup', 'findItems']);
+    expect(dropdownWrapper.methods).toMatchSnapshot('dropdown wrapper methods');
+    const optionWrapper = results.find(classDoc => classDoc.name === 'OptionWrapper')!;
+    expect(optionWrapper.methods).toMatchSnapshot('option wrapper methods');
   });
 
   test('default value rendering', () => {
