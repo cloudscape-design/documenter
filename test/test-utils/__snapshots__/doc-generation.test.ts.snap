@@ -108,139 +108,180 @@ exports[`Generate documentation > deal with more complex types 1`] = `
 ]
 `;
 
-exports[`Generate documentation > deal with re-exports > alert wrapper methods 1`] = `
+exports[`Generate documentation > deal with re-exports 1`] = `
 [
   {
-    "description": undefined,
-    "inheritedFrom": undefined,
-    "name": "findContent",
-    "parameters": [],
-    "returnType": {
-      "isNullable": false,
-      "name": "ElementWrapper",
-      "typeArguments": undefined,
-    },
-  },
-]
-`;
-
-exports[`Generate documentation > deal with re-exports > button wrapper methods 1`] = `
-[
-  {
-    "description": undefined,
-    "inheritedFrom": undefined,
-    "name": "findText",
-    "parameters": [],
-    "returnType": {
-      "isNullable": false,
-      "name": "ElementWrapper",
-      "typeArguments": undefined,
-    },
-  },
-]
-`;
-
-exports[`Generate documentation > deal with re-exports > card item wrapper methods 1`] = `
-[
-  {
-    "description": undefined,
-    "inheritedFrom": undefined,
-    "name": "findContent",
-    "parameters": [],
-    "returnType": {
-      "isNullable": false,
-      "name": "ElementWrapper",
-      "typeArguments": undefined,
-    },
-  },
-  {
-    "description": undefined,
-    "inheritedFrom": undefined,
-    "name": "findHeader",
-    "parameters": [],
-    "returnType": {
-      "isNullable": false,
-      "name": "ElementWrapper",
-      "typeArguments": undefined,
-    },
-  },
-]
-`;
-
-exports[`Generate documentation > deal with re-exports > cards wrapper methods 1`] = `
-[
-  {
-    "description": undefined,
-    "inheritedFrom": undefined,
-    "name": "findItems",
-    "parameters": [],
-    "returnType": {
-      "isNullable": false,
-      "name": "Array",
-      "typeArguments": [
-        {
-          "name": "CardWrapper",
+    "methods": [
+      {
+        "description": undefined,
+        "inheritedFrom": undefined,
+        "name": "findContent",
+        "parameters": [],
+        "returnType": {
+          "isNullable": false,
+          "name": "ElementWrapper",
+          "typeArguments": undefined,
         },
-      ],
-    },
-  },
-]
-`;
-
-exports[`Generate documentation > deal with re-exports > dropdown wrapper methods 1`] = `
-[
-  {
-    "description": undefined,
-    "inheritedFrom": undefined,
-    "name": "findHighlightedOption",
-    "parameters": [],
-    "returnType": {
-      "isNullable": false,
-      "name": "OptionWrapper",
-      "typeArguments": undefined,
-    },
+      },
+    ],
+    "name": "AlertWrapper",
   },
   {
-    "description": undefined,
-    "inheritedFrom": undefined,
-    "name": "findItemGroup",
-    "parameters": [],
-    "returnType": {
-      "isNullable": false,
-      "name": "DropdownWrapper",
-      "typeArguments": undefined,
-    },
+    "methods": [
+      {
+        "description": undefined,
+        "inheritedFrom": undefined,
+        "name": "findText",
+        "parameters": [],
+        "returnType": {
+          "isNullable": false,
+          "name": "ElementWrapper",
+          "typeArguments": undefined,
+        },
+      },
+    ],
+    "name": "ButtonWrapper",
   },
   {
-    "description": undefined,
-    "inheritedFrom": undefined,
-    "name": "findItems",
-    "parameters": [],
-    "returnType": {
-      "isNullable": false,
-      "name": "Array",
-      "typeArguments": [
-        {
+    "methods": [
+      {
+        "description": undefined,
+        "inheritedFrom": undefined,
+        "name": "findItems",
+        "parameters": [],
+        "returnType": {
+          "isNullable": false,
+          "name": "Array",
+          "typeArguments": [
+            {
+              "name": "CardWrapper",
+            },
+          ],
+        },
+      },
+    ],
+    "name": "CardsWrapper",
+  },
+  {
+    "methods": [
+      {
+        "description": undefined,
+        "inheritedFrom": undefined,
+        "name": "findContent",
+        "parameters": [],
+        "returnType": {
+          "isNullable": false,
+          "name": "ElementWrapper",
+          "typeArguments": undefined,
+        },
+      },
+      {
+        "description": undefined,
+        "inheritedFrom": undefined,
+        "name": "findHeader",
+        "parameters": [],
+        "returnType": {
+          "isNullable": false,
+          "name": "ElementWrapper",
+          "typeArguments": undefined,
+        },
+      },
+    ],
+    "name": "CardWrapper",
+  },
+  {
+    "methods": [
+      {
+        "description": undefined,
+        "inheritedFrom": undefined,
+        "name": "findHighlightedOption",
+        "parameters": [],
+        "returnType": {
+          "isNullable": false,
           "name": "OptionWrapper",
+          "typeArguments": undefined,
         },
-      ],
-    },
+      },
+      {
+        "description": undefined,
+        "inheritedFrom": undefined,
+        "name": "findItemGroup",
+        "parameters": [],
+        "returnType": {
+          "isNullable": false,
+          "name": "DropdownWrapper",
+          "typeArguments": undefined,
+        },
+      },
+      {
+        "description": undefined,
+        "inheritedFrom": undefined,
+        "name": "findItems",
+        "parameters": [],
+        "returnType": {
+          "isNullable": false,
+          "name": "Array",
+          "typeArguments": [
+            {
+              "name": "OptionWrapper",
+            },
+          ],
+        },
+      },
+    ],
+    "name": "DropdownWrapper",
   },
-]
-`;
-
-exports[`Generate documentation > deal with re-exports > option wrapper methods 1`] = `
-[
   {
-    "description": undefined,
-    "inheritedFrom": undefined,
-    "name": "findLabel",
-    "parameters": [],
-    "returnType": {
-      "isNullable": true,
-      "name": "ElementWrapper",
-      "typeArguments": undefined,
-    },
+    "methods": [
+      {
+        "description": undefined,
+        "inheritedFrom": undefined,
+        "name": "findLabel",
+        "parameters": [],
+        "returnType": {
+          "isNullable": true,
+          "name": "ElementWrapper",
+          "typeArguments": undefined,
+        },
+      },
+    ],
+    "name": "OptionWrapper",
+  },
+  {
+    "methods": [
+      {
+        "description": undefined,
+        "inheritedFrom": undefined,
+        "name": "findItems",
+        "parameters": [],
+        "returnType": {
+          "isNullable": false,
+          "name": "MultiElementWrapper",
+          "typeArguments": [
+            {
+              "name": "RadioButtonWrapper",
+            },
+          ],
+        },
+      },
+    ],
+    "name": "RadioGroupWrapper",
+  },
+  {
+    "methods": [
+      {
+        "description": undefined,
+        "inheritedFrom": undefined,
+        "name": "findLabel",
+        "parameters": [],
+        "returnType": {
+          "isNullable": false,
+          "name": "ElementWrapper",
+          "typeArguments": undefined,
+        },
+      },
+    ],
+    "name": "RadioButtonWrapper",
   },
 ]
 `;

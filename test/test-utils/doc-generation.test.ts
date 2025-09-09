@@ -92,19 +92,10 @@ describe('Generate documentation', () => {
       'CardWrapper',
       'DropdownWrapper',
       'OptionWrapper',
+      'RadioGroupWrapper',
+      'RadioButtonWrapper',
     ]);
-    const alertWrapper = results.find(classDoc => classDoc.name === 'AlertWrapper')!;
-    expect(alertWrapper.methods).toMatchSnapshot('alert wrapper methods');
-    const buttonWrapper = results.find(classDoc => classDoc.name === 'ButtonWrapper')!;
-    expect(buttonWrapper.methods).toMatchSnapshot('button wrapper methods');
-    const cardsWrapper = results.find(classDoc => classDoc.name === 'CardsWrapper')!;
-    expect(cardsWrapper.methods).toMatchSnapshot('cards wrapper methods');
-    const cardItemWrapper = results.find(classDoc => classDoc.name === 'CardWrapper')!;
-    expect(cardItemWrapper.methods).toMatchSnapshot('card item wrapper methods');
-    const dropdownWrapper = results.find(classDoc => classDoc.name === 'DropdownWrapper')!;
-    expect(dropdownWrapper.methods).toMatchSnapshot('dropdown wrapper methods');
-    const optionWrapper = results.find(classDoc => classDoc.name === 'OptionWrapper')!;
-    expect(optionWrapper.methods).toMatchSnapshot('option wrapper methods');
+    expect(results).toMatchSnapshot();
   });
 
   test('default value rendering', () => {

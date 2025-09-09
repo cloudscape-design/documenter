@@ -134,7 +134,7 @@ function findDependencyType(
   }
 
   const typeName = checker.symbolToString(symbol);
-  if (typeName === 'Array') {
+  if (typeName === 'Array' || typeName === 'MultiElementWrapper') {
     const itemType = checker.getTypeArguments(type as ts.TypeReference)[0];
     return findDependencyType(itemType, checker);
   }
