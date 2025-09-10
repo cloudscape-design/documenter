@@ -5,3 +5,4 @@ export { AlertWrapper };
 export { ButtonWrapper } from './button';
 export { CardsWrapper } from './cards';
 export { DropdownWrapper } from './dropdown';
+export { RadioGroupWrapper } from './radio-group';
