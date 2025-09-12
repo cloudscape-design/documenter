@@ -78,7 +78,7 @@ function documentClass(
     const modifiers = (ts.canHaveModifiers(declaration) && ts.getModifiers(declaration)) || [];
     if (
       modifiers.find(
-        modifier => modifier.kind & ts.SyntaxKind.ProtectedKeyword || modifier.kind & ts.SyntaxKind.PrivateKeyword
+        modifier => modifier.kind === ts.SyntaxKind.ProtectedKeyword || modifier.kind === ts.SyntaxKind.PrivateKeyword
       )
     ) {
       continue;

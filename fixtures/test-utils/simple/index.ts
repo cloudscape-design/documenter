@@ -29,7 +29,7 @@ export class TestUtilWrapper {
    *
    * Long Text.
    */
-  findObject(): TestReturnType {
+  public findObject(): TestReturnType {
     return {
       key: 'value',
     };
@@ -39,5 +39,5 @@ export class TestUtilWrapper {
   private privateNoOp(): void {}
 
   // And this function should not be included because it's protected
-  private protectedNoOp(): void {}
+  protected protectedNoOp(): void {}
 }
