@@ -1,3 +1,0 @@
-ignore:
-  # deprecated code
-  - 'src/test-utils/**'
