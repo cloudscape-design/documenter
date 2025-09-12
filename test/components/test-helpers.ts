@@ -4,10 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import pathe from 'pathe';
 import ts from 'typescript';
-import { ProjectReflection } from 'typedoc';
-import { documentComponents } from '../../src/components';
-import { bootstrapProject } from '../../src/bootstrap';
-import { DocumenterOptions } from '../../src/components';
+import { documentComponents, DocumenterOptions } from '../../src/components';
 
 export function buildProject(name: string, options?: Partial<DocumenterOptions>) {
   return documentComponents({
@@ -19,16 +16,6 @@ export function buildProject(name: string, options?: Partial<DocumenterOptions>)
 
 export function getTemporaryDir() {
   return fs.mkdtempSync(pathe.join(os.tmpdir(), 'documenter-'));
-}
-
-export function buildCustomProject(tsConfig: string, testGlob: string): ProjectReflection {
-  const project = bootstrapProject(
-    {
-      tsconfig: require.resolve(tsConfig),
-    },
-    testGlob
-  );
-  return project;
 }
 
 export function getInMemoryProject(source: string) {

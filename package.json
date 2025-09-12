@@ -7,15 +7,6 @@
   },
   "homepage": "https://cloudscape.design",
   "main": "./index.js",
-  "files": [
-    "bootstrap",
-    "components",
-    "schema",
-    "test-utils",
-    "test-utils-new",
-    "*.js",
-    "*.d.ts"
-  ],
   "exports": {
     ".": "./index.js"
   },
@@ -50,11 +41,7 @@
   "dependencies": {
     "change-case": "^4.1.1",
     "micromatch": "^4.0.8",
-    "pathe": "^1.1.2",
-    "typedoc": "~0.19.2"
-  },
-  "overrides": {
-    "typescript": "^4.9.4"
+    "pathe": "^1.1.2"
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [

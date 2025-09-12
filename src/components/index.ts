@@ -8,7 +8,7 @@ import { matcher } from 'micromatch';
 import { buildComponentDefinition } from './component-definition';
 import { extractDefaultValues, extractExports, extractFunctions, extractProps } from './extractor';
 import type { ComponentDefinition } from './interfaces';
-import { bootstrapTypescriptProject } from '../bootstrap/typescript';
+import { bootstrapTypescriptProject } from '../shared/bootstrap';
 import { extractDeclaration, getDescription } from './type-utils';
 
 function componentNameFromPath(componentPath: string) {
