@@ -10,7 +10,6 @@ export interface Parameter {
 
 interface TypeArgument {
   name: string;
-  type: string;
 }
 
 export interface TestUtilMethod {
@@ -18,7 +17,7 @@ export interface TestUtilMethod {
   description?: string;
   returnType?: {
     name: string;
-    type?: string;
+    isNullable: boolean;
     typeArguments?: Array<TypeArgument>;
   };
   parameters: Array<Parameter>;
@@ -30,4 +29,8 @@ export interface TestUtilMethod {
 export interface TestUtilsDoc {
   name: string;
   methods: Array<TestUtilMethod>;
+}
+
+export interface TestUtilsDefinition {
+  classes: Array<TestUtilsDoc>;
 }
