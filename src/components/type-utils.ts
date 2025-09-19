@@ -115,11 +115,11 @@ export function extractDeclaration(symbol: ts.Symbol) {
   return declarations[0];
 }
 
-export function printFlags(flags: number, mapping: Record<number, string>) {
+export function printFlags(flags: number, mapping: Record<string, number | string>) {
   return Object.entries(mapping)
-    .filter(([key, value]) => Number(key) & flags)
-    .map(([key, value]) => value)
-    .join(' | ');
+    .filter(([key, value]) => typeof value === 'number')
+    .filter(([key, value]) => (value as number) & flags)
+    .map(([key, value]) => key);
 }
 
 export function extractTypeArguments(type: ts.Type, checker: ts.TypeChecker) {
