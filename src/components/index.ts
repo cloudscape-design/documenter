@@ -9,7 +9,7 @@ import { buildComponentDefinition } from './component-definition';
 import { extractDefaultValues, extractExports, extractFunctions, extractProps } from './extractor';
 import type { ComponentDefinition } from './interfaces';
 import { bootstrapTypescriptProject } from '../shared/bootstrap';
-import { extractDeclaration, getDescription } from './type-utils';
+import { extractDeclaration, getDescription } from '../shared/type-utils';
 
 function componentNameFromPath(componentPath: string) {
   const dashCaseName = pathe.basename(pathe.dirname(componentPath));

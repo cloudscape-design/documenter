@@ -3,7 +3,7 @@
 
 import ts from 'typescript';
 import { test, expect } from 'vitest';
-import { printFlags } from '../../lib/components/type-utils';
+import { printFlags } from '../../lib/shared/type-utils';
 
 test('serialises node flags', () => {
   const flags = printFlags(

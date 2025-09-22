@@ -2,7 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 import { expect, test } from 'vitest';
 import ts from 'typescript';
-import { extractDeclaration, extractValueDescriptions } from '../../src/components/type-utils';
+import { extractDeclaration } from '../../src/shared/type-utils';
+import { extractValueDescriptions } from '../../src/components/extract-value-descriptions';
 import { getInMemoryProject } from './test-helpers';
 
 function extractFromSource(source: string) {

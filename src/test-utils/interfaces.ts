@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 export interface Parameter {
   name: string;
-  typeName?: string;
+  typeName: string;
   description?: string;
   flags: { isOptional?: boolean };
   defaultValue?: string;
@@ -15,7 +15,7 @@ interface TypeArgument {
 export interface TestUtilMethod {
   name: string;
   description?: string;
-  returnType?: {
+  returnType: {
     name: string;
     isNullable: boolean;
     typeArguments?: Array<TypeArgument>;
