@@ -8,7 +8,7 @@ import {
   isNullable,
   isOptional,
   stringifyType,
-} from '../components/type-utils';
+} from '../shared/type-utils';
 import { TestUtilsDoc } from './interfaces';
 
 function getInheritedFrom(declaration: ts.Declaration, currentClassName: string) {

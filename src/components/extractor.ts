@@ -8,7 +8,7 @@ import {
   isOptional,
   stringifyType,
   unwrapNamespaceDeclaration,
-} from './type-utils';
+} from '../shared/type-utils';
 
 export interface ExtractedDescription {
   text: string | undefined;

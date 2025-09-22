@@ -2,7 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 import ts from 'typescript';
 import type { TypeDefinition, UnionTypeDefinition, ValueDescription } from './interfaces';
-import { extractDeclaration, extractValueDescriptions, isOptional, stringifyType } from './type-utils';
+import { extractDeclaration, isOptional, stringifyType } from '../shared/type-utils';
+import { extractValueDescriptions } from './extract-value-descriptions';
 
 function isArrayType(type: ts.Type) {
   const symbol = type.getSymbol();

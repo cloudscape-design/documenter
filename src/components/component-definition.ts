@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import ts from 'typescript';
 
-import { extractDeclaration, stringifyType } from './type-utils';
+import { extractDeclaration, stringifyType } from '../shared/type-utils';
 import type {
   ComponentDefinition,
   ComponentFunction,
