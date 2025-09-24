@@ -19,7 +19,7 @@ function getInheritedFrom(declaration: ts.Declaration, currentClassName: string)
   if (parentName === currentClassName) {
     return undefined;
   }
-  return { name: parentName + '.' + declaration.name.getText() };
+  return { className: parentName, methodName: declaration.name.getText() };
 }
 
 function getDefaultValue(declaration: ts.Declaration) {
@@ -35,7 +35,8 @@ function getDefaultValue(declaration: ts.Declaration) {
 export default function extractDocumentation(
   sourceFile: ts.SourceFile,
   checker: ts.TypeChecker,
-  extraExports: Array<string>
+  extraExports: Array<string>,
+  includeCoreMethods: boolean
 ): Array<TestUtilsDoc> {
   const moduleSymbol = checker.getSymbolAtLocation(sourceFile);
   if (!moduleSymbol) {
@@ -51,7 +52,7 @@ export default function extractDocumentation(
       continue;
     }
     const classType = checker.getDeclaredTypeOfSymbol(symbol);
-    documentClass(definitions, symbol, classType, checker);
+    documentClass(definitions, symbol, classType, checker, includeCoreMethods);
   }
 
   return Array.from(definitions.values());
@@ -61,7 +62,8 @@ function documentClass(
   definitions: Map<string, TestUtilsDoc>,
   symbol: ts.Symbol,
   classType: ts.Type,
-  checker: ts.TypeChecker
+  checker: ts.TypeChecker,
+  includeCoreMethods: boolean
 ) {
   if (!classType.isClass()) {
     throw new Error(`Exported symbol is not a class, got ${checker.symbolToString(symbol)}`);
@@ -92,10 +94,19 @@ function documentClass(
         maybeReturnType.flags & ts.TypeFlags.Void ? maybeReturnType : maybeReturnType.getNonNullableType();
       const dependency = findDependencyType(returnType, checker);
       if (dependency && !definitions.has(dependency.typeName)) {
-        documentClass(definitions, dependency.symbol, dependency.type, checker);
+        documentClass(definitions, dependency.symbol, dependency.type, checker, includeCoreMethods);
       }
 
       const { typeName, typeParameters } = extractTypeArguments(returnType, checker);
+
+      const inheritedFrom = getInheritedFrom(declaration, className);
+      if (
+        inheritedFrom &&
+        !includeCoreMethods &&
+        ['AbstractWrapper', 'ElementWrapper'].includes(inheritedFrom?.className)
+      ) {
+        continue;
+      }
 
       definition.methods.push({
         name: property.getName(),
@@ -117,7 +128,7 @@ function documentClass(
             defaultValue: getDefaultValue(extractDeclaration(parameter)),
           };
         }),
-        inheritedFrom: getInheritedFrom(declaration, className),
+        inheritedFrom: inheritedFrom ? { name: `${inheritedFrom.className}.${inheritedFrom.methodName}` } : undefined,
       });
     }
   }

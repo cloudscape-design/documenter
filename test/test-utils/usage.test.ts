@@ -24,9 +24,13 @@ describe('documentTestUtils throws error for ', () => {
 
   test('having no input files because of a non-matching glob', () => {
     expect(() =>
-      buildTestUtilsProject('simple', {
-        root: 'fixtures/does-not-exist/index.ts',
-      })
+      buildTestUtilsProject(
+        'simple',
+        {},
+        {
+          root: 'fixtures/does-not-exist/index.ts',
+        }
+      )
     ).toThrow(/File '.*fixtures\/does-not-exist\/index.ts' not found/);
   });
 });

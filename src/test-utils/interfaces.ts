@@ -21,6 +21,7 @@ export interface TestUtilMethod {
     typeArguments?: Array<TypeArgument>;
   };
   parameters: Array<Parameter>;
+  /* @deprecated All inherited methods should be filtered automatically */
   inheritedFrom?: {
     name: string;
   };

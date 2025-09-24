@@ -14,6 +14,27 @@ exports[`Generate documentation > For simple cases 1`] = `
 ]
 `;
 
+exports[`Generate documentation > allows to skip methods from core wrappers 1`] = `
+[
+  {
+    "methods": [
+      {
+        "description": undefined,
+        "inheritedFrom": undefined,
+        "name": "childClassMethod",
+        "parameters": [],
+        "returnType": {
+          "isNullable": false,
+          "name": "void",
+          "typeArguments": undefined,
+        },
+      },
+    ],
+    "name": "TestUtilWrapper",
+  },
+]
+`;
+
 exports[`Generate documentation > deal with more complex types 1`] = `
 [
   {
@@ -282,6 +303,40 @@ exports[`Generate documentation > deal with re-exports 1`] = `
       },
     ],
     "name": "RadioButtonWrapper",
+  },
+]
+`;
+
+exports[`Generate documentation > includes inherited methods from core wrappers 1`] = `
+[
+  {
+    "methods": [
+      {
+        "description": undefined,
+        "inheritedFrom": undefined,
+        "name": "childClassMethod",
+        "parameters": [],
+        "returnType": {
+          "isNullable": false,
+          "name": "void",
+          "typeArguments": undefined,
+        },
+      },
+      {
+        "description": undefined,
+        "inheritedFrom": {
+          "name": "AbstractWrapper.inheritedMethod",
+        },
+        "name": "inheritedMethod",
+        "parameters": [],
+        "returnType": {
+          "isNullable": false,
+          "name": "void",
+          "typeArguments": undefined,
+        },
+      },
+    ],
+    "name": "TestUtilWrapper",
   },
 ]
 `;
