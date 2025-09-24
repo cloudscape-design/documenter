@@ -49,7 +49,7 @@ describe('Generate documentation', () => {
   });
 
   test('deal with more complex types', () => {
-    const results = buildTestUtilsProject('advanced-types', { extraExports: ['default'] });
+    const results = buildTestUtilsProject('advanced-types', undefined, { extraExports: ['default'] });
 
     expect(results.length).toBe(1);
     const classDoc = results[0];
@@ -61,26 +61,16 @@ describe('Generate documentation', () => {
     expect(methods).toMatchSnapshot();
   });
 
-  test('and deal with inheritance', () => {
-    const results = buildTestUtilsProject('inheritance');
+  test('includes inherited methods from core wrappers', () => {
+    const results = buildTestUtilsProject('inheritance', { includeCoreMethods: true });
+    expect(results[0].methods.find(method => method.name === 'inheritedMethod')).toBeTruthy();
+    expect(results).toMatchSnapshot();
+  });
 
-    expect(results.length).toBe(1);
-    const classDoc = results.find(classDoc => classDoc.name === 'TestUtilWrapper');
-
-    expect(classDoc).toBeDefined();
-
-    const methods = classDoc?.methods || [];
-    expect(methods.length).toBe(2);
-
-    const inheritedMethod = methods.find(method => method.name === 'inheritedMethod');
-    expect(inheritedMethod).toBeDefined();
-    expect(inheritedMethod?.inheritedFrom).toEqual({
-      name: 'AbstractWrapper.inheritedMethod',
-    });
-
-    const childClassMethod = methods.find(method => method.name === 'childClassMethod');
-    expect(childClassMethod).toBeDefined();
-    expect(childClassMethod?.inheritedFrom).toBeUndefined();
+  test('allows to skip methods from core wrappers', () => {
+    const results = buildTestUtilsProject('inheritance', { includeCoreMethods: false });
+    expect(results[0].methods.find(method => method.name === 'inheritedMethod')).toBeFalsy();
+    expect(results).toMatchSnapshot();
   });
 
   test('deal with re-exports', () => {

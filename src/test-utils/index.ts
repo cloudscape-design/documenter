@@ -13,6 +13,7 @@ export interface TestUtilsVariantOptions {
 
 export interface TestUtilsDocumenterOptions {
   tsconfigPath: string;
+  includeCoreMethods?: boolean;
   domUtils: TestUtilsVariantOptions;
   selectorsUtils: TestUtilsVariantOptions;
 }
@@ -22,7 +23,7 @@ interface TestUtilsDefinitions {
   selectorsDefinitions: Array<TestUtilsDoc>;
 }
 
-export function documentTestUtilsNew(options: TestUtilsDocumenterOptions): TestUtilsDefinitions {
+export function documentTestUtils(options: TestUtilsDocumenterOptions): TestUtilsDefinitions {
   const domUtilsRoot = pathe.resolve(options.domUtils.root);
   const selectorsUtilsRoot = pathe.resolve(options.selectorsUtils.root);
   const program = bootstrapTypescriptProject(options.tsconfigPath);
@@ -37,9 +38,21 @@ export function documentTestUtilsNew(options: TestUtilsDocumenterOptions): TestU
   if (!selectorsUtilsFile) {
     throw new Error(`File '${selectorsUtilsFile}' not found`);
   }
+  // TODO: switch to false after all consumers updated
+  const includeCoreMethods = options.includeCoreMethods ?? true;
   return {
-    domDefinitions: extractDocumentation(domUtilsFile, checker, options.domUtils.extraExports ?? []),
-    selectorsDefinitions: extractDocumentation(selectorsUtilsFile, checker, options.selectorsUtils.extraExports ?? []),
+    domDefinitions: extractDocumentation(
+      domUtilsFile,
+      checker,
+      options.domUtils.extraExports ?? [],
+      includeCoreMethods
+    ),
+    selectorsDefinitions: extractDocumentation(
+      selectorsUtilsFile,
+      checker,
+      options.selectorsUtils.extraExports ?? [],
+      includeCoreMethods
+    ),
   };
 }
 
@@ -47,7 +60,7 @@ export function writeTestUtilsDocumentation({
   outDir,
   ...rest
 }: TestUtilsDocumenterOptions & { outDir: string }): void {
-  const { domDefinitions, selectorsDefinitions } = documentTestUtilsNew(rest);
+  const { domDefinitions, selectorsDefinitions } = documentTestUtils(rest);
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(
     pathe.join(outDir, 'dom.js'),
