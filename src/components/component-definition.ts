@@ -44,7 +44,7 @@ export function buildComponentDefinition(
   checker: ts.TypeChecker
 ): ComponentDefinition {
   const regions = props.filter(prop => prop.type === 'React.ReactNode');
-  const events = props.filter(prop => prop.name.match(/^on[A-Z]/));
+  const events = props.filter(prop => prop.name.match(/^on[A-Z]/) && prop.name !== 'onError');
   const onlyProps = props.filter(prop => !events.includes(prop) && !regions.includes(prop));
 
   return {
