@@ -5,7 +5,17 @@ exports[`Error boundary > should have correct properties definitions 1`] = `
   {
     "dashCaseName": "error-boundary",
     "description": undefined,
-    "events": [],
+    "events": [
+      {
+        "cancelable": false,
+        "deprecatedTag": undefined,
+        "description": "A callback that fires when the user clicks on the refresh button.",
+        "detailInlineType": undefined,
+        "detailType": undefined,
+        "name": "onRefresh",
+        "systemTags": undefined,
+      },
+    ],
     "functions": [],
     "name": "ErrorBoundary",
     "properties": [
@@ -13,7 +23,7 @@ exports[`Error boundary > should have correct properties definitions 1`] = `
         "analyticsTag": undefined,
         "defaultValue": undefined,
         "deprecatedTag": undefined,
-        "description": "Callback that fires when an error is captured.",
+        "description": "A special callback that fires when an error is captured.",
         "i18nTag": undefined,
         "inlineType": {
           "name": "(error: Error, errorInfo: React.ErrorInfo) => void",
