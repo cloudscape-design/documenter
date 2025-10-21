@@ -1,0 +1,66 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Error boundary > should have correct properties definitions 1`] = `
+[
+  {
+    "dashCaseName": "error-boundary",
+    "description": undefined,
+    "events": [
+      {
+        "cancelable": false,
+        "deprecatedTag": undefined,
+        "description": "A callback that fires when the user clicks on the refresh button.",
+        "detailInlineType": undefined,
+        "detailType": undefined,
+        "name": "onRefresh",
+        "systemTags": undefined,
+      },
+    ],
+    "functions": [],
+    "name": "ErrorBoundary",
+    "properties": [
+      {
+        "analyticsTag": undefined,
+        "defaultValue": undefined,
+        "deprecatedTag": undefined,
+        "description": "A special callback that fires when an error is captured.",
+        "i18nTag": undefined,
+        "inlineType": {
+          "name": "(error: Error, errorInfo: React.ErrorInfo) => void",
+          "parameters": [
+            {
+              "name": "error",
+              "type": "Error",
+            },
+            {
+              "name": "errorInfo",
+              "type": "React.ErrorInfo",
+            },
+          ],
+          "returnType": "void",
+          "type": "function",
+        },
+        "name": "onError",
+        "optional": false,
+        "systemTags": undefined,
+        "type": "(error: Error, errorInfo: React.ErrorInfo) => void",
+        "visualRefreshTag": undefined,
+      },
+    ],
+    "regions": [
+      {
+        "deprecatedTag": undefined,
+        "description": "React content.",
+        "displayName": undefined,
+        "i18nTag": undefined,
+        "isDefault": true,
+        "name": "children",
+        "systemTags": undefined,
+        "visualRefreshTag": undefined,
+      },
+    ],
+    "releaseStatus": "stable",
+    "systemTags": undefined,
+  },
+]
+`;
