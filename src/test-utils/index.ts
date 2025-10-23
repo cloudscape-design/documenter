@@ -38,8 +38,7 @@ export function documentTestUtils(options: TestUtilsDocumenterOptions): TestUtil
   if (!selectorsUtilsFile) {
     throw new Error(`File '${selectorsUtilsFile}' not found`);
   }
-  // TODO: switch to false after all consumers updated
-  const includeCoreMethods = options.includeCoreMethods ?? true;
+  const includeCoreMethods = options.includeCoreMethods ?? false;
   return {
     domDefinitions: extractDocumentation(
       domUtilsFile,
