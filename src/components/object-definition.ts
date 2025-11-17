@@ -87,12 +87,13 @@ export function getObjectDefinition(
 }
 
 function getPrimitiveType(type: ts.UnionOrIntersectionType) {
-  if (type.types.every(subtype => subtype.isStringLiteral())) {
+  if (type.types.every(subtype => subtype.isStringLiteral() || (subtype.flags & ts.TypeFlags.StringLiteral))) {
     return 'string';
   }
-  if (type.types.every(subtype => subtype.isNumberLiteral())) {
+  if (type.types.every(subtype => subtype.isNumberLiteral() || (subtype.flags & ts.TypeFlags.NumberLiteral))) {
     return 'number';
   }
+  
   return undefined;
 }
 
@@ -104,9 +105,12 @@ function getUnionTypeDefinition(
 ): { type: string; inlineType: UnionTypeDefinition } {
   const valueDescriptions = extractValueDescriptions(realType, typeNode);
   const primitiveType = getPrimitiveType(realType);
-  const values = realType.types.map(subtype =>
-    primitiveType ? (subtype as ts.LiteralType).value.toString() : stringifyType(subtype, checker)
-  );
+  const values = realType.types.map(subtype => {
+    if (primitiveType && subtype.isStringLiteral()) {
+      return (subtype as ts.LiteralType).value.toString();
+    }
+    return stringifyType(subtype, checker);
+  });
 
   return {
     type: primitiveType ?? realTypeName,
