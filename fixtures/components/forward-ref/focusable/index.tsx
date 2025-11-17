@@ -1,5 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+
 import * as React from 'react';
 
 export interface FocusableProps {
@@ -43,7 +44,7 @@ export namespace FocusableProps {
 const Focusable = React.forwardRef(
   ({ children, type = 'text', count = 123, enabled = true }: FocusableProps, ref: React.Ref<FocusableProps.Ref>) => {
     return <button ref={ref}>Test</button>;
-  }
+  },
 );
 
 export default Focusable;

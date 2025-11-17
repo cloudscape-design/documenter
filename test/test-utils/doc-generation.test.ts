@@ -29,7 +29,7 @@ describe('Generate documentation', () => {
     expect(findStringMethod?.returnType).toEqual({ name: 'string', isNullable: false });
     expect(findStringMethod?.parameters).toEqual([]);
     expect(findStringMethod?.description).toBe(
-      'Finds a string.\n\nThe function may look trivial but people have been losing their words\nsince centuries.'
+      'Finds a string.\n\nThe function may look trivial but people have been losing their words\nsince centuries.',
     );
     expect(findStringMethod?.inheritedFrom).toBeUndefined();
 
