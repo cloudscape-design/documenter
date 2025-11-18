@@ -87,13 +87,12 @@ export function getObjectDefinition(
 }
 
 function getPrimitiveType(type: ts.UnionOrIntersectionType) {
-  if (type.types.every(subtype => subtype.isStringLiteral() || (subtype.flags & ts.TypeFlags.StringLiteral))) {
+  if (type.types.every(subtype => subtype.isStringLiteral() || subtype.flags & ts.TypeFlags.StringLiteral)) {
     return 'string';
   }
-  if (type.types.every(subtype => subtype.isNumberLiteral() || (subtype.flags & ts.TypeFlags.NumberLiteral))) {
+  if (type.types.every(subtype => subtype.isNumberLiteral() || subtype.flags & ts.TypeFlags.NumberLiteral)) {
     return 'number';
   }
-  
   return undefined;
 }
 
