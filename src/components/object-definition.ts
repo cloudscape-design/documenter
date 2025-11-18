@@ -86,8 +86,25 @@ export function getObjectDefinition(
   return { type };
 }
 
-function getPrimitiveType(type: ts.UnionOrIntersectionType) {
-  if (type.types.every(subtype => subtype.isStringLiteral() || subtype.flags & ts.TypeFlags.StringLiteral)) {
+function isStringLiteralOrStringIntersection(subtype: ts.Type, checker: ts.TypeChecker): boolean {
+  // Check if it's a string literal
+  if (subtype.isStringLiteral() || subtype.flags & ts.TypeFlags.StringLiteral) {
+    return true;
+  }
+  // Check if it's an intersection type that represents "string & something"
+  // This pattern is used to allow custom strings while providing autocomplete for known literals
+  if (subtype.isIntersection()) {
+    const stringified = stringifyType(subtype, checker);
+    // Match patterns like "string & { _?: undefined; }" or similar
+    if (stringified.startsWith('string &')) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function getPrimitiveType(type: ts.UnionOrIntersectionType, checker: ts.TypeChecker) {
+  if (type.types.every(subtype => isStringLiteralOrStringIntersection(subtype, checker))) {
     return 'string';
   }
   if (type.types.every(subtype => subtype.isNumberLiteral() || subtype.flags & ts.TypeFlags.NumberLiteral)) {
@@ -103,9 +120,19 @@ function getUnionTypeDefinition(
   checker: ts.TypeChecker
 ): { type: string; inlineType: UnionTypeDefinition } {
   const valueDescriptions = extractValueDescriptions(realType, typeNode);
-  const primitiveType = getPrimitiveType(realType);
+  const primitiveType = getPrimitiveType(realType, checker);
   const values = realType.types.map(subtype => {
-    if (primitiveType && subtype.isStringLiteral()) {
+    if (primitiveType === 'string') {
+      if (subtype.isStringLiteral()) {
+        return (subtype as ts.LiteralType).value.toString();
+      }
+      // For intersection types like "string & { _?: undefined; }", return "string"
+      // This indicates that custom string values are allowed
+      if (subtype.isIntersection()) {
+        return 'string';
+      }
+    }
+    if (primitiveType === 'number' && subtype.isNumberLiteral()) {
       return (subtype as ts.LiteralType).value.toString();
     }
     return stringifyType(subtype, checker);
