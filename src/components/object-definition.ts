@@ -86,11 +86,25 @@ export function getObjectDefinition(
   return { type };
 }
 
-function getPrimitiveType(type: ts.UnionOrIntersectionType) {
-  if (type.types.every(subtype => subtype.isStringLiteral())) {
+function isStringLiteralOrStringIntersection(subtype: ts.Type, checker: ts.TypeChecker): boolean {
+  // Check if it's a string literal
+  if (subtype.isStringLiteral() || subtype.flags & ts.TypeFlags.StringLiteral) {
+    return true;
+  }
+  if (subtype.isIntersection()) {
+    const stringified = stringifyType(subtype, checker);
+    if (stringified.startsWith('string &')) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function getPrimitiveType(type: ts.UnionOrIntersectionType, checker: ts.TypeChecker) {
+  if (type.types.every(subtype => isStringLiteralOrStringIntersection(subtype, checker))) {
     return 'string';
   }
-  if (type.types.every(subtype => subtype.isNumberLiteral())) {
+  if (type.types.every(subtype => subtype.isNumberLiteral() || subtype.flags & ts.TypeFlags.NumberLiteral)) {
     return 'number';
   }
   return undefined;
@@ -103,10 +117,21 @@ function getUnionTypeDefinition(
   checker: ts.TypeChecker
 ): { type: string; inlineType: UnionTypeDefinition } {
   const valueDescriptions = extractValueDescriptions(realType, typeNode);
-  const primitiveType = getPrimitiveType(realType);
-  const values = realType.types.map(subtype =>
-    primitiveType ? (subtype as ts.LiteralType).value.toString() : stringifyType(subtype, checker)
-  );
+  const primitiveType = getPrimitiveType(realType, checker);
+  const values = realType.types.map(subtype => {
+    if (primitiveType === 'string') {
+      if (subtype.isStringLiteral()) {
+        return (subtype as ts.LiteralType).value.toString();
+      }
+      if (subtype.isIntersection()) {
+        return 'string';
+      }
+    }
+    if (primitiveType === 'number' && subtype.isNumberLiteral()) {
+      return (subtype as ts.LiteralType).value.toString();
+    }
+    return stringifyType(subtype, checker);
+  });
 
   return {
     type: primitiveType ?? realTypeName,
