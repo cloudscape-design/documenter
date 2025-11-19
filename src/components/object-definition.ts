@@ -91,11 +91,8 @@ function isStringLiteralOrStringIntersection(subtype: ts.Type, checker: ts.TypeC
   if (subtype.isStringLiteral() || subtype.flags & ts.TypeFlags.StringLiteral) {
     return true;
   }
-  // Check if it's an intersection type that represents "string & something"
-  // This pattern is used to allow custom strings while providing autocomplete for known literals
   if (subtype.isIntersection()) {
     const stringified = stringifyType(subtype, checker);
-    // Match patterns like "string & { _?: undefined; }" or similar
     if (stringified.startsWith('string &')) {
       return true;
     }
@@ -126,8 +123,6 @@ function getUnionTypeDefinition(
       if (subtype.isStringLiteral()) {
         return (subtype as ts.LiteralType).value.toString();
       }
-      // For intersection types like "string & { _?: undefined; }", return "string"
-      // This indicates that custom string values are allowed
       if (subtype.isIntersection()) {
         return 'string';
       }
