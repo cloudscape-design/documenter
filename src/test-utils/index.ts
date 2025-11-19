@@ -44,13 +44,13 @@ export function documentTestUtils(options: TestUtilsDocumenterOptions): TestUtil
       domUtilsFile,
       checker,
       options.domUtils.extraExports ?? [],
-      includeCoreMethods
+      includeCoreMethods,
     ),
     selectorsDefinitions: extractDocumentation(
       selectorsUtilsFile,
       checker,
       options.selectorsUtils.extraExports ?? [],
-      includeCoreMethods
+      includeCoreMethods,
     ),
   };
 }
@@ -63,11 +63,11 @@ export function writeTestUtilsDocumentation({
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(
     pathe.join(outDir, 'dom.js'),
-    `module.exports = { classes: ${JSON.stringify(domDefinitions, null, 2)} };`
+    `module.exports = { classes: ${JSON.stringify(domDefinitions, null, 2)} };`,
   );
   fs.writeFileSync(
     pathe.join(outDir, 'selectors.js'),
-    `module.exports = { classes: ${JSON.stringify(selectorsDefinitions, null, 2)} };`
+    `module.exports = { classes: ${JSON.stringify(selectorsDefinitions, null, 2)} };`,
   );
   fs.copyFileSync(require.resolve('./interfaces.d.ts'), pathe.join(outDir, 'interfaces.d.ts'));
   const dtsTemplate = `import { TestUtilsDefinition } from './interfaces';

@@ -32,7 +32,7 @@ import { ContainerQueryEntry } from './interfaces';
  */
 export default function useContainerQuery<ObservedState>(
   mapFn: (entry: ContainerQueryEntry, prev: null | ObservedState) => ObservedState,
-  deps: React.DependencyList = []
+  deps: React.DependencyList = [],
 ): [null | ObservedState, React.MutableRefObject<any>] {
   return [null, null as any];
 }

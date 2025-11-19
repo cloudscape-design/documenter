@@ -42,8 +42,8 @@ export function stringifyType(type: ts.Type, checker: ts.TypeChecker) {
       undefined,
       ts.TypeFormatFlags.WriteArrayAsGenericType |
         ts.TypeFormatFlags.UseFullyQualifiedType |
-        ts.TypeFormatFlags.UseAliasDefinedOutsideCurrentScope
-    )
+        ts.TypeFormatFlags.UseAliasDefinedOutsideCurrentScope,
+    ),
   );
 }
 
@@ -74,9 +74,9 @@ export function extractDeclaration(symbol: ts.Symbol) {
 
 export function printFlags(flags: number, mapping: Record<string, number | string>) {
   return Object.entries(mapping)
-    .filter(([key, value]) => typeof value === 'number')
-    .filter(([key, value]) => (value as number) & flags)
-    .map(([key, value]) => key);
+    .filter(([, value]) => typeof value === 'number')
+    .filter(([, value]) => (value as number) & flags)
+    .map(([key]) => key);
 }
 
 export function extractTypeArguments(type: ts.Type, checker: ts.TypeChecker) {

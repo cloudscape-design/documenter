@@ -13,7 +13,7 @@ test('should throw if tsconfig is not found', () => {
 
 test('should throw if no components in the output', () => {
   expect(() => buildProject('simple', { publicFilesGlob: 'does-not-exist' })).toThrow(
-    'No files found matching does-not-exist'
+    'No files found matching does-not-exist',
   );
 });
 
@@ -43,7 +43,7 @@ test('should throw error if component ref contains function overloads', () => {
 
 test('should throw error if component ref contains non-method properties', () => {
   expect(() => buildProject('error-ref-property-type')).toThrow(
-    'ButtonProps.Ref should contain only methods, "value" has a "string" type'
+    'ButtonProps.Ref should contain only methods, "value" has a "string" type',
   );
 });
 

@@ -36,7 +36,7 @@ export default function extractDocumentation(
   sourceFile: ts.SourceFile,
   checker: ts.TypeChecker,
   extraExports: Array<string>,
-  includeCoreMethods: boolean
+  includeCoreMethods: boolean,
 ): Array<TestUtilsDoc> {
   const moduleSymbol = checker.getSymbolAtLocation(sourceFile);
   if (!moduleSymbol) {
@@ -63,7 +63,7 @@ function documentClass(
   symbol: ts.Symbol,
   classType: ts.Type,
   checker: ts.TypeChecker,
-  includeCoreMethods: boolean
+  includeCoreMethods: boolean,
 ) {
   if (!classType.isClass()) {
     throw new Error(`Exported symbol is not a class, got ${checker.symbolToString(symbol)}`);
@@ -80,7 +80,7 @@ function documentClass(
     const modifiers = (ts.canHaveModifiers(declaration) && ts.getModifiers(declaration)) || [];
     if (
       modifiers.find(
-        modifier => modifier.kind === ts.SyntaxKind.ProtectedKeyword || modifier.kind === ts.SyntaxKind.PrivateKeyword
+        modifier => modifier.kind === ts.SyntaxKind.ProtectedKeyword || modifier.kind === ts.SyntaxKind.PrivateKeyword,
       )
     ) {
       continue;
@@ -137,7 +137,7 @@ function documentClass(
 
 function findDependencyType(
   type: ts.Type,
-  checker: ts.TypeChecker
+  checker: ts.TypeChecker,
 ): { typeName: string; type: ts.Type; symbol: ts.Symbol } | undefined {
   const symbol = type.getSymbol();
   if (!symbol) {

@@ -3,4 +3,6 @@
 export class ElementWrapper {}
 
 // this generic type simulates MultiElementWrapper from test-utils-core
-export class MultiElementWrapper<T extends ElementWrapper> {}
+export class MultiElementWrapper<T extends ElementWrapper> {
+  items: readonly T[] = [];
+}

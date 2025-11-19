@@ -30,5 +30,5 @@ import { ContainerQueryEntry, ElementReference } from './interfaces';
  */
 export default function useResizeObserver(
   elementRef: ElementReference,
-  onObserve: (entry: ContainerQueryEntry) => void
+  onObserve: (entry: ContainerQueryEntry) => void,
 ) {}

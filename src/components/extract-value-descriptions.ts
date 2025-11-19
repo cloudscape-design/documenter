@@ -41,7 +41,7 @@ export function extractValueDescriptions(type: ts.UnionOrIntersectionType, typeN
     if (!comment) {
       return undefined;
     }
-    const systemTags = Array.from(comment.matchAll(/@awsuiSystem\s+(\w+)/g), ([_, system]) => system);
+    const systemTags = Array.from(comment.matchAll(/@awsuiSystem\s+(\w+)/g), ([, system]) => system);
     return systemTags.length > 0 ? { systemTags } : undefined;
   });
 }

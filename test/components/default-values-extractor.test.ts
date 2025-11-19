@@ -12,7 +12,7 @@ function extractFromSource(source: string) {
 
 test('should throw on unsupported syntax', () => {
   expect(() => extractFromSource('export class Component {}')).toThrow(
-    /Unsupported component declaration type ClassDeclaration/
+    /Unsupported component declaration type ClassDeclaration/,
   );
 });
 
@@ -31,8 +31,8 @@ describe('forwardRef', () => {
           columns = 4,
           items = [],
           nothing,
-        }) => {})`
-      )
+        }) => {})`,
+      ),
     ).toEqual({
       truthy: 'true',
       falsy: 'false',
@@ -44,7 +44,7 @@ describe('forwardRef', () => {
 
   test('should work with es5-functions', () => {
     expect(
-      extractFromSource('export const Component = React.forwardRef(function ({works = "ok"}) {return {}})')
+      extractFromSource('export const Component = React.forwardRef(function ({works = "ok"}) {return {}})'),
     ).toEqual({
       works: '"ok"',
     });
@@ -53,8 +53,8 @@ describe('forwardRef', () => {
   test('should extract values from type-casted forwardRefs', () => {
     expect(
       extractFromSource(
-        `export const Component = React.forwardRef(({ works = "ok" }) => {}) as (props: any) => JSX.Element`
-      )
+        `export const Component = React.forwardRef(({ works = "ok" }) => {}) as (props: any) => JSX.Element`,
+      ),
     ).toEqual({
       works: '"ok"',
     });
@@ -80,8 +80,8 @@ describe('arrow function', () => {
           columns = 4,
           items = [],
           nothing,
-        }) => {}`
-      )
+        }) => {}`,
+      ),
     ).toEqual({
       truthy: 'true',
       falsy: 'false',
@@ -111,8 +111,8 @@ describe('function declaration', () => {
           columns = 4,
           items = [],
           nothing,
-        }) {}`
-      )
+        }) {}`,
+      ),
     ).toEqual({
       truthy: 'true',
       falsy: 'false',

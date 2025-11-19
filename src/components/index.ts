@@ -32,7 +32,7 @@ export function writeComponentsDocumentation({ outDir, ...options }: WriteOption
   for (const definition of definitions) {
     fs.writeFileSync(
       pathe.join(outDir, definition.dashCaseName + '.js'),
-      `module.exports = ${JSON.stringify(definition, null, 2)};`
+      `module.exports = ${JSON.stringify(definition, null, 2)};`,
     );
   }
   const indexContent = `module.exports = {
@@ -47,7 +47,7 @@ export function writeComponentsDocumentation({ outDir, ...options }: WriteOption
     `import { ComponentDefinition } from './interfaces';
 declare const definitions: Record<string, ComponentDefinition>;
 export = definitions;
-`
+`,
   );
 }
 
@@ -78,7 +78,7 @@ export function documentComponents(options: DocumenterOptions): Array<ComponentD
     const defaultValues = extractDefaultValues(componentSymbol, checker);
     const componentDescription = getDescription(
       componentSymbol.getDocumentationComment(checker),
-      extractDeclaration(componentSymbol)
+      extractDeclaration(componentSymbol),
     );
 
     return buildComponentDefinition(name, dashCaseName, props, functions, defaultValues, componentDescription, checker);

@@ -17,7 +17,7 @@ export function getObjectDefinition(
   type: string,
   rawType: ts.Type,
   rawTypeNode: ts.TypeNode | undefined,
-  checker: ts.TypeChecker
+  checker: ts.TypeChecker,
 ): { type: string; inlineType?: TypeDefinition } {
   const realType = rawType.getNonNullableType();
   const realTypeName = stringifyType(realType, checker);
@@ -100,12 +100,12 @@ function getUnionTypeDefinition(
   realTypeName: string,
   realType: ts.UnionOrIntersectionType,
   typeNode: ts.TypeNode | undefined,
-  checker: ts.TypeChecker
+  checker: ts.TypeChecker,
 ): { type: string; inlineType: UnionTypeDefinition } {
   const valueDescriptions = extractValueDescriptions(realType, typeNode);
   const primitiveType = getPrimitiveType(realType);
   const values = realType.types.map(subtype =>
-    primitiveType ? (subtype as ts.LiteralType).value.toString() : stringifyType(subtype, checker)
+    primitiveType ? (subtype as ts.LiteralType).value.toString() : stringifyType(subtype, checker),
   );
 
   return {

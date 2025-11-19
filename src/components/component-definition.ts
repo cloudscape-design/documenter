@@ -15,7 +15,7 @@ import { getObjectDefinition } from './object-definition';
 
 function getCommentTag(description: ExtractedDescription, name: string) {
   const tag = description.tags.find(tag => tag.name === name);
-  return tag ? tag.text ?? '' : undefined;
+  return tag ? (tag.text ?? '') : undefined;
 }
 
 function getCommentTags(description: ExtractedDescription, name: string) {
@@ -41,7 +41,7 @@ export function buildComponentDefinition(
   functions: Array<ExpandedProp>,
   defaultValues: Record<string, string>,
   componentDescription: ExtractedDescription,
-  checker: ts.TypeChecker
+  checker: ts.TypeChecker,
 ): ComponentDefinition {
   const regions = props.filter(prop => prop.type === 'React.ReactNode');
   const events = props.filter(prop => {
@@ -70,7 +70,7 @@ export function buildComponentDefinition(
         visualRefreshTag: getCommentTag(region.description, 'visualrefresh'),
         deprecatedTag: getCommentTag(region.description, 'deprecated'),
         i18nTag: castI18nTag(getCommentTag(region.description, 'i18n')),
-      })
+      }),
     ),
     functions: functions.map(
       (func): ComponentFunction => ({
@@ -88,7 +88,7 @@ export function buildComponentDefinition(
               type: stringifyType(paramType, checker),
             };
           }),
-      })
+      }),
     ),
     properties: onlyProps.map((property): ComponentProperty => {
       const { type, inlineType } = getObjectDefinition(property.type, property.rawType, property.rawTypeNode, checker);
@@ -110,7 +110,7 @@ export function buildComponentDefinition(
       const { detailType, detailInlineType, cancelable } = extractEventDetails(
         event.rawType,
         event.rawTypeNode,
-        checker
+        checker,
       );
       return {
         name: event.name,
