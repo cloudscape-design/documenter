@@ -18,7 +18,7 @@ describe('documentTestUtils throws error for ', () => {
 
   test('throws error on unknown export', () => {
     expect(() => buildTestUtilsProject('errors-no-wrapper-classes')).toThrow(
-      'Exported symbol is not a class, got speakTruth'
+      'Exported symbol is not a class, got speakTruth',
     );
   });
 
@@ -29,8 +29,8 @@ describe('documentTestUtils throws error for ', () => {
         {},
         {
           root: 'fixtures/does-not-exist/index.ts',
-        }
-      )
+        },
+      ),
     ).toThrow(/File '.*fixtures\/does-not-exist\/index.ts' not found/);
   });
 });

@@ -22,7 +22,9 @@ export class TestUtilWrapper {
    *
    * @param newString
    */
-  setString(newString: string) {}
+  setString(newString: string) {
+    console.log(newString);
+  }
 
   /**
    * Short Text.

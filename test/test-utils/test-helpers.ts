@@ -6,7 +6,7 @@ import { TestUtilsDoc } from '../../src/test-utils/interfaces';
 export function buildTestUtilsProject(
   name: string,
   configOverrides?: Partial<TestUtilsDocumenterOptions>,
-  wrapperConfigOverrides?: Partial<TestUtilsVariantOptions>
+  wrapperConfigOverrides?: Partial<TestUtilsVariantOptions>,
 ): TestUtilsDoc[] {
   return documentTestUtils({
     tsconfigPath: require.resolve(`../../fixtures/test-utils/${name}/tsconfig.json`),

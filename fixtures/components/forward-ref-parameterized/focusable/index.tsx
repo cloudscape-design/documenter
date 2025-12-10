@@ -1,5 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+
 import * as React from 'react';
 
 interface FocusableForwardRefType {
@@ -31,7 +32,7 @@ const Focusable = React.forwardRef(
       focus(rowIndex: number) {},
     }));
     return <button>Test</button>;
-  }
+  },
 ) as FocusableForwardRefType;
 
 export default Focusable;

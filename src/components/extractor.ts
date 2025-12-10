@@ -121,7 +121,7 @@ export function extractFunctions(propsSymbol: ts.Symbol, checker: ts.TypeChecker
       const realType = type.getNonNullableType();
       if (realType.getCallSignatures().length === 0) {
         throw new Error(
-          `${propsName}.Ref should contain only methods, "${value.name}" has a "${stringifyType(type, checker)}" type`
+          `${propsName}.Ref should contain only methods, "${value.name}" has a "${stringifyType(type, checker)}" type`,
         );
       }
       return {
@@ -140,7 +140,7 @@ export function extractExports(
   componentName: string,
   exportSymbols: ts.Symbol[],
   checker: ts.TypeChecker,
-  extraExports: Record<string, Array<string>>
+  extraExports: Record<string, Array<string>>,
 ) {
   let componentSymbol;
   let propsSymbol;

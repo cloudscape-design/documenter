@@ -8,7 +8,7 @@ import { printFlags } from '../../lib/shared/type-utils';
 test('serialises node flags', () => {
   const flags = printFlags(
     ts.NodeFlags.HasAsyncFunctions + ts.NodeFlags.HasImplicitReturn + ts.NodeFlags.ContainsThis,
-    ts.NodeFlags
+    ts.NodeFlags,
   );
   expect(flags).toContain('HasAsyncFunctions');
   expect(flags).toContain('HasImplicitReturn');
