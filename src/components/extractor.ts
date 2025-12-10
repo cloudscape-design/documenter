@@ -147,7 +147,7 @@ export function extractExports(
   const unknownExports: Array<string> = [];
   for (const exportSymbol of exportSymbols) {
     if (exportSymbol.name === 'default') {
-      validateComponentType(componentName, exportSymbol, checker);
+      validateComponentType(checker.getDeclaredTypeOfSymbol(exportSymbol), checker);
       componentSymbol = exportSymbol;
     } else if (exportSymbol.name === `${componentName}Props`) {
       propsSymbol = exportSymbol;
@@ -167,18 +167,7 @@ export function extractExports(
   return { componentSymbol, propsSymbol };
 }
 
-function validateComponentType(componentName: string, symbol: ts.Symbol, checker: ts.TypeChecker) {
-  const declaration = extractDeclaration(symbol);
-  let type: ts.Type;
-  if (ts.isExportAssignment(declaration)) {
-    // export default Something;
-    type = checker.getTypeAtLocation(declaration.expression);
-  } else if (ts.isFunctionDeclaration(declaration)) {
-    // export default function Something() {...}
-    type = checker.getTypeAtLocation(declaration);
-  } else {
-    throw new Error(`Unknown default export for ${componentName}`);
-  }
+function validateComponentType(type: ts.Type, checker: ts.TypeChecker) {
   if (
     // React.forwardRef
     type.getSymbol()?.name !== 'ForwardRefExoticComponent' &&
