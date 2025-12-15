@@ -225,7 +225,12 @@ test('should parse string literal type as single-value union', () => {
           {
             name: 'alwaysSomething',
             optional: false,
-            type: '"something"',
+            type: 'string',
+            inlineType: {
+              name: 'something',
+              type: 'union',
+              values: ['something'],
+            },
           },
         ],
       },
@@ -233,7 +238,12 @@ test('should parse string literal type as single-value union', () => {
     {
       name: 'variant',
       description: 'This is variant',
-      type: '"icon"',
+      type: 'string',
+      inlineType: {
+        name: 'ButtonGroupProps.Variant',
+        type: 'union',
+        values: ['icon'],
+      },
       optional: false,
     },
   ]);
