@@ -5,6 +5,16 @@ import type { TypeDefinition, UnionTypeDefinition, ValueDescription } from './in
 import { extractDeclaration, isOptional, stringifyType } from '../shared/type-utils';
 import { extractValueDescriptions } from './extract-value-descriptions';
 
+function getOriginalTypeName(rawTypeNode: ts.TypeNode) {
+  if (ts.isTypeReferenceNode(rawTypeNode) || ts.isQualifiedName(rawTypeNode)) {
+    return rawTypeNode.getText();
+  }
+}
+
+function trimQuotes(s: string) {
+  return s.replace(/^"(.+)"$/, '$1');
+}
+
 function isArrayType(type: ts.Type) {
   const symbol = type.getSymbol();
   if (!symbol) {
@@ -21,6 +31,20 @@ export function getObjectDefinition(
 ): { type: string; inlineType?: TypeDefinition } {
   const realType = rawType.getNonNullableType();
   const realTypeName = stringifyType(realType, checker);
+
+  if (realType.flags & ts.TypeFlags.StringLiteral) {
+    const name = (rawTypeNode && getOriginalTypeName(rawTypeNode)) || trimQuotes(realTypeName);
+
+    return {
+      type: 'string',
+      inlineType: {
+        name,
+        type: 'union',
+        values: [trimQuotes(type)],
+      },
+    };
+  }
+
   if (
     realType.flags & ts.TypeFlags.String ||
     realType.flags & ts.TypeFlags.Literal ||
