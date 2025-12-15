@@ -7,7 +7,7 @@ export default defineConfig({
     testTimeout: 15000,
     coverage: {
       enabled: process.env.CI === 'true',
-      provider: 'v8',
+      provider: 'istanbul',
       include: ['src/**', 'lib/**'],
     },
   },
