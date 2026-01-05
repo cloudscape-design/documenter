@@ -151,7 +151,10 @@ export function extractExports(
       componentSymbol = exportSymbol;
     } else if (exportSymbol.name === `${componentName}Props`) {
       propsSymbol = exportSymbol;
-    } else if (!extraExports[componentName] || !extraExports[componentName].includes(exportSymbol.name)) {
+    } else if (
+      !extraExports[componentName] ||
+      (!extraExports[componentName].includes(exportSymbol.name) && !extraExports[componentName].includes('*'))
+    ) {
       unknownExports.push(exportSymbol.name);
     }
   }
