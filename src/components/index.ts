@@ -19,7 +19,7 @@ function componentNameFromPath(componentPath: string) {
 export interface DocumenterOptions {
   tsconfigPath: string;
   publicFilesGlob: string;
-  extraExports?: Record<string, Array<string>>;
+  extraExports?: Record<string, Array<string>> | false;
 }
 
 export interface WriteOptions {

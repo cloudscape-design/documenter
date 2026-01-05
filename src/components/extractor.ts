@@ -140,7 +140,7 @@ export function extractExports(
   componentName: string,
   exportSymbols: ts.Symbol[],
   checker: ts.TypeChecker,
-  extraExports: Record<string, Array<string>>,
+  extraExports: Record<string, Array<string>> | false,
 ) {
   let componentSymbol;
   let propsSymbol;
@@ -152,8 +152,8 @@ export function extractExports(
     } else if (exportSymbol.name === `${componentName}Props`) {
       propsSymbol = exportSymbol;
     } else if (
-      !extraExports[componentName] ||
-      (!extraExports[componentName].includes(exportSymbol.name) && !extraExports[componentName].includes('*'))
+      extraExports !== false &&
+      (!extraExports[componentName] || !extraExports[componentName].includes(exportSymbol.name))
     ) {
       unknownExports.push(exportSymbol.name);
     }
