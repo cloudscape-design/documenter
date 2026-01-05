@@ -17,7 +17,7 @@ export interface ExpandedProp {
 export declare function extractDefaultValues(exportSymbol: ts.Symbol, checker: ts.TypeChecker): Record<string, string>;
 export declare function extractProps(propsSymbol: ts.Symbol, checker: ts.TypeChecker): ExpandedProp[];
 export declare function extractFunctions(propsSymbol: ts.Symbol, checker: ts.TypeChecker): ExpandedProp[];
-export declare function extractExports(componentName: string, exportSymbols: ts.Symbol[], checker: ts.TypeChecker, extraExports: Record<string, Array<string>>): {
+export declare function extractExports(componentName: string, exportSymbols: ts.Symbol[], checker: ts.TypeChecker, extraExports: Record<string, Array<string>> | false): {
     componentSymbol: ts.Symbol;
     propsSymbol: ts.Symbol;
 };
