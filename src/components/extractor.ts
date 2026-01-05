@@ -146,7 +146,7 @@ export function extractExports(
   let propsSymbol;
   const unknownExports: Array<string> = [];
   for (const exportSymbol of exportSymbols) {
-    if (exportSymbol.name === 'default') {
+    if (exportSymbol.name === 'default' || exportSymbol.name === componentName) {
       validateComponentType(checker.getDeclaredTypeOfSymbol(exportSymbol), checker);
       componentSymbol = exportSymbol;
     } else if (exportSymbol.name === `${componentName}Props`) {
