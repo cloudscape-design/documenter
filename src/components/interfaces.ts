@@ -51,12 +51,21 @@ export interface ComponentFunction {
   returnType: string;
 }
 
-export type TypeDefinition = ObjectDefinition | FunctionDefinition | UnionTypeDefinition;
+export type TypeDefinition = ObjectDefinition | FunctionDefinition | UnionTypeDefinition | ArrayDefinition;
 
 export interface ObjectDefinition {
   name: string;
   type: 'object';
   properties: ObjectDefinitionProperty[];
+}
+
+export interface ArrayDefinition {
+  name: string;
+  type: 'array';
+  itemType: {
+    type: string;
+    inlineType?: TypeDefinition;
+  };
 }
 
 export interface ObjectDefinitionProperty {

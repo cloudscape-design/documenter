@@ -5,17 +5,7 @@ exports[`Error boundary > should have correct properties definitions 1`] = `
   {
     "dashCaseName": "error-boundary",
     "description": undefined,
-    "events": [
-      {
-        "cancelable": false,
-        "deprecatedTag": undefined,
-        "description": "A callback that fires when the user clicks on the refresh button.",
-        "detailInlineType": undefined,
-        "detailType": undefined,
-        "name": "onRefresh",
-        "systemTags": undefined,
-      },
-    ],
+    "events": [],
     "functions": [],
     "name": "ErrorBoundary",
     "properties": [
@@ -44,6 +34,29 @@ exports[`Error boundary > should have correct properties definitions 1`] = `
         "optional": false,
         "systemTags": undefined,
         "type": "(error: Error, errorInfo: React.ErrorInfo) => void",
+        "visualRefreshTag": undefined,
+      },
+      {
+        "analyticsTag": undefined,
+        "defaultValue": undefined,
+        "deprecatedTag": undefined,
+        "description": "A callback that fires when the user clicks on the refresh button.",
+        "i18nTag": undefined,
+        "inlineType": {
+          "name": "NonCancelableEventHandler",
+          "parameters": [
+            {
+              "name": "event",
+              "type": "any",
+            },
+          ],
+          "returnType": "void",
+          "type": "function",
+        },
+        "name": "onRefresh",
+        "optional": true,
+        "systemTags": undefined,
+        "type": "NonCancelableEventHandler",
         "visualRefreshTag": undefined,
       },
     ],

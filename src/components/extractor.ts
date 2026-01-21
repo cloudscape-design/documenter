@@ -140,18 +140,21 @@ export function extractExports(
   componentName: string,
   exportSymbols: ts.Symbol[],
   checker: ts.TypeChecker,
-  extraExports: Record<string, Array<string>>,
+  extraExports: Record<string, Array<string>> | false,
 ) {
   let componentSymbol;
   let propsSymbol;
   const unknownExports: Array<string> = [];
   for (const exportSymbol of exportSymbols) {
-    if (exportSymbol.name === 'default') {
-      validateComponentType(componentName, exportSymbol, checker);
+    if (exportSymbol.name === 'default' || exportSymbol.name === componentName) {
+      validateComponentType(checker.getDeclaredTypeOfSymbol(exportSymbol), checker);
       componentSymbol = exportSymbol;
     } else if (exportSymbol.name === `${componentName}Props`) {
       propsSymbol = exportSymbol;
-    } else if (!extraExports[componentName] || !extraExports[componentName].includes(exportSymbol.name)) {
+    } else if (
+      extraExports !== false &&
+      (!extraExports[componentName] || !extraExports[componentName].includes(exportSymbol.name))
+    ) {
       unknownExports.push(exportSymbol.name);
     }
   }
@@ -167,18 +170,7 @@ export function extractExports(
   return { componentSymbol, propsSymbol };
 }
 
-function validateComponentType(componentName: string, symbol: ts.Symbol, checker: ts.TypeChecker) {
-  const declaration = extractDeclaration(symbol);
-  let type: ts.Type;
-  if (ts.isExportAssignment(declaration)) {
-    // export default Something;
-    type = checker.getTypeAtLocation(declaration.expression);
-  } else if (ts.isFunctionDeclaration(declaration)) {
-    // export default function Something() {...}
-    type = checker.getTypeAtLocation(declaration);
-  } else {
-    throw new Error(`Unknown default export for ${componentName}`);
-  }
+function validateComponentType(type: ts.Type, checker: ts.TypeChecker) {
   if (
     // React.forwardRef
     type.getSymbol()?.name !== 'ForwardRefExoticComponent' &&

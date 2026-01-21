@@ -50,13 +50,23 @@ export function getObjectDefinition(
     realType.flags & ts.TypeFlags.Literal ||
     realType.flags & ts.TypeFlags.Boolean ||
     realType.flags & ts.TypeFlags.Number ||
-    isArrayType(realType) ||
     realTypeName === 'HTMLElement' ||
     realTypeName.split('.')[0] === 'Highcharts' ||
     type === 'React.ReactNode'
   ) {
     // do not expand built-in Javascript methods or primitive values
     return { type };
+  }
+  if (isArrayType(realType)) {
+    const itemType = (realType as ts.TypeReference).typeArguments![0];
+    return {
+      type: 'array',
+      inlineType: {
+        name: realTypeName,
+        type: 'array',
+        itemType: getObjectDefinition(stringifyType(itemType, checker), itemType, undefined, checker),
+      },
+    };
   }
   if (realType.isUnionOrIntersection()) {
     return getUnionTypeDefinition(realTypeName, realType, rawTypeNode, checker);

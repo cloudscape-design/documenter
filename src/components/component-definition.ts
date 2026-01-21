@@ -44,15 +44,17 @@ export function buildComponentDefinition(
   checker: ts.TypeChecker,
 ): ComponentDefinition {
   const regions = props.filter(prop => prop.type === 'React.ReactNode');
-  const events = props.filter(prop => {
-    // The onError event handler of the error boundary component does not follow the
-    // event handlers convention and is categorized to properties instead.
-    if (name === 'ErrorBoundary' && prop.name === 'onError') {
-      return false;
-    } else {
-      return prop.name.match(/^on[A-Z]/);
-    }
-  });
+  const events: Array<ExpandedProp> = [];
+  // treat all events as properties
+  // const events = props.filter(prop => {
+  //   // The onError event handler of the error boundary component does not follow the
+  //   // event handlers convention and is categorized to properties instead.
+  //   if (name === 'ErrorBoundary' && prop.name === 'onError') {
+  //     return false;
+  //   } else {
+  //     return prop.name.match(/^on[A-Z]/);
+  //   }
+  // });
   const onlyProps = props.filter(prop => !events.includes(prop) && !regions.includes(prop));
   return {
     name,
