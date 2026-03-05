@@ -72,6 +72,21 @@ export function extractDeclaration(symbol: ts.Symbol) {
   return declarations[0];
 }
 
+export function tryExtractDeclaration(symbol: ts.Symbol): ts.Declaration | undefined {
+  const declarations = symbol.getDeclarations();
+  if (!declarations || declarations.length === 0) {
+    return undefined;
+  }
+  if (declarations.length > 1) {
+    throw new Error(`Multiple declarations found for symbol: ${symbol.getName()}`);
+  }
+  return declarations[0];
+}
+
+export function isOptionalSymbol(symbol: ts.Symbol): boolean {
+  return !!(symbol.flags & ts.SymbolFlags.Optional);
+}
+
 export function printFlags(flags: number, mapping: Record<string, number | string>) {
   return Object.entries(mapping)
     .filter(([, value]) => typeof value === 'number')

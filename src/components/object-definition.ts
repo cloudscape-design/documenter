@@ -2,7 +2,13 @@
 // SPDX-License-Identifier: Apache-2.0
 import ts from 'typescript';
 import type { TypeDefinition, UnionTypeDefinition, ValueDescription } from './interfaces';
-import { extractDeclaration, isOptional, stringifyType } from '../shared/type-utils';
+import {
+  extractDeclaration,
+  isOptional,
+  isOptionalSymbol,
+  stringifyType,
+  tryExtractDeclaration,
+} from '../shared/type-utils';
 import { extractValueDescriptions } from './extract-value-descriptions';
 
 function getOriginalTypeName(rawTypeNode: ts.TypeNode) {
@@ -65,14 +71,27 @@ export function getObjectDefinition(
     const properties = realType
       .getProperties()
       .map(prop => {
-        const propNode = extractDeclaration(prop) as ts.PropertyDeclaration;
-        const propType = checker.getTypeAtLocation(propNode);
-        const typeString = stringifyType(propType, checker);
+        const propDeclaration = tryExtractDeclaration(prop);
+        let propType: ts.Type;
+        let propTypeNode: ts.TypeNode | undefined;
+        let optional: boolean;
 
+        if (propDeclaration && (ts.isPropertySignature(propDeclaration) || ts.isPropertyDeclaration(propDeclaration))) {
+          propType = checker.getTypeAtLocation(propDeclaration);
+          propTypeNode = propDeclaration.type;
+          optional = isOptional(propType);
+        } else {
+          const locationNode = propDeclaration ?? rawTypeNode ?? realType.getSymbol()?.getDeclarations()?.[0];
+          propType = checker.getTypeOfSymbolAtLocation(prop, locationNode!);
+          propTypeNode = undefined;
+          optional = isOptionalSymbol(prop) || isOptional(propType);
+        }
+
+        const typeString = stringifyType(propType, checker);
         return {
           name: prop.getName(),
-          optional: isOptional(propType),
-          ...getObjectDefinition(typeString, propType, propNode.type, checker),
+          optional,
+          ...getObjectDefinition(typeString, propType, propTypeNode, checker),
         };
       })
       .sort((a, b) => a.name.localeCompare(b.name));
