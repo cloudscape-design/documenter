@@ -6,7 +6,9 @@ import {
   extractDeclaration,
   getDescription,
   isOptional,
+  isOptionalSymbol,
   stringifyType,
+  tryExtractDeclaration,
   unwrapNamespaceDeclaration,
 } from '../shared/type-utils';
 
@@ -80,19 +82,35 @@ export function extractDefaultValues(exportSymbol: ts.Symbol, checker: ts.TypeCh
 
 export function extractProps(propsSymbol: ts.Symbol, checker: ts.TypeChecker) {
   const exportType = checker.getDeclaredTypeOfSymbol(propsSymbol);
+  const propsDeclarations = propsSymbol.getDeclarations() ?? [];
+  const propsDeclaration =
+    propsDeclarations.find(d => ts.isInterfaceDeclaration(d) || ts.isTypeAliasDeclaration(d)) ?? propsDeclarations[0];
 
   return exportType
     .getProperties()
     .map((value): ExpandedProp => {
-      const declaration = extractDeclaration(value);
-      const type = checker.getTypeAtLocation(declaration);
+      const declaration = tryExtractDeclaration(value);
+
+      if (declaration && (ts.isPropertySignature(declaration) || ts.isPropertyDeclaration(declaration))) {
+        const type = checker.getTypeAtLocation(declaration);
+        return {
+          name: value.name,
+          type: stringifyType(type, checker),
+          rawType: type,
+          rawTypeNode: declaration.type,
+          isOptional: isOptional(type),
+          description: getDescription(value.getDocumentationComment(checker), declaration),
+        };
+      }
+
+      const type = checker.getTypeOfSymbolAtLocation(value, declaration ?? propsDeclaration);
       return {
         name: value.name,
         type: stringifyType(type, checker),
         rawType: type,
-        rawTypeNode: (declaration as ts.PropertyDeclaration).type,
-        isOptional: isOptional(type),
-        description: getDescription(value.getDocumentationComment(checker), declaration),
+        rawTypeNode: undefined,
+        isOptional: isOptionalSymbol(value) || isOptional(type),
+        description: { text: undefined, tags: [] },
       };
     })
     .sort((a, b) => a.name.localeCompare(b.name));
@@ -116,8 +134,25 @@ export function extractFunctions(propsSymbol: ts.Symbol, checker: ts.TypeChecker
   return refType
     .getProperties()
     .map((value): ExpandedProp => {
-      const declaration = extractDeclaration(value);
-      const type = checker.getTypeAtLocation(declaration);
+      const declaration = tryExtractDeclaration(value);
+      let type: ts.Type;
+      let rawTypeNode: ts.TypeNode | undefined;
+      let description: ExtractedDescription;
+
+      if (declaration && (ts.isPropertySignature(declaration) || ts.isPropertyDeclaration(declaration))) {
+        type = checker.getTypeAtLocation(declaration);
+        rawTypeNode = declaration.type;
+        description = getDescription(value.getDocumentationComment(checker), declaration);
+      } else if (declaration) {
+        type = checker.getTypeAtLocation(declaration);
+        rawTypeNode = undefined;
+        description = getDescription(value.getDocumentationComment(checker), declaration);
+      } else {
+        type = checker.getTypeOfSymbolAtLocation(value, namespaceDeclaration!);
+        rawTypeNode = undefined;
+        description = { text: undefined, tags: [] };
+      }
+
       const realType = type.getNonNullableType();
       if (realType.getCallSignatures().length === 0) {
         throw new Error(
@@ -128,9 +163,9 @@ export function extractFunctions(propsSymbol: ts.Symbol, checker: ts.TypeChecker
         name: value.name,
         type: stringifyType(realType, checker),
         rawType: realType,
-        rawTypeNode: (declaration as ts.PropertyDeclaration).type,
+        rawTypeNode,
         isOptional: isOptional(type),
-        description: getDescription(value.getDocumentationComment(checker), declaration),
+        description,
       };
     })
     .sort((a, b) => a.name.localeCompare(b.name));
