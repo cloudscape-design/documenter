@@ -3,7 +3,7 @@
 
 import { includeIgnoreFile } from '@eslint/compat';
 import eslint from '@eslint/js';
-import headerPlugin from 'eslint-plugin-header';
+import headerPlugin from '@tony.ganchev/eslint-plugin-header';
 import eslintPrettier from 'eslint-plugin-prettier/recommended';
 import reactPlugin from 'eslint-plugin-react';
 import unicornPlugin from 'eslint-plugin-unicorn';
