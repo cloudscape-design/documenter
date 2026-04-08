@@ -24,4 +24,4 @@ test('should write documentation files into the outDir', async () => {
     simple: expect.objectContaining({ name: 'Simple', dashCaseName: 'simple' }),
   });
   expect(() => execSync('tsc index.d.ts', { cwd: outDir, stdio: 'inherit' })).not.toThrow();
-}, 60_000);
+}, 20_000);
