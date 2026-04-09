@@ -1,7 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 import fs from 'node:fs';
-import os from 'node:os';
 import pathe from 'pathe';
 import ts from 'typescript';
 import { documentComponents, DocumenterOptions } from '../../src/components';
@@ -15,7 +14,9 @@ export function buildProject(name: string, options?: Partial<DocumenterOptions>)
 }
 
 export function getTemporaryDir() {
-  return fs.mkdtempSync(pathe.join(os.tmpdir(), 'documenter-'));
+  const tmpBase = pathe.resolve('test/tmp');
+  fs.mkdirSync(tmpBase, { recursive: true });
+  return fs.mkdtempSync(pathe.join(tmpBase, 'documenter-'));
 }
 
 export function getInMemoryProject(source: string) {

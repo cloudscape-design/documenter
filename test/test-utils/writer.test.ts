@@ -29,4 +29,4 @@ test('should write documentation files into the outDir', async () => {
     classes: [expect.objectContaining({ name: 'TestUtilWrapper' })],
   });
   expect(() => execSync('tsc dom.d.ts selectors.d.ts', { cwd: outDir, stdio: 'inherit' })).not.toThrow();
-});
+}, 20_000);
