@@ -65,7 +65,8 @@ export function buildComponentDefinition(
         name: region.name,
         displayName: getCommentTag(region.description, 'displayname'),
         description: region.description.text,
-        isDefault: region.name === 'children',
+        // The `children` prop is the default slot, unless it opts out with @isChildrenDefault false.
+        isDefault: region.name === 'children' && getCommentTag(region.description, 'isChildrenDefault') !== 'false',
         systemTags: getCommentTags(region.description, 'awsuiSystem'),
         visualRefreshTag: getCommentTag(region.description, 'visualrefresh'),
         deprecatedTag: getCommentTag(region.description, 'deprecated'),
