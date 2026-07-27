@@ -77,10 +77,22 @@ export function tryExtractDeclaration(symbol: ts.Symbol): ts.Declaration | undef
   if (!declarations || declarations.length === 0) {
     return undefined;
   }
-  if (declarations.length > 1) {
-    throw new Error(`Multiple declarations found for symbol: ${symbol.getName()}`);
+  if (declarations.length === 1) {
+    return declarations[0];
   }
-  return declarations[0];
+  // Multiple property signature declarations occur in discriminated unions where
+  // the same property appears in multiple branches (e.g. `prop: SomeType` | `prop?: never`).
+  // Pick the first declaration whose type is not `never`.
+  if (declarations.every(decl => ts.isPropertySignature(decl))) {
+    const nonNever = declarations.find(decl => {
+      if (ts.isPropertySignature(decl) && decl.type) {
+        return decl.type.kind !== ts.SyntaxKind.NeverKeyword;
+      }
+      return true;
+    });
+    return nonNever ?? declarations[0];
+  }
+  throw new Error(`Multiple declarations found for symbol: ${symbol.getName()}`);
 }
 
 export function isOptionalSymbol(symbol: ts.Symbol): boolean {

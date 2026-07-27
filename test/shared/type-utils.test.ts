@@ -3,7 +3,8 @@
 
 import ts from 'typescript';
 import { test, expect } from 'vitest';
-import { printFlags } from '../../lib/shared/type-utils';
+import { printFlags, tryExtractDeclaration } from '../../src/shared/type-utils';
+import { getInMemoryProject } from '../components/test-helpers';
 
 test('serialises node flags', () => {
   const flags = printFlags(
@@ -19,4 +20,31 @@ test('serialises type flags', () => {
   const flags = printFlags(ts.TypeFlags.Number + ts.TypeFlags.Enum, ts.TypeFlags);
   expect(flags).toContain('Number');
   expect(flags).toContain('Enum');
+});
+
+test('tryExtractDeclaration returns undefined for symbols with no declarations', () => {
+  const symbol = { getDeclarations: () => undefined } as unknown as ts.Symbol;
+  expect(tryExtractDeclaration(symbol)).toBeUndefined();
+});
+
+test('tryExtractDeclaration returns the single declaration', () => {
+  const decl = {} as ts.Declaration;
+  const symbol = { getDeclarations: () => [decl] } as unknown as ts.Symbol;
+  expect(tryExtractDeclaration(symbol)).toBe(decl);
+});
+
+test('tryExtractDeclaration picks non-never property signature from multiple declarations', () => {
+  const { exportSymbol, checker } = getInMemoryProject(`
+    interface BranchA { shared: string; }
+    interface BranchB { shared?: never; }
+    export type Combined = BranchA | BranchB;
+  `);
+  const combinedType = checker.getDeclaredTypeOfSymbol(exportSymbol);
+  const sharedSymbol = combinedType.getProperties().find(p => p.getName() === 'shared')!;
+  const declaration = tryExtractDeclaration(sharedSymbol);
+  expect(declaration).toBeDefined();
+  // Should pick the BranchA declaration (non-never)
+  if (declaration && ts.isPropertySignature(declaration) && declaration.type) {
+    expect(declaration.type.kind).not.toBe(ts.SyntaxKind.NeverKeyword);
+  }
 });
