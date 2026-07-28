@@ -48,3 +48,18 @@ test('tryExtractDeclaration picks non-never property signature from multiple dec
     expect(declaration.type.kind).not.toBe(ts.SyntaxKind.NeverKeyword);
   }
 });
+
+test('tryExtractDeclaration keeps a property signature that has no type annotation', () => {
+  const { exportSymbol, checker } = getInMemoryProject(`
+    interface BranchA { shared; }
+    interface BranchB { shared?: never; }
+    export type Combined = BranchA | BranchB;
+  `);
+  const combinedType = checker.getDeclaredTypeOfSymbol(exportSymbol);
+  const sharedSymbol = combinedType.getProperties().find(p => p.getName() === 'shared')!;
+  const declaration = tryExtractDeclaration(sharedSymbol);
+  expect(declaration).toBeDefined();
+  expect(ts.isPropertySignature(declaration!)).toBe(true);
+
+  expect((declaration as ts.PropertySignature).type).toBeUndefined();
+});
