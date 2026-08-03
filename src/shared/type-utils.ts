@@ -77,10 +77,19 @@ export function tryExtractDeclaration(symbol: ts.Symbol): ts.Declaration | undef
   if (!declarations || declarations.length === 0) {
     return undefined;
   }
-  if (declarations.length > 1) {
-    throw new Error(`Multiple declarations found for symbol: ${symbol.getName()}`);
+  if (declarations.length === 1) {
+    return declarations[0];
   }
-  return declarations[0];
+  // Multiple property signature declarations occur in discriminated unions where the same
+  // property appears in multiple branches (e.g. `prop: SomeType` in one and `prop?: never` in
+  // another). Keep the branches that aren't `never` and use that declaration when it's unambiguous.
+  if (declarations.every(ts.isPropertySignature)) {
+    const nonNever = declarations.filter(decl => decl.type?.kind !== ts.SyntaxKind.NeverKeyword);
+    if (nonNever.length === 1) {
+      return nonNever[0];
+    }
+  }
+  throw new Error(`Multiple declarations found for symbol: ${symbol.getName()}`);
 }
 
 export function isOptionalSymbol(symbol: ts.Symbol): boolean {
