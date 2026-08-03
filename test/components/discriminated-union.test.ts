@@ -24,7 +24,7 @@ test('should extract properties from discriminated union without errors', () => 
 test('should use the non-never declaration type for shared properties', () => {
   const renderProp = list.properties.find(p => p.name === 'renderItem')!;
   expect(renderProp).toBeDefined();
-  expect(renderProp.type).not.toBe('never');
+  expect(renderProp.type).toBe('() => React.ReactNode');
 });
 
 test('should preserve description from discriminated union properties', () => {

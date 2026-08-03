@@ -63,3 +63,17 @@ test('tryExtractDeclaration keeps a property signature that has no type annotati
 
   expect((declaration as ts.PropertySignature).type).toBeUndefined();
 });
+
+test('tryExtractDeclaration throws when multiple non-never declarations are ambiguous', () => {
+  // Three property signature declarations, two of which are non-never (`string` and `number`).
+  // The result is ambiguous, so no single declaration can be chosen and the function throws.
+  const { exportSymbol, checker } = getInMemoryProject(`
+    interface BranchA { shared: string; }
+    interface BranchB { shared: number; }
+    interface BranchC { shared?: never; }
+    export type Combined = BranchA | BranchB | BranchC;
+  `);
+  const combinedType = checker.getDeclaredTypeOfSymbol(exportSymbol);
+  const sharedSymbol = combinedType.getProperties().find(p => p.getName() === 'shared')!;
+  expect(() => tryExtractDeclaration(sharedSymbol)).toThrow('Multiple declarations found for symbol: shared');
+});
