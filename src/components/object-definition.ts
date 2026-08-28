@@ -59,7 +59,8 @@ export function getObjectDefinition(
     isArrayType(realType) ||
     realTypeName === 'HTMLElement' ||
     realTypeName.split('.')[0] === 'Highcharts' ||
-    type === 'React.ReactNode'
+    type === 'React.ReactNode' ||
+    type === 'React.CSSProperties'
   ) {
     // do not expand built-in Javascript methods or primitive values
     return { type };
