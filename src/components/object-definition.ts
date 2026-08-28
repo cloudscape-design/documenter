@@ -59,9 +59,12 @@ export function getObjectDefinition(
     isArrayType(realType) ||
     realTypeName === 'HTMLElement' ||
     realTypeName.split('.')[0] === 'Highcharts' ||
-    type === 'React.ReactNode'
+    type === 'React.ReactNode' ||
+    type === 'React.CSSProperties'
   ) {
-    // do not expand built-in Javascript methods or primitive values
+    // Emit primitives, arrays, and opaque external types (HTMLElement,
+    // Highcharts.*, React.ReactNode, React.CSSProperties) as a plain type
+    // reference instead of expanding their members.
     return { type };
   }
   if (realType.isUnionOrIntersection()) {

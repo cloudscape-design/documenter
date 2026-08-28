@@ -1,0 +1,42 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should not expand React.CSSProperties 1`] = `
+[
+  {
+    "dashCaseName": "box",
+    "description": "Box description",
+    "events": [],
+    "functions": [],
+    "name": "Box",
+    "properties": [
+      {
+        "analyticsTag": undefined,
+        "defaultValue": undefined,
+        "deprecatedTag": undefined,
+        "description": "Applies inline styles to the root element.",
+        "i18nTag": undefined,
+        "inlineType": undefined,
+        "name": "style",
+        "optional": true,
+        "systemTags": undefined,
+        "type": "React.CSSProperties",
+        "visualRefreshTag": undefined,
+      },
+    ],
+    "regions": [
+      {
+        "deprecatedTag": undefined,
+        "description": "The content to render.",
+        "displayName": undefined,
+        "i18nTag": undefined,
+        "isDefault": true,
+        "name": "children",
+        "systemTags": undefined,
+        "visualRefreshTag": undefined,
+      },
+    ],
+    "releaseStatus": "stable",
+    "systemTags": undefined,
+  },
+]
+`;
