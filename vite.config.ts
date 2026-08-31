@@ -9,7 +9,7 @@ export default defineConfig({
     coverage: {
       enabled: process.env.CI === 'true',
       provider: 'v8',
-      include: ['src/**', 'lib/**'],
+      include: ['src/**'],
     },
   },
 });
