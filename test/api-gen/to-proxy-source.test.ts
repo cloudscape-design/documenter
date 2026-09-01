@@ -1,12 +1,11 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { expect, test } from 'vitest';
+import { describe, expect, test } from 'vitest';
 
 import * as ts from 'ts-morph';
 
 import { toProxySource } from '../../src/api-gen/to-proxy-source';
-import { describe } from 'node:test';
 
 function transform(declarations: string) {
   const project = new ts.Project({
