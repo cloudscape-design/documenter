@@ -207,6 +207,19 @@ describe('emitted tree', () => {
     expect(sourceOf(files, 'button-alpha/interfaces.ts')).not.toContain('children');
   });
 
+  test('emits a dependency at its own place when another patch proxies it elsewhere', () => {
+    const files = generateFixtures([['valid/custom-icon'], ['valid/button', 'empty']]);
+
+    expect(files.map(file => file.path)).toEqual([
+      'button/interfaces.ts',
+      'custom-icon/interfaces.ts', // custom override
+      'icon/interfaces.ts', // referenced from button
+      'types/base-component.ts',
+      'types/events.ts',
+    ]);
+    expect(sourceOf(files, 'button/interfaces.ts')).toContain("from '../icon/interfaces.js'");
+  });
+
   test('throws when two patches claim one place in the proxy tree', () => {
     expect(() =>
       generateFixtures([

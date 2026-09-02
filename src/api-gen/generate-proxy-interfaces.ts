@@ -68,7 +68,8 @@ export function generateProxyInterfaces({
 
   const pending = entryPoints.map(entryPath => readPatch(project, entryPath));
   const emitted = new Map<string, ProxyFile>();
-  const queued = new Set(pending.map(file => file.upstreamPath));
+  const queueKey = (file: PendingFile) => `${file.upstreamPath}\n${file.emittedPath}`;
+  const queued = new Set(pending.map(queueKey));
 
   while (pending.length > 0) {
     const file = pending.shift()!;
@@ -81,8 +82,8 @@ export function generateProxyInterfaces({
 
     // Follow file's relative imports to pull its dependencies, such as other components or shared types.
     for (const reached of followImports(out, file, resolveImport)) {
-      if (!queued.has(reached.upstreamPath)) {
-        queued.add(reached.upstreamPath);
+      if (!queued.has(queueKey(reached))) {
+        queued.add(queueKey(reached));
         pending.push(reached);
       }
     }
