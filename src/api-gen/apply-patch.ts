@@ -14,7 +14,7 @@ export function applyPatch(out: ts.SourceFile, patch: Patch): void {
 function patchInterfaces(out: ts.SourceFile, patch: Patch) {
   for (const interfacePatch of patch.interfaces) {
     const outInterface = findInterface(interfacePatch.interfaceName);
-    for (const override of removalsFirst(interfacePatch.propertyOverrides)) {
+    for (const override of interfacePatch.propertyOverrides) {
       if (override.declaration === undefined) {
         removeProperty(outInterface, override.propertyName);
       } else {
@@ -50,7 +50,7 @@ function patchInterfaces(out: ts.SourceFile, patch: Patch) {
 function patchNamespaces(out: ts.SourceFile, patch: Patch) {
   for (const namespacePatch of patch.namespaces) {
     const outNamespace = findNamespace(namespacePatch.namespaceName);
-    for (const override of removalsFirst(namespacePatch.memberOverrides)) {
+    for (const override of namespacePatch.memberOverrides) {
       if (override.declaration === undefined) {
         removeMember(outNamespace, override.memberName);
       } else {
@@ -93,10 +93,6 @@ function patchNamespaces(out: ts.SourceFile, patch: Patch) {
 
 function carryOverImports(out: ts.SourceFile, patch: Patch) {
   out.addImportDeclarations(patch.imports);
-}
-
-function removalsFirst<T extends { declaration?: string }>(overrides: T[]): T[] {
-  return [...overrides].sort((a, b) => Number(a.declaration !== undefined) - Number(b.declaration !== undefined));
 }
 
 /** Normalizes indentation of the js-docs when they are carried over from the patch file. */
