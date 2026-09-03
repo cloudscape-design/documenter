@@ -3,7 +3,8 @@
   "compilerOptions": {
     // issues with old Typescript version https://github.com/vitest-dev/vitest/issues/4567
     "skipLibCheck": true,
-    "noEmit": true
+    "noEmit": true,
+    "rootDir": "."
   },
   "include": ["test"]
 }

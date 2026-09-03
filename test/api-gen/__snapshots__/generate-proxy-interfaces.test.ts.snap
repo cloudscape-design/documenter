@@ -1,0 +1,200 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`additions and overrides > adds new properties and namespace members 1`] = `
+"import React from 'react';
+import { BaseComponentProps } from '../types/base-component';
+import { NonCancelableEventHandler } from '../types/events.js';
+import { IconProps } from '../icon/interfaces.js'
+
+export interface ButtonProps extends BaseComponentProps {
+  /**
+   * Button text
+   */
+  children?: React.ReactNode;
+  /**
+   * Click handler
+   */
+  onClick?: NonCancelableEventHandler;
+  /**
+   * Icon name
+   */
+  iconName?: ButtonProps.IconName;
+  /**
+   * Annotation API-docs
+   */
+  annotation?: ButtonProps.Annotation;
+}
+
+export namespace ButtonProps {
+  export type IconName = IconProps.Name;
+  export type Annotation = string;
+}
+"
+`;
+
+exports[`additions and overrides > overrides properties and namespace members of multi-interface upstream component 1`] = `
+"import { BaseComponentProps } from '../types/base-component';
+
+export interface BaseCheckboxProps {
+  checked: boolean;
+  /**
+   * ARIA label of the checkbox control
+   */
+  ariaLabel: string;
+}
+
+export interface CheckboxProps extends BaseComponentProps {
+  indeterminate?: boolean;
+  onChange: (detail: CheckboxProps.EventDetail) => void;
+  /**
+   * Visible checkbox label
+   */
+  children?: React.ReactNode;
+}
+
+export namespace CheckboxProps {
+  export interface EventDetail {
+    checked: boolean;
+    indeterminate: boolean;
+  }
+}
+"
+`;
+
+exports[`additions and overrides > overrides the interface and drops the namespace that uses the same name 1`] = `
+"export interface BoxProps {
+  /**
+   * Box content
+   */
+  children?: string;
+  /**
+   * Box variant
+   */
+  variant?: BoxProps.Variant;
+  /**
+   * Box visual accent
+   */
+  visualAccent?: BoxProps.VisualAccent;
+}
+
+export namespace BoxProps {
+  export type Variant = 'div' | 'span';
+  export interface VisualAccent {
+    color: BoxProps.VisualAccent.Color;
+  }
+}
+"
+`;
+
+exports[`carried imports > carries the imports the patch declares, leaving out the marker module 1`] = `
+"import React from 'react';
+import { BaseComponentProps } from '../types/base-component';
+import { NonCancelableEventHandler } from '../types/events.js';
+import { IconProps } from '../icon/interfaces.js'
+import type { CheckboxProps } from '@fixtures/upstream/checkbox';
+import * as BoxTypes from '@fixtures/upstream/box';
+import '@fixtures/upstream/button';
+
+export interface ButtonProps extends BaseComponentProps {
+  /**
+   * Button text
+   */
+  children?: React.ReactNode;
+  /**
+   * Icon name
+   */
+  iconName?: ButtonProps.IconName;
+  /**
+   * Wrapper applied around the button content.
+   */
+  wrapper?: BoxTypes.BoxProps;
+  toggle?: CheckboxProps;
+}
+
+export namespace ButtonProps {
+  export type IconName = IconProps.Name;
+}
+"
+`;
+
+exports[`removals > recognizes the marker imported under an alias and through a namespace import 1`] = `
+"import React from 'react';
+import { BaseComponentProps } from '../types/base-component';
+import { NonCancelableEventHandler } from '../types/events.js';
+import { IconProps } from '../icon/interfaces.js'
+
+export interface ButtonProps extends BaseComponentProps {
+  /**
+   * Button text
+   */
+  children?: React.ReactNode;
+}
+
+export namespace ButtonProps {
+  export type IconName = IconProps.Name;
+}
+"
+`;
+
+exports[`removals > removes an interface property 1`] = `
+"import React from 'react';
+import { BaseComponentProps } from '../types/base-component';
+import { NonCancelableEventHandler } from '../types/events.js';
+import { IconProps } from '../icon/interfaces.js'
+
+export interface ButtonProps extends BaseComponentProps {
+  /**
+   * Button text
+   */
+  children?: React.ReactNode;
+  /**
+   * Click handler
+   */
+  onClick?: NonCancelableEventHandler;
+}
+
+export namespace ButtonProps {
+  export type IconName = IconProps.Name;
+}
+"
+`;
+
+exports[`removals > removes an interface property and a namespace member 1`] = `
+"import React from 'react';
+import { BaseComponentProps } from '../types/base-component';
+import { NonCancelableEventHandler } from '../types/events.js';
+import { IconProps } from '../icon/interfaces.js'
+
+export interface ButtonProps extends BaseComponentProps {
+  /**
+   * Button text
+   */
+  children?: React.ReactNode;
+  /**
+   * Click handler
+   */
+  onClick?: NonCancelableEventHandler;
+}
+
+export namespace ButtonProps {
+}
+"
+`;
+
+exports[`removals > removes both the interface and the namespace that use the same name 1`] = `
+"export interface BoxProps {
+  /**
+   * Box content
+   */
+  children?: string;
+  /**
+   * Box variant
+   */
+  variant?: BoxProps.Variant;
+}
+
+export namespace BoxProps {
+  export type Variant = 'div' | 'span';
+}
+"
+`;
