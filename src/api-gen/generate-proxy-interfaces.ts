@@ -13,14 +13,14 @@ import { toProxySource } from './to-proxy-source';
 export interface UpstreamImport {
   /** Path of the emitted file holding the import, e.g. `select/interfaces.ts`. */
   sourcePath: string;
-  /** Absolute path of the upstream declaration file the import resolves to. */
+  /** Absolute path of the upstream declaration file the import resolves to, e.g. `/repo/node_modules/@cloudscape-design/components/types/base-component.d.ts`. */
   resolvedPath: string;
-  /** Specifier as the upstream declaration file wrote it. */
+  /** Specifier as the upstream declaration file wrote it, e.g. `../types/base-component`. */
   importSpecifier: string;
 }
 
 export interface GenerateProxyInterfacesOptions {
-  /** Paths to patch files of the components to proxy. */
+  /** Paths to patch files of the components to proxy, e.g. `['src/proxy/select/interfaces.patch.d.ts']`. */
   entryPoints: string[];
   /** Override the specifier an emitted import is written with. Return `{}` to keep it unchanged. */
   resolveImport?: ResolveImport;
@@ -34,18 +34,18 @@ export interface GenerateProxyInterfacesResult {
 }
 
 export interface ProxyFile {
-  /** Place in the proxy tree: the directory the consumer gave a proxied component, upstream's own otherwise. */
+  /** Place in the proxy tree: the directory the consumer gave a proxied component, upstream's own otherwise, e.g. `select/interfaces.ts`. */
   path: string;
   /** Generated source with license header and awsui-system tags removed. */
   source: string;
 }
 
 interface PendingFile {
-  /** Upstream declaration file to read. */
+  /** Upstream declaration file to read, e.g. `/repo/node_modules/@cloudscape-design/components/select/interfaces.d.ts`. */
   upstreamPath: string;
-  /** Where the file belongs in the proxy tree. */
+  /** Where the file belongs in the proxy tree, e.g. `select/interfaces.ts`. */
   emittedPath: string;
-  /** Package the file belongs to, from which the paths of the files it reaches are derived. */
+  /** Package the file belongs to, from which the paths of the files it reaches are derived, e.g. `/repo/node_modules/@cloudscape-design/components`. */
   packageDir: string;
   /** Set when an entry point named this file: the patch to apply to it. */
   patch?: Patch;
