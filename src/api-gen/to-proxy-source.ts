@@ -8,7 +8,7 @@ const LICENSE_HEADER = /^\/\/ Copyright Amazon\.com[^\n]*\r?\n\/\/ SPDX-License-
 export function toProxySource(project: ts.Project, emittedPath: string, sourceStr: string): ts.SourceFile {
   const source = project.createSourceFile(`out/${emittedPath}`, stripLicenseHeader(sourceStr));
   exportAmbientNamespaces(source);
-  stripAwsuiSystemTags(source);
+  stripUpstreamTags(source);
   return source;
 }
 
@@ -47,11 +47,13 @@ function exportAmbientNamespaces(source: ts.SourceFile): void {
   }
 }
 
-/** Removes `@awsuiSystem` annotations, whatever system they name, keeping any api-docs they sit beside. */
-function stripAwsuiSystemTags(source: ts.SourceFile): void {
+const TAGS_TO_REMOVE = ['awsuiSystem', 'visualrefresh', 'displayname'];
+
+/** Removes the annotations above, keeping any api-docs they sit beside. */
+function stripUpstreamTags(source: ts.SourceFile): void {
   for (const jsDoc of source.getDescendantsOfKind(ts.SyntaxKind.JSDoc)) {
     for (const tag of jsDoc.getTags()) {
-      if (tag.getTagName() === 'awsuiSystem') {
+      if (TAGS_TO_REMOVE.includes(tag.getTagName())) {
         tag.remove();
       }
     }

@@ -36,7 +36,7 @@ describe('strips license header', () => {
   });
 });
 
-describe('strips system tags', () => {
+describe('strips upstream tags', () => {
   const inline = (input: string) => input.replace(/[ \t\n]+/g, ' ');
 
   test('leaves a comment without annotations untouched', () => {
@@ -56,9 +56,33 @@ describe('strips system tags', () => {
     });
   });
 
+  test('drops every upstream annotation, keeping the ones a consumer documents from', () => {
+    expect(
+      inline(
+        transform(`/**
+          * API docs
+          * @awsuiSystem core
+          * @visualrefresh \`awsui-h1-sticky\` variant
+          * @displayname title
+          * @deprecated Use something else.
+          * @default 'h2'
+          * @i18n
+          * @analytics
+          */
+        export type X = Y;`),
+      ).trim(),
+    ).toBe(
+      "/** * API docs * @deprecated Use something else. * @default 'h2' * @i18n * @analytics */ export type X = Y;",
+    );
+  });
+
   test('drops a comment that holds nothing but the annotation', () => {
     [
       `/** @awsuiSystem core */
+      export type X = Y; `,
+      `/** @visualrefresh \`awsui-h1-sticky\` variant */
+      export type X = Y; `,
+      `/** @displayname title */
       export type X = Y; `,
       `/**
         * @awsuiSystem experimental
