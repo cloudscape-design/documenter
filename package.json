@@ -27,7 +27,7 @@
     "@types/node": "^20.0.0",
     "@types/react": "^16.14.8",
     "@types/react-dom": "^16.9.8",
-    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/coverage-v8": "4.1.11",
     "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.2.3",
@@ -39,7 +39,7 @@
     "rimraf": "^5.0.5",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.44.0",
-    "vitest": "^4.1.11"
+    "vitest": "4.1.11"
   },
   "dependencies": {
     "change-case": "^4.1.1",
