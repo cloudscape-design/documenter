@@ -70,6 +70,16 @@ export function getObjectDefinition(
   if (realType.isUnionOrIntersection()) {
     return getUnionTypeDefinition(realTypeName, realType, rawTypeNode, checker);
   }
+  if (realType.flags & ts.TypeFlags.TypeParameter) {
+    // A type parameter constrained to a union (e.g. `T extends A | B`) exposes the union's shared
+    // members as synthetic properties with one declaration per branch, which cannot be documented
+    // individually. Describe the constraint instead, keeping the declared type name.
+    const constraint = checker.getBaseConstraintOfType(realType);
+    if (constraint?.isUnion()) {
+      const { inlineType } = getUnionTypeDefinition(stringifyType(constraint, checker), constraint, undefined, checker);
+      return { type, inlineType };
+    }
+  }
   if (realType.getProperties().length > 0) {
     const properties = realType
       .getProperties()
